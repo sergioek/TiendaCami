@@ -51,9 +51,32 @@
     display: none;
 }
 
+@keyframes imagen {
+    0%{
+        opacity: 0.0;
+        transform: translate(-100px);
+    }
+    
+}
+
 .header .barraNavegacion .barraNavegacion__titulo img{
     width: 7em ;
     height: auto;
+    animation: imagen 1s linear 0s;
+}
+
+@keyframes titulo {
+    0%{
+        text-shadow: none;
+    }
+    
+    50%{
+        text-shadow: 5px 5px #e9890b , 2px 2px #8e9494 ;
+    }
+    
+    100%{
+        text-shadow: 5px 5px #FA48D5 , 2px 2px #8e9494 ;
+    }
 }
 
 .header .barraNavegacion .barraNavegacion__titulo h1{
@@ -61,6 +84,7 @@
     color: #FFFFFF;
     font-size: 3em;
     margin-top: 1.1rem;
+    animation: titulo 3s linear 0s infinite;
 }
 
 .header .barraNavegacion .barraNavegacion__buscador{
@@ -260,7 +284,6 @@
 .main .mainCategorias .mainCategorias__imagenes div:hover{
     background-color: #e9890b;
     border-radius: 1rem;
-    color: #1d1d1d;
     transform: scale(1.0);  
     margin: 1rem 0 1rem 0;
 }
@@ -410,6 +433,7 @@
     color: #0c0c0caf;
     font-size: 3em;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
 }
 
 .contacto .contacto__formulario form{
@@ -445,6 +469,7 @@
     background-color: #eeb3e2;
     color: #FFFFFF;
 }
+
 /*Fin main contacto---------------------------*/
 
 /*Main productos*/
