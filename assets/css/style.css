@@ -403,6 +403,15 @@
     height: auto;
 }
 
+#tablaIntereses{
+    border-color: #FA48D5;
+}
+
+#tablaIntereses thead tr:nth-child(1){
+    background-color: #FA48D5;
+    color: #FFFFFF;
+}
+
 /*Fin main como comprar-------------------*/
 
 
@@ -470,6 +479,11 @@
     color: #FFFFFF;
 }
 
+#accordionExample .accordion-item .accordion-button{
+    background-color: #2EDFE2;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
 /*Fin main contacto---------------------------*/
 
 /*Main productos*/
