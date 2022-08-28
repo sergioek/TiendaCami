@@ -353,13 +353,18 @@
     font-size: 1em;
     
 }
+
+#iconoDescarga{
+    color: #FFFFFF;
+}
+
 /*Fin main legales---------------------------------*/
 
 /*Main como comprar*/
 
 #mainComoComprar{
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
 }
 
 .main .comprarTitulo{
@@ -410,6 +415,7 @@
 #tablaIntereses thead tr:nth-child(1){
     background-color: #FA48D5;
     color: #FFFFFF;
+    border-color: #FFFFFF;
 }
 
 /*Fin main como comprar-------------------*/
@@ -426,7 +432,7 @@
 
 .main .contacto{
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     justify-items: center;
     gap: 1rem;
 }
@@ -475,26 +481,28 @@
 
 
 .contacto .contacto__formulario form button:hover{
-    background-color: #eeb3e2;
+    background-color: transparent;
     color: #FFFFFF;
 }
 
 #accordionExample .accordion-item .accordion-button{
-    background-color: #2EDFE2;
-    color: #FFFFFF;
-    opacity: 0.8;
+    background-color: #FA48D5;
+    font-weight: bold;
 }
 /*Fin main contacto---------------------------*/
 
 /*Main productos*/
 #mainProductos{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
     gap: 4rem;
     margin-top: 2rem;
     margin-left: 1rem;
 }
-
+.main .boxCompra{
+    display: grid;
+    grid-template-columns: auto auto;
+}
 .main .filtros{
     display: flex;
     flex-direction: column;
@@ -563,6 +571,14 @@
     color: #1d1d1d;
     background-color: #40cfac;  
 }
+
+.main .paginacion{
+    display: flex;
+    justify-content: end;
+    margin-right:1rem;
+}
+
+
 /*Fin main productos------------------------------*/
 
 
@@ -643,15 +659,15 @@
         width: 18rem;
     }
     
-    .main .filtros{
+    .main .boxCompra .filtros{
         align-items: center;
     }
     
-    .main .productos{
+    .main .boxCompra .productos{
         grid-template-columns: 1fr;
     }
     
-    #mainProductos{
+    #mainProductos .boxCompra{
         grid-template-columns: 1fr;
     }
     
@@ -707,15 +723,15 @@
         width: 30rem;
     }
     
-    .main .filtros{
+    .main .boxCompra .filtros{
         align-items: center;
     }
     
-    .main .productos{
+    .main .boxCompra .productos{
         grid-template-columns: 1fr;
     }
     
-    #mainProductos{
+    #mainProductos .boxCompra{
         grid-template-columns: 1fr;
     }
     
@@ -750,15 +766,15 @@
         flex-direction: row; 
     }
     
-    .main .filtros{
+    .main .boxCompra .filtros{
         align-items: center;
     }
     
-    .main .productos{
+    .main .boxCompra .productos{
         grid-template-columns: 1fr;
     }
     
-    #mainProductos{
+    #mainProductos .boxCompra{
         grid-template-columns: 1fr;
     }
     
