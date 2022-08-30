@@ -392,6 +392,7 @@
     justify-content: center; 
 }
 
+
 .comprarPasos__uno, .comprarPasos__dos, .comprarPasos__tres{
     width: 30%;  
 }
@@ -412,7 +413,7 @@
     border-color: #FA48D5;
 }
 
-#tablaIntereses thead tr:nth-child(1){
+#tablaIntereses thead tr:first-child{
     background-color: #FA48D5;
     color: #FFFFFF;
     border-color: #FFFFFF;
