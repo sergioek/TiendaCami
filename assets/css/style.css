@@ -47,7 +47,7 @@
 
 #hamburgerList{
     color: #FFFFFF;
-    font-size: 4em;
+    font-size: 4rem;
     display: none;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .header .barraNavegacion .barraNavegacion__titulo img{
-    width: 7em ;
+    width: 7rem ;
     height: auto;
     animation: imagen 1s linear 0s;
 }
@@ -82,13 +82,13 @@
 .header .barraNavegacion .barraNavegacion__titulo h1{
     font-family: 'Lobster', cursive;
     color: #FFFFFF;
-    font-size: 3em;
+    font-size: 3rem;
     margin-top: 1.1rem;
     animation: titulo 3s linear 0s infinite;
 }
 
 .header .barraNavegacion .barraNavegacion__buscador{
-    margin-top: 2.5rem;
+    margin-top: 3rem;
 }
 
 .icono {
@@ -107,7 +107,7 @@
     border-radius: 10px;
     border-color: #FA48D5;
     box-shadow: 5px 5px #8e9494;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     padding-left: 2.5rem;
     height: 3rem;
     width: 31rem;
@@ -126,7 +126,7 @@
     list-style: none;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 1em;
+    font-size: 1rem;
     font-family: 'DynaPuff', cursive;
 }
 
@@ -154,7 +154,7 @@
 }
 
 .footer .informacion #tituloInformacion{
-    font-size: 2em;
+    font-size: 2rem;
     font-family: 'Mochiy Pop One', sans-serif;
 
     font-family: 'Murecho', sans-serif;
@@ -171,7 +171,7 @@
 .footer .informacion ul li,a{
     list-style: none;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     padding-top: 1.5rem;
     color: #464747;
 }
@@ -183,7 +183,7 @@
 
 
 .footer .informacion .informacion__redes i{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     padding-left: 3rem;
 }
 
@@ -208,7 +208,7 @@
     display: grid;
     grid-template-columns: 1fr;
     background-color:#535353;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     color: #FFFFFF;
 }
 
@@ -268,7 +268,7 @@
 .main .mainCategorias .mainCategorias__imagenes{
     background-color: #40cfac;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-family: 'DynaPuff', cursive;
     color: #FFFFFF;
     display: flex;
@@ -303,14 +303,15 @@
 
 .newsletter__formulario form input {
     width: 25rem;
-    height: 40px;
+    height: 2.5rem;
+    padding-left: 0.5rem;
     border-radius: 5px;
 }
 
 .newsletter__formulario form button {
     width: 6rem;
-    font-size: 0.8em;
-    height: 40px;
+    font-size: 0.8rem;
+    height: 2.5rem;
     border-radius: 5px;
     background-color: #2EDFE2;
     margin-left: 1rem;
@@ -330,7 +331,7 @@
 .main .legalesTitulo h2{
     color: #eb02bc;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2em;
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -344,13 +345,13 @@
 .main .legalesCondiciones h3 {
     color: #220ed6;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .main .legalesCondiciones p{
     text-align: justify;
     line-height: 3rem;
-    font-size: 1em;
+    font-size: 1rem;
     
 }
 
@@ -380,7 +381,7 @@
 .main .comprarTitulo h2,.comprarTitulo i{
     color: #FFFFFF;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 .main .comprarPasos{
@@ -398,8 +399,8 @@
 }
 
 .main .comprarPasos p{
-    font-size: 1.1em;
-    line-height: 2em;
+    font-size: 1.1rem;
+    line-height: 2rem;
     font-family: 'Times New Roman', Times, serif;
     text-align: justify;
 }
@@ -447,7 +448,7 @@
 .contacto .contacto__titulo h2{
     color: #464747;
     color: #0c0c0caf;
-    font-size: 3em;
+    font-size: 3rem;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
@@ -519,7 +520,7 @@
     display: flex;
     flex-direction: column;
     align-items: space-around;
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 
 .main .filtros .filtros__precios form{
@@ -555,19 +556,19 @@
 }
 
 .main .productos #productoItem h4{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     font-family: fantasy;
     
 }
 
 .main .productos #productoItem p{
-    font-size: 0.8em;
+    font-size: 0.8rem;
     font-family: fantasy;
 }
 
 .main .productos #productoItem button{
     width: 6rem;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     text-align: center;
     color: #1d1d1d;
     background-color: #40cfac;  
@@ -622,7 +623,7 @@
     }
     
     .header .menu nav ul li, .header .menu a{
-        font-size: 0.9em;
+        font-size: 0.9rem;
     }
     
     /*Footer informacion*/
@@ -635,11 +636,11 @@
         width: 17.5rem;
     }
     .footer .informacion ul li,a{
-        font-size: 0.9em;
+        font-size: 0.9rem;
     }
     
     .footer .desarrollador{
-        font-size: 0.9em;
+        font-size: 0.9rem;
     }
     
     .main .mainCategorias .mainCategorias__imagenes{
@@ -649,7 +650,7 @@
     
     .newsletter__formulario form input {
         width: 11rem;
-        font-size: 0.6em;
+        font-size: 0.6rem;
     }
     
     .newsletter__formulario form button {
