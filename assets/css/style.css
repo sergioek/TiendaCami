@@ -281,13 +281,6 @@
     height: auto;
 }
 
-.main .mainCategorias .mainCategorias__imagenes div:hover{
-    background-color: #e9890b;
-    border-radius: 1rem;
-    transform: scale(1.0);  
-    margin: 1rem 0 1rem 0;
-}
-
 .newsletter{
     background-color: #e9890b;
     display: grid;
@@ -318,7 +311,6 @@
 }
 
 /*Fin main index*/
-
 
 /*Main legales ------------------------------------*/
 #mainLegales{
@@ -461,14 +453,15 @@
     justify-content: center;
     margin-bottom: 2rem;
     width: 50rem;
-    
 }
 
 .contacto .contacto__formulario form input,textarea,button{
     padding-left: 0.5rem;
     border-radius: 0.5rem;
-    border: 2px solid #eb02bc; 
+    border: 3px solid #eb02bc; 
     height: 2.5rem; 
+    background-color: transparent;
+    color:#FFFFFF;
 }
 
 .contacto .contacto__formulario form textarea{
@@ -500,6 +493,7 @@
     gap: 4rem;
     margin-top: 2rem;
     margin-left: 1rem;
+    background-color: rgb(224, 223, 223,0.5);
 }
 .main .boxCompra{
     display: grid;
@@ -511,16 +505,18 @@
     align-items: flex-start;
     padding-left: 1rem;
     gap: 2rem;
-    background-color: #dbdfdf;
+    background-color: #a7a7a7;
+    color: #FFFFFF;
     border-radius: 20px;
 }
-.main .filtros .filtros__categorias nav ul li{
+.main .filtros .filtros__categorias nav ul li >a{
     list-style: none;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: space-around;
     font-size: 0.9rem;
+    color: #FFFFFF;
 }
 
 .main .filtros .filtros__precios form{
@@ -553,6 +549,7 @@
 #productoItem img{
     width: 70%;
     height: auto;
+    border-radius: 15px;
 }
 
 .main .productos #productoItem h4{
