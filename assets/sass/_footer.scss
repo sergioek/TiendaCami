@@ -1,0 +1,74 @@
+
+/*Footer------------------*/
+.footer{
+    grid-area: footer;
+    @include grid(1,1fr,2,auto);
+
+   & .informacion{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        @include grid(3,1fr,1,auto);
+        justify-items: center;
+        align-items: flex-start;
+
+        #tituloInformacion{
+            font-size: 2rem;
+            color: $dark-gray-two;
+            @each $font in $mochy,$murecho,$raleway,$rubik,$secular {
+                font-family:$font;
+            }   
+        }
+
+       & .informacion__redes{
+            i{
+                font-size: 1.5rem;
+                padding-left: 3rem; 
+            }
+            #facebook{
+                color: blue;
+            }
+
+            #instagram{
+                color: #eb02bc;
+            }
+
+            #tiktok{
+                color: #000000;
+            }
+
+        }
+
+        & ul li,a{
+            list-style: none;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding-top: 1.5rem;
+            color:$dark-gray;
+        }
+    
+       & a:hover{
+            color:$cyan;
+            font-weight: bold;
+        }
+    
+    }
+
+    & .desarrollador{
+        background-color:$dark-gray-two;
+        font-size: 1.1rem;
+        color:$white;
+        @include grid(1,1fr,1,auto);
+
+        & .desarrolladorInfo{
+            @include flex-box(row,wrap,center,flex-start,1rem);
+            align-content: center;
+            img{
+                width: 4rem;
+                height: auto;
+            }
+        }
+
+
+    }
+} 
+/*Termina footer*/

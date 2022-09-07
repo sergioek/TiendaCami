@@ -5,18 +5,16 @@
     @include grid(1,1fr,2,auto);
     align-items: flex-start;
     justify-content: space-around;
-    z-index: 2;  
+    z-index: 3;  
 
     /*Barra superior -- barra de busqueda*/
     .barraNavegacion{
         @include flex-box(row,wrap,flex-start,flex-start,1rem);
-
         @keyframes imagen {
             0%{
                 opacity: 0.0;
                 transform: translate(-100px);
-            }
-            
+            } 
         }
 
         & .barraNavegacion__titulo{
@@ -26,9 +24,47 @@
                 height: auto;
                 animation: imagen 1s linear 0s;
             }
+
+            @keyframes titulo {
+                0%{
+                    text-shadow: none;
+                }
+                
+                50%{
+                    text-shadow: 5px 5px $orange , 2px 2px $gray ;
+                }
+                
+                100%{
+                    text-shadow: 5px 5px $pink , 2px 2px $gray ;
+                }
+            }
+
+            a{
+                text-decoration: none;
+                h1{
+                    font-family: $lobster;
+                    color:$white;
+                    font-size: 3rem;
+                    margin-top: 1.1rem;
+                    animation: titulo 3s linear 0s infinite;
+                }  
+            }
+
         }
 
-    
+        & .barraNavegacion__buscador{
+            margin-top: 3rem;
+            form input{
+                text-align: start;
+                border-radius: 10px;
+                border-color: $pink;
+                box-shadow: 5px 5px $gray;
+                font-size: 0.8rem;
+                padding-left: 2.5rem;
+                height: 3rem;
+                width: 31rem;
+            }
+        }
     }
 
     #hamburgerList{
@@ -37,77 +73,37 @@
         display: none;
     }
 
-   
-    
-
-}
-
-
-@keyframes titulo {
-    0%{
-        text-shadow: none;
+    .icono {
+        padding-left: 30px!important;
     }
     
-    50%{
-        text-shadow: 5px 5px #e9890b , 2px 2px #8e9494 ;
+    .icono-input {
+        position: absolute;
+        padding: 15px;
+        pointer-events: none;
+        color: $dark-gray;
     }
     
-    100%{
-        text-shadow: 5px 5px #FA48D5 , 2px 2px #8e9494 ;
+    /*Menu de navegacion*/
+    .menu{
+        nav{
+            ul{
+                @include flex-box(row,wrap,space-evenly,center,0rem); 
+
+                li,a{
+                    list-style: none;
+                    text-decoration: none;
+                    color: $white;
+                    font-size: 1rem;
+                    font-family:$dynapuff;
+
+                    a:hover{
+                        color: $pink;
+                    }
+                }
+            }
+        }
     }
 }
+/*Termina Barra de navegacion*/
 
-.header .barraNavegacion .barraNavegacion__titulo h1{
-    font-family: 'Lobster', cursive;
-    color: #FFFFFF;
-    font-size: 3rem;
-    margin-top: 1.1rem;
-    animation: titulo 3s linear 0s infinite;
-}
-
-.header .barraNavegacion .barraNavegacion__buscador{
-    margin-top: 3rem;
-}
-
-.icono {
-    padding-left: 30px!important;
-}
-
-.icono-input {
-    position: absolute;
-    padding: 15px;
-    pointer-events: none;
-    color: #464747;
-}
-
-.header .barraNavegacion .barraNavegacion__buscador form input{
-    text-align: start;
-    border-radius: 10px;
-    border-color: #FA48D5;
-    box-shadow: 5px 5px #8e9494;
-    font-size: 0.8rem;
-    padding-left: 2.5rem;
-    height: 3rem;
-    width: 31rem;
-}
-
-
-/*Menu de navegacion*/
-.header .menu nav ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly; 
-}
-
-.header .menu nav ul li, .header .menu a{
-    list-style: none;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 1rem;
-    font-family: 'DynaPuff', cursive;
-}
-
-.header .menu nav ul li a:hover{
-    color: #FA48D5;
-}
