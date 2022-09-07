@@ -1,4 +1,88 @@
+/*Main all pages*/
 .main{
     grid-area: main;
 }
 
+
+/*Main index*/
+.main{
+    height: 100%;
+    @include grid(1,1fr,3,auto);
+    & #mainCarrusell{
+        img{
+            width: 100vw;
+            height: auto;   
+        }
+    }
+    
+    & .mainCategorias{
+        z-index: 1;
+        @include grid(1,1fr,2,auto);
+
+        & .mainCategorias__titulo{
+            @include flex-box(row,wrap,center,center,0rem);
+            margin-top: 1rem;
+            background-color:$orange;
+            color: $white;
+            font-family:$gills-sans;
+        }
+
+        & .mainCategorias__imagenes{
+            background-color: $green-sure;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family:$dynapuff;
+            color:$white;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            @include flex-box(row,nowrap,center,center,1rem);
+            img{
+                width:60%;
+                height: auto;
+            }
+        }
+    }
+
+    & .newsletter{
+        background-color:$orange;
+        @include grid(1,1fr,2,1fr);
+        align-items: center;
+        justify-items: center;
+
+        & .newsletter__titulo{
+            background-color:$orange;
+            color: $white;
+            font-family:$gills-sans;
+        }
+
+        & .newsletter__formulario{
+            form{
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 1rem;
+                input{
+                    width: 25rem;
+                    height: 2.5rem;
+                    padding-left: 0.5rem;
+                    border-radius: 5px;
+                }
+
+                button{
+                    width: 6rem;
+                    font-size: 0.8rem;
+                    height: 2.5rem;
+                    border-radius: 5px;
+                    background-color:$cyan;
+                    margin-left: 1rem;
+                }
+            }
+
+         
+        }
+    }
+
+
+
+}
+/*Fin main index*/

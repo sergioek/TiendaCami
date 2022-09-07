@@ -121,10 +121,94 @@
 }
 
 /*Termina Barra de navegacion*/
+/*Main all pages*/
 .main {
   grid-area: main;
 }
 
+/*Main index*/
+.main {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+.main #mainCarrusell img {
+  width: 100vw;
+  height: auto;
+}
+.main .mainCategorias {
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+.main .mainCategorias .mainCategorias__titulo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  margin-top: 1rem;
+  background-color: #e9890b;
+  color: #FFFFFF;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.main .mainCategorias .mainCategorias__imagenes {
+  background-color: #40cfac;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "DynaPuff", cursive;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.main .mainCategorias .mainCategorias__imagenes img {
+  width: 60%;
+  height: auto;
+}
+.main .newsletter {
+  background-color: #e9890b;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.main .newsletter .newsletter__titulo {
+  background-color: #e9890b;
+  color: #FFFFFF;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.main .newsletter .newsletter__formulario form {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+.main .newsletter .newsletter__formulario form input {
+  width: 25rem;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  border-radius: 5px;
+}
+.main .newsletter .newsletter__formulario form button {
+  width: 6rem;
+  font-size: 0.8rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  background-color: #2EDFE2;
+  margin-left: 1rem;
+}
+
+/*Fin main index*/
 /*Footer------------------*/
 .footer {
   grid-area: footer;
@@ -260,6 +344,7 @@
   }
   .contacto .contacto__formulario form {
     width: 18rem;
+    flex-wrap: wrap;
   }
   .main .boxCompra .filtros {
     align-items: center;
