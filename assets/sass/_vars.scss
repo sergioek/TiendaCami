@@ -1,0 +1,47 @@
+//Colors
+$cyan:#2EDFE2;
+$white:#FFFFFF;
+$orange:#e9890b;
+$gray:#8e9494;
+$dark-gray:#464747; 
+$dark-gray-two:#535353;
+$pink:#FA48D5;
+$pink-dark:#eb02bc;
+$blue:blue;
+$dark: #000000;
+$green-sure:#40cfac;
+
+//Font-family
+$lobster: 'Lobster', cursive;
+$dynapuff: 'DynaPuff', cursive;
+//Font footer title
+$mochy: 'Mochiy Pop One', sans-serif;
+$murecho:'Murecho', sans-serif;
+$raleway:'Raleway', sans-serif;
+$rubik:'Rubik Maze', cursive;
+$secular:'Secular One', sans-serif;
+
+$gills-sans:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+$times-new-roman:'Times New Roman', Times, serif;
+
+$trebuchet:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+$fantasy:fantasy;
+
+//Mixins
+@mixin grid ($amount-columns,$width-columns,$amount-rows,$width-rows){
+    display: grid;
+    grid-template-columns: repeat($amount-columns,$width-columns);
+    grid-template-rows: repeat($amount-rows,$width-rows);
+}
+@mixin flex-box($direction,$wrap,$justify,$align,$gap) {
+    display:flex;
+    flex-direction: $direction;
+    flex-wrap:$wrap;
+    justify-content:$justify;
+    align-items:$align;
+    gap:$gap;
+}
+
+

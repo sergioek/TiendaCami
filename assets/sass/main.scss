@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerBox{
+    width: 100%;
+    max-width: 1920px;
+    display: grid;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3,auto);
+}
+
+@import "vars";
+@import "header";
+@import "footer";
+@import "queries";
