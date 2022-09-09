@@ -20,22 +20,24 @@
         }
 
        & .informacion__redes{
+            opacity: 1;
             i{
                 font-size: 1.5rem;
                 padding-left: 3rem; 
             }
-            #facebook{
-                color:$blue;
-            }
+            /*Map*/
+            $redes:(
+                facebook:$blue,
+                instagram:$pink-dark,
+                tiktok:$dark,
+            );
 
-            #instagram{
-                color: $pink-dark;
+            @each $nombre, $color in $redes{
+                ##{$nombre}{
+                    color: $color;
+                }
             }
-
-            #tiktok{
-                color: $dark;
-            }
-
+   
         }
 
         & ul li,a{
@@ -63,8 +65,7 @@
             @include flex-box(row,wrap,center,flex-start,1rem);
             align-content: center;
             img{
-                width: 4rem;
-                height: auto;
+                @include tamaño(4rem,auto);
             }
         }
 

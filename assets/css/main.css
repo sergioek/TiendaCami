@@ -84,8 +84,8 @@
   box-shadow: 5px 5px #8e9494;
   font-size: 0.8rem;
   padding-left: 2.5rem;
-  height: 3rem;
   width: 31rem;
+  height: 3rem;
 }
 .header #hamburgerList {
   color: #FFFFFF;
@@ -163,9 +163,6 @@
   color: #FFFFFF;
   display: flex;
   flex-direction: row;
-  gap: 1rem;
-  display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
@@ -201,14 +198,69 @@
 }
 .main .newsletter .newsletter__formulario form button {
   width: 6rem;
-  font-size: 0.8rem;
   height: 2.5rem;
+  font-size: 0.8rem;
   border-radius: 5px;
   background-color: #2EDFE2;
   margin-left: 1rem;
 }
 
 /*Fin main index*/
+/*Main como comprar*/
+#mainComoComprar {
+  display: grid;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+#mainComoComprar .comprarTitulo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  background-color: #e9890b;
+  margin-top: 2rem;
+}
+#mainComoComprar .comprarTitulo h2, #mainComoComprar .comprarTitulo i {
+  color: #FFFFFF;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 2rem;
+}
+#mainComoComprar .comprarPasos {
+  margin: 2rem 2rem 0 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+#mainComoComprar .comprarPasos p {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-family: "Times New Roman", Times, serif;
+  text-align: justify;
+}
+#mainComoComprar .comprarPasos > div {
+  width: 30%;
+  height: auto;
+}
+#mainComoComprar .comprarPasos img {
+  width: 8rem;
+  height: auto;
+}
+#mainComoComprar #tablaIntereses {
+  border-color: #eb02bc;
+}
+#mainComoComprar #tablaIntereses thead tr:first-child {
+  background-color: #eb02bc;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+/*Fin main como comprar-------------------*/
 /*Footer------------------*/
 .footer {
   grid-area: footer;
@@ -233,6 +285,10 @@
   font-family: "Raleway", sans-serif;
   font-family: "Rubik Maze", cursive;
   font-family: "Secular One", sans-serif;
+}
+.footer .informacion .informacion__redes {
+  opacity: 1;
+  /*Map*/
 }
 .footer .informacion .informacion__redes i {
   font-size: 1.5rem;

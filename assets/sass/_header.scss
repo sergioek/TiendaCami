@@ -20,8 +20,7 @@
         & .barraNavegacion__titulo{
             @include flex-box(row,nowrap,flex-start,center,0rem);
             img{
-                width: 7rem ;
-                height: auto;
+                @include tamaño (7rem,auto);
                 animation: imagen 1s linear 0s;
             }
 
@@ -61,8 +60,7 @@
                 box-shadow: 5px 5px $gray;
                 font-size: 0.8rem;
                 padding-left: 2.5rem;
-                height: 3rem;
-                width: 31rem;
+                @include tamaño(31rem,3rem);
             }
         }
     }

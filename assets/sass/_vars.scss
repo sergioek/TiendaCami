@@ -29,19 +29,3 @@ $trebuchet:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans'
 
 $fantasy:fantasy;
 
-//Mixins
-@mixin grid ($amount-columns,$width-columns,$amount-rows,$width-rows){
-    display: grid;
-    grid-template-columns: repeat($amount-columns,$width-columns);
-    grid-template-rows: repeat($amount-rows,$width-rows);
-}
-@mixin flex-box($direction,$wrap,$justify,$align,$gap) {
-    display:flex;
-    flex-direction: $direction;
-    flex-wrap:$wrap;
-    justify-content:$justify;
-    align-items:$align;
-    gap:$gap;
-}
-
-
