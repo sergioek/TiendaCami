@@ -16,7 +16,7 @@
 /*Barra de navegacion*/
 .header {
   grid-area: header;
-  background-color: #464747;
+  background-color: #2EDFE2;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, auto);
@@ -650,7 +650,7 @@
     width: 21rem;
   }
   .footer .informacion ul li, .footer .informacion ul a {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   .footer .desarrollador {
     font-size: 0.9rem;
