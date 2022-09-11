@@ -2,8 +2,9 @@
 ## Indice de contenido
 1. [Información general](#información-general)
 2. [Tecnologías](#tecnologías)
-3. [Colaboración](#colaboración)
-4. [Contacto](#contacto)
+3. [GitHub Pages](#github-pages)
+4. [Colaboración](#colaboración)
+5. [Contacto](#contacto)
 ### Información general
 ***
 Proyecto de sitio web creado para empresa de venta de tazas y otros articulos de bazar. 
@@ -16,6 +17,11 @@ Estas tecnologías se utilizaron para la elaboración de este proyecto:
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html): Version 3
 * [SASS](https://sass-lang.com/): Version 1.54.9
 * [BOOTSTRAP](https://getbootstrap.com/): Version 5.2
+
+## GitHub Pages
+***
+Proyecto visible en:
+* [TiendaCami](https://sergioek.github.io/TiendaCami/) 
 
 ## Colaboración
 ***
