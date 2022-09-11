@@ -16,7 +16,7 @@
 /*Barra de navegacion*/
 .header {
   grid-area: header;
-  background-color: #2EDFE2;
+  background-color: #464747;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, auto);
