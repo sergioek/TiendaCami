@@ -127,23 +127,23 @@
 }
 
 /*Main index*/
-.main {
+.mainIndex {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(3, auto);
 }
-.main #mainCarrusell img {
+.mainIndex #mainCarrusell img {
   width: 100vw;
   height: auto;
 }
-.main .mainCategorias {
+.mainIndex .mainCategorias {
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, auto);
 }
-.main .mainCategorias .mainCategorias__titulo {
+.mainIndex .mainCategorias .mainCategorias__titulo {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -155,7 +155,7 @@
   color: #FFFFFF;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.main .mainCategorias .mainCategorias__imagenes {
+.mainIndex .mainCategorias .mainCategorias__imagenes {
   background-color: #40cfac;
   text-align: center;
   font-size: 1.5rem;
@@ -168,11 +168,11 @@
   align-items: center;
   gap: 1rem;
 }
-.main .mainCategorias .mainCategorias__imagenes img {
+.mainIndex .mainCategorias .mainCategorias__imagenes img {
   width: 60%;
   height: auto;
 }
-.main .newsletter {
+.mainIndex .newsletter {
   background-color: #e9890b;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -180,23 +180,23 @@
   align-items: center;
   justify-items: center;
 }
-.main .newsletter .newsletter__titulo {
+.mainIndex .newsletter .newsletter__titulo {
   background-color: #e9890b;
   color: #FFFFFF;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.main .newsletter .newsletter__formulario form {
+.mainIndex .newsletter .newsletter__formulario form {
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
 }
-.main .newsletter .newsletter__formulario form input {
+.mainIndex .newsletter .newsletter__formulario form input {
   width: 25rem;
   height: 2.5rem;
   padding-left: 0.5rem;
   border-radius: 5px;
 }
-.main .newsletter .newsletter__formulario form button {
+.mainIndex .newsletter .newsletter__formulario form button {
   width: 6rem;
   height: 2.5rem;
   font-size: 0.8rem;
@@ -244,7 +244,7 @@
   text-align: justify;
 }
 #mainComoComprar .comprarPasos > div {
-  width: 30%;
+  width: 80%;
   height: auto;
 }
 #mainComoComprar .comprarPasos img {
@@ -261,6 +261,192 @@
 }
 
 /*Fin main como comprar-------------------*/
+/*Main contacto*/
+#mainContacto {
+  background: transparent;
+  background-image: url("../img/contacto.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#mainContacto .contacto {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, auto);
+  justify-items: center;
+  gap: 1rem;
+}
+#mainContacto .contacto .contacto__titulo {
+  background-color: transparent;
+  display: flex;
+  margin-top: 2rem;
+}
+#mainContacto .contacto .contacto__titulo h2 {
+  color: #000000;
+  font-size: 3rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-weight: bold;
+}
+#mainContacto .contacto .contacto__formulario form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 50rem;
+}
+#mainContacto .contacto .contacto__formulario form input, #mainContacto .contacto .contacto__formulario form textarea, #mainContacto .contacto .contacto__formulario form button {
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+  border: 3px solid #eb02bc;
+  height: 2.5rem;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+#mainContacto .contacto .contacto__formulario form textarea {
+  height: 8rem;
+}
+#mainContacto .contacto .contacto__formulario form button {
+  width: 6rem;
+  margin-left: auto;
+  background-color: #eb02bc;
+  color: #FFFFFF;
+}
+#mainContacto .contacto .contacto__formulario form button :hover {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+#mainContacto #accordionExample .accordion-item .accordion-button {
+  background-color: #FA48D5;
+  font-weight: bold;
+}
+
+/*Fin main contacto---------------------------*/
+/*Main legales ------------------------------------*/
+#mainLegales {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0rem;
+}
+#mainLegales .legalesTitulo h2 {
+  color: #eb02bc;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+#mainLegales .legalesCondiciones {
+  padding: 0 2rem 0 2rem;
+  border: 2rem solid #e9890b;
+  box-sizing: border-box;
+}
+#mainLegales .legalesCondiciones h3 {
+  color: blue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.2rem;
+}
+#mainLegales .legalesCondiciones p {
+  text-align: justify;
+  line-height: 3rem;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#mainLegales #iconoDescarga {
+  color: #FFFFFF;
+}
+
+/*Fin main legales---------------------------------*/
+/*Main productos*/
+#mainProductos {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 4rem;
+  margin: 2rem 0 0 2rem;
+  background-color: rgba(224, 223, 223, 0.5);
+}
+#mainProductos .boxCompra {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(1, auto);
+}
+#mainProductos .boxCompra .filtros {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-left: 1rem;
+  background-color: #8e9494;
+  color: #FFFFFF;
+  border-radius: 20px;
+}
+#mainProductos .boxCompra .filtros .filtros__categorias nav ul li > a {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-around;
+  gap: 0rem;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
+#mainProductos .boxCompra .filtros__precios form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+}
+#mainProductos .boxCompra .filtros__precios form input:last-child {
+  background-color: cyan;
+}
+#mainProductos .boxCompra .productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, auto);
+  justify-content: center;
+  gap: 2rem;
+}
+#mainProductos .boxCompra .productos #productoItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+}
+#mainProductos .boxCompra .productos #productoItem img {
+  width: 70%;
+  height: auto;
+  border-radius: 15px;
+}
+#mainProductos .boxCompra .productos #productoItem h4 {
+  font-size: 1.5rem;
+  font-family: fantasy;
+}
+#mainProductos .boxCompra .productos #productoItem p {
+  font-size: 0.8rem;
+  font-family: fantasy;
+}
+#mainProductos .boxCompra .productos #productoItem button {
+  width: 6rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #000000;
+  background-color: #40cfac;
+}
+#mainProductos .paginacion {
+  display: flex;
+  justify-content: end;
+  margin-right: 1rem;
+}
+
+/*Fin main productos------------------------------*/
 /*Footer------------------*/
 .footer {
   grid-area: footer;
@@ -343,37 +529,41 @@
   .header {
     position: static;
     z-index: 0;
+    /*menu hamburgesa*/
   }
   .header .barraNavegacion {
     flex-direction: column;
+    /*Imagen taza*/
+    /*div buscador*/
   }
-  /*menu hamburgesa*/
-  .header #hamburgerList {
-    display: contents;
-  }
-  /*Imagen taza*/
   .header .barraNavegacion .barraNavegacion__titulo img {
     display: none;
   }
-  /*div buscador*/
   .header .barraNavegacion .barraNavegacion__buscador {
     margin: 1rem;
+    /*Ancho input buscador*/
   }
-  /*Ancho input buscador*/
   .header .barraNavegacion .barraNavegacion__buscador form input {
     width: 18rem;
   }
-  .header .menu nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-left: 1rem;
-    margin-top: 1rem;
+  .header #hamburgerList {
+    display: contents;
   }
-  .header .menu nav ul li, .header .menu a {
+  .header .menu nav ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1rem 0 0 1rem;
+  }
+  .header .menu nav ul li, .header .menu nav ul a {
     font-size: 0.9rem;
   }
-  /*Footer informacion*/
+  .footer {
+    /*Footer informacion*/
+  }
   .footer .informacion {
     grid-template-columns: 1fr;
     justify-items: start;
@@ -381,34 +571,33 @@
   .footer .informacion .informacion__contacto {
     width: 17.5rem;
   }
-  .footer .informacion ul li, a {
+  .footer .informacion ul li, .footer .informacion ul a {
     font-size: 0.9rem;
   }
   .footer .desarrollador {
     font-size: 0.9rem;
   }
-  .main .mainCategorias .mainCategorias__imagenes {
-    display: flex;
+  .mainIndex .mainCategorias .mainCategorias__imagenes {
     flex-direction: column;
   }
-  .newsletter__formulario form input {
+  .mainIndex .newsletter .newsletter__formulario form input {
     width: 11rem;
     font-size: 0.6rem;
   }
-  .newsletter__formulario form button {
+  .mainIndex .newsletter .newsletter__formulario form button {
     width: 6rem;
   }
-  .contacto .contacto__formulario form {
+  #mainContacto .contacto .contacto__formulario form {
     width: 18rem;
     flex-wrap: wrap;
   }
-  .main .boxCompra .filtros {
-    align-items: center;
-  }
-  .main .boxCompra .productos {
+  #mainProductos .boxCompra {
     grid-template-columns: 1fr;
   }
-  #mainProductos .boxCompra {
+  #mainProductos .boxCompra .filtros {
+    align-items: center;
+  }
+  #mainProductos .boxCompra .productos {
     grid-template-columns: 1fr;
   }
 }
@@ -417,35 +606,42 @@
   .header {
     position: static;
     z-index: 0;
+    /*menu hamburgesa*/
   }
   .header .barraNavegacion {
     flex-direction: row;
     align-items: center;
+    /*Imagen taza*/
+    /*div buscador*/
   }
-  /*menu hamburgesa*/
-  #hamburgerList {
-    display: contents;
-  }
-  /*Imagen taza*/
   .header .barraNavegacion .barraNavegacion__titulo img {
     display: contents;
   }
-  /*div buscador*/
   .header .barraNavegacion .barraNavegacion__buscador {
     margin: 1rem;
+    /*Ancho input buscador*/
   }
-  /*Ancho input buscador*/
   .header .barraNavegacion .barraNavegacion__buscador form input {
     width: 15rem;
   }
-  .header .menu nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-left: 1rem;
-    margin-top: 1rem;
+  .header #hamburgerList {
+    display: contents;
   }
-  /*Footer informacion*/
+  .header .menu nav ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1rem 0 0 1rem;
+  }
+  .header .menu nav ul li, .header .menu nav ul a {
+    font-size: 0.9rem;
+  }
+  .footer {
+    /*Footer informacion*/
+  }
   .footer .informacion {
     grid-template-columns: 1fr;
     justify-items: start;
@@ -453,50 +649,75 @@
   .footer .informacion .informacion__contacto {
     width: 21rem;
   }
-  .contacto .contacto__formulario form {
+  .footer .informacion ul li, .footer .informacion ul a {
+    font-size: 0.9rem;
+  }
+  .footer .desarrollador {
+    font-size: 0.9rem;
+  }
+  #mainContacto .contacto .contacto__formulario form {
     width: 30rem;
-  }
-  .main .boxCompra .filtros {
-    align-items: center;
-  }
-  .main .boxCompra .productos {
-    grid-template-columns: 1fr;
+    flex-wrap: wrap;
   }
   #mainProductos .boxCompra {
     grid-template-columns: 1fr;
   }
+  #mainProductos .boxCompra .filtros {
+    align-items: center;
+  }
+  #mainProductos .boxCompra .productos {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 767px) {
-  .main .comprarPasos {
+  #mainComoComprar .comprarPasos {
     flex-direction: column;
   }
-  .comprarPasos__uno, .comprarPasos__dos, .comprarPasos__tres {
+  #mainComoComprar .comprarPasos > div {
     width: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 900px) {
-  /*menu hamburgesa*/
-  #hamburgerList {
-    display: none;
+  /*Barra de navegacion*/
+  .header {
+    position: static;
+    z-index: 0;
+    /*menu hamburgesa*/
   }
-  /*Ancho input buscador*/
+  .header .barraNavegacion {
+    flex-direction: column;
+    /*Imagen taza*/
+    /*div buscador*/
+  }
+  .header .barraNavegacion .barraNavegacion__titulo img {
+    display: contents;
+  }
+  .header .barraNavegacion .barraNavegacion__buscador {
+    margin: 1rem;
+    /*Ancho input buscador*/
+  }
   .header .barraNavegacion .barraNavegacion__buscador form input {
     width: 20rem;
   }
-  /*Menu de navegacion*/
+  .header #hamburgerList {
+    display: none;
+  }
   .header .menu {
     display: contents;
   }
   .header .menu nav ul {
     flex-direction: row;
   }
-  .main .boxCompra .filtros {
-    align-items: center;
-  }
-  .main .boxCompra .productos {
-    grid-template-columns: 1fr;
+  .header .menu nav ul li, .header .menu nav ul a {
+    font-size: 0.9rem;
   }
   #mainProductos .boxCompra {
+    grid-template-columns: 1fr;
+  }
+  #mainProductos .boxCompra .filtros {
+    align-items: center;
+  }
+  #mainProductos .boxCompra .productos {
     grid-template-columns: 1fr;
   }
 }
