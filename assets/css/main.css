@@ -6,11 +6,17 @@
 
 .containerBox {
   width: 100%;
-  max-width: 1920px;
+  max-width: 2600px;
   display: grid;
   grid-template-areas: "header" "main" "footer";
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
+}
+
+.bordes, #mainProductos .boxCompra .filtros__precios form input, .mainIndex .newsletter .newsletter__formulario form input, .header .barraNavegacion .barraNavegacion__buscador form input {
+  border-radius: 10px;
+  border-color: #FA48D5;
+  box-shadow: 5px 5px #8e9494;
 }
 
 /*Barra de navegacion*/
@@ -64,10 +70,22 @@
     text-shadow: 5px 5px #FA48D5, 2px 2px #8e9494;
   }
 }
-.header .barraNavegacion .barraNavegacion__titulo a {
+.header .barraNavegacion .barraNavegacion__titulo div {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+}
+.header .barraNavegacion .barraNavegacion__titulo div h1 {
+  font-size: 0.5rem;
+  color: #FFFFFF;
+}
+.header .barraNavegacion .barraNavegacion__titulo div a {
   text-decoration: none;
 }
-.header .barraNavegacion .barraNavegacion__titulo a h1 {
+.header .barraNavegacion .barraNavegacion__titulo div a h2 {
   font-family: "Lobster", cursive;
   color: #FFFFFF;
   font-size: 3rem;
@@ -79,9 +97,6 @@
 }
 .header .barraNavegacion .barraNavegacion__buscador form input {
   text-align: start;
-  border-radius: 10px;
-  border-color: #FA48D5;
-  box-shadow: 5px 5px #8e9494;
   font-size: 0.8rem;
   padding-left: 2.5rem;
   width: 31rem;
@@ -194,7 +209,6 @@
   width: 25rem;
   height: 2.5rem;
   padding-left: 0.5rem;
-  border-radius: 5px;
 }
 .mainIndex .newsletter .newsletter__formulario form button {
   width: 6rem;
@@ -244,7 +258,7 @@
   text-align: justify;
 }
 #mainComoComprar .comprarPasos > div {
-  width: 80%;
+  width: 50%;
   height: auto;
 }
 #mainComoComprar .comprarPasos img {
@@ -312,7 +326,7 @@
   background-color: #eb02bc;
   color: #FFFFFF;
 }
-#mainContacto .contacto .contacto__formulario form button :hover {
+#mainContacto .contacto .contacto__formulario form button:hover {
   background-color: transparent;
   color: #FFFFFF;
 }
@@ -349,7 +363,7 @@
 }
 #mainLegales .legalesCondiciones p {
   text-align: justify;
-  line-height: 3rem;
+  line-height: 5rem;
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -383,6 +397,7 @@
   background-color: #8e9494;
   color: #FFFFFF;
   border-radius: 20px;
+  min-width: 15rem;
 }
 #mainProductos .boxCompra .filtros .filtros__categorias nav ul li > a {
   list-style: none;
@@ -402,8 +417,12 @@
   gap: 1rem;
   width: 80%;
 }
+#mainProductos .boxCompra .filtros__precios form input {
+  min-width: 10rem;
+}
 #mainProductos .boxCompra .filtros__precios form input:last-child {
   background-color: cyan;
+  margin-bottom: 1rem;
 }
 #mainProductos .boxCompra .productos {
   display: grid;
@@ -483,11 +502,23 @@
 .footer .informacion .informacion__redes #facebook {
   color: blue;
 }
+.footer .informacion .informacion__redes #facebook:hover {
+  color: #464747;
+  font-size: 2rem;
+}
 .footer .informacion .informacion__redes #instagram {
   color: #eb02bc;
 }
+.footer .informacion .informacion__redes #instagram:hover {
+  color: #464747;
+  font-size: 2rem;
+}
 .footer .informacion .informacion__redes #tiktok {
   color: #000000;
+}
+.footer .informacion .informacion__redes #tiktok:hover {
+  color: #464747;
+  font-size: 2rem;
 }
 .footer .informacion ul li, .footer .informacion a {
   list-style: none;

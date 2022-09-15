@@ -38,16 +38,25 @@
                 }
             }
 
-            a{
-                text-decoration: none;
+            div{
+                @include flex-box(column-reverse,wrap,center,center,0rem);
                 h1{
-                    font-family: $lobster;
-                    color:$white;
-                    font-size: 3rem;
-                    margin-top: 1.1rem;
-                    animation: titulo 3s linear 0s infinite;
-                }  
+                    font-size: 0.5rem;
+                    color: $white;
+                }
+                
+                a{
+                    text-decoration: none;
+                    h2{
+                        font-family: $lobster;
+                        color:$white;
+                        font-size: 3rem;
+                        margin-top: 1.1rem;
+                        animation: titulo 3s linear 0s infinite;
+                    }  
+                }
             }
+            
 
         }
 
@@ -55,9 +64,7 @@
             margin-top: 3rem;
             form input{
                 text-align: start;
-                border-radius: 10px;
-                border-color: $pink;
-                box-shadow: 5px 5px $gray;
+                @extend .bordes;
                 font-size: 0.8rem;
                 padding-left: 2.5rem;
                 @include tamaño(31rem,3rem);

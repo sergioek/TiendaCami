@@ -36,8 +36,13 @@
                 ##{$nombre}{
                     color: $color;
                 }
+
+                ##{$nombre}:hover{
+                    color: $dark-gray;
+                    font-size: 2rem;
+                }
+
             }
-   
         }
 
         & ul li,a{
