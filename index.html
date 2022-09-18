@@ -25,8 +25,11 @@
 
     <!---Icono de la pagina-->
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <!---SEO-->
+    <meta name="description" content="Sitio web de venta online de productos de bazar, como tazas, vasos, chopps, combos y mucho más. ¡Compra al mejor precio y con la mejor atención!">
+    <meta name="keywords" content="tazas,vasos,chopps,combos,bazar,venta,online,comprar,TiendaCami">
     <!-----Titulo de la pagina-->
-    <title>Inicio - TiendaCami</title>
+    <title>TiendaCami - Venta online de productos de bazar</title>
 </head>
 
 <body>
@@ -37,20 +40,24 @@
             <div class="barraNavegacion">
 
                 <div class="barraNavegacion__titulo">
-                   
                     <a href="#menu" data-bs-toggle="collapse" aria-controls="menu" aria-expanded="false">
                          <i class="bi bi-list" id="hamburgerList"></i>
                     </a>
                     <img src="./assets/img/logo.png" alt="TiendaCami" srcset="">
-                    <a href="./index.html">
-                        <h1>TiendaCami</h1>
-                    </a>
+
+                    <div>
+                        <h1>¡Venta online de productos de bazar!</h1>
+                        <a href="./index.html">
+                            <h2>TiendaCami</h2>
+                        </a> 
+                    </div>
+                   
                 </div>
 
                 <div class="barraNavegacion__buscador">
                     <form action="">
                         <i class="bi bi-search icono-input"></i>
-                        <input type="search" name="" id="" placeholder="¿Qué estas buscando?">
+                        <input type="search" placeholder="¿Qué estas buscando?">
                     </form>
                 </div>
             </div>
@@ -78,13 +85,13 @@
                         </li>
 
                         <li>
-                            <a href="" class="bi bi-box-arrow-in-right">
+                            <a href="./pages/comoComprar.html" class="bi bi-box-arrow-in-right">
                                 Mi cuenta
                             </a>
                         </li>
 
                         <li>
-                            <a href="" class="bi bi-cart">
+                            <a href="./pages/comoComprar.html" class="bi bi-cart">
                                 Carrito
                             </a>
                         </li>
@@ -161,7 +168,9 @@
                 <div class="newsletter__formulario">
                     <form action="">
                         <input type="email" name="" id="" placeholder="Ingresa tu email para recibir noticias">
-                        <button>Suscribirse!</button>
+                        <a href="./index.html">
+                             <button>Suscribirse!</button>
+                        </a>
                     </form>
                 </div> 
             </div>

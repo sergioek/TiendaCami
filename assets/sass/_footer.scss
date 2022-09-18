@@ -1,3 +1,9 @@
+$texto:(
+    blanco:$white,
+    font10:1.1rem,
+    font15:1.5rem,
+    font20:2rem,
+);
 
 /*Footer------------------*/
 .footer{
@@ -5,14 +11,12 @@
     @include grid(1,1fr,2,auto);
 
    & .informacion{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
         @include grid(3,1fr,1,auto);
         justify-items: center;
         align-items: flex-start;
 
         #tituloInformacion{
-            font-size: 2rem;
+            font-size:map-get($texto,font20);
             color: $dark-gray-two;
             @each $font in $mochy,$murecho,$raleway,$rubik,$secular {
                 font-family:$font;
@@ -22,7 +26,7 @@
        & .informacion__redes{
             opacity: 1;
             i{
-                font-size: 1.5rem;
+                font-size:map-get($texto,font15);
                 padding-left: 3rem; 
             }
             /*Map*/
@@ -31,19 +35,23 @@
                 instagram:$pink-dark,
                 tiktok:$dark,
             );
-
             @each $nombre, $color in $redes{
                 ##{$nombre}{
                     color: $color;
                 }
+
+                ##{$nombre}:hover{
+                    color: $dark-gray;
+                    font-size: map-get($texto, font20);
+                }
+
             }
-   
         }
 
         & ul li,a{
             list-style: none;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size:map-get($texto,font10);
             padding-top: 1.5rem;
             color:$dark-gray;
         }
@@ -57,7 +65,7 @@
 
     & .desarrollador{
         background-color:$dark-gray-two;
-        font-size: 1.1rem;
+        font-size:map-get($texto,font10);
         color:$white;
         @include grid(1,1fr,1,auto);
 

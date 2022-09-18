@@ -6,7 +6,7 @@
 
 .containerBox{
     width: 100%;
-    max-width: 1920px;
+    max-width: 2700px;
     display: grid;
     grid-template-areas:
     "header"
@@ -17,6 +17,7 @@
 }
 
 @import "vars";
+@import "extends";
 @import "mixins";
 @import "header";
 @import "contents";

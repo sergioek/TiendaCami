@@ -24,10 +24,12 @@
     
     <!---Icono de la pagina-->
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <!---SEO-->
+    <meta name="description" content="Sitio web de venta online de productos de bazar, como tazas, vasos, chopps, combos y mucho más. ¡Compra al mejor precio y con la mejor atención!">
+    <meta name="keywords" content="tazas,vasos,chopps,combos,bazar,venta,online,comprar,TiendaCami">
     <!-----Titulo de la pagina-->
-    <title>Inicio - TiendaCami</title>
+    <title>TiendaCami - Productos</title>
 </head>
-
 <body >
     
     <div class="containerBox">
@@ -41,9 +43,13 @@
                         <i class="bi bi-list" id="hamburgerList"></i>
                     </a>
                     <img src="../assets/img/logo.png" alt="TiendaCami" srcset="">
-                    <a href="../index.html">
-                        <h1>TiendaCami</h1>
-                    </a>
+                   
+                    <div>
+                        <h1>Productos - ¡Venta online de productos de bazar!</h1>
+                        <a href="./productos.html">
+                            <h2>TiendaCami</h2>
+                        </a> 
+                    </div>
                 </div>
                 
                 <div class="barraNavegacion__buscador">
@@ -77,13 +83,13 @@
                         </li>
                         
                         <li>
-                            <a href="" class="bi bi-box-arrow-in-right">
+                            <a href="../pages/comoComprar.html" class="bi bi-box-arrow-in-right">
                                 Mi cuenta
                             </a>
                         </li>
                         
                         <li>
-                            <a href="" class="bi bi-cart">
+                            <a href="../pages/comoComprar.html" class="bi bi-cart">
                                 Carrito
                             </a>
                         </li>
@@ -101,11 +107,12 @@
                     <h2 class="bi bi-filter">Filtros</h2>
                     <nav>
                         <ul>
-                            <li><a href="">Tazas (20)</a></li>
-                            <li><a href="">Tazones (10)</a></li>
-                            <li><a href="">Chopps (5)</a></li>
-                            <li><a href="">Comobos (4)</a></li>
-                            <li><a href="">Otros (3)</a></li>
+                            <li><a href="../pages/productos.html">Tazas (20)</a></li>
+                            <li><a href="../pages/productos.html">Tazones (10)</a></li>
+                            <li><a href="../pages/productos.html">Chopps (5)</a></li>
+                            <li><a href="../pages/productos.html">Vasos (6)</a></li>
+                            <li><a href="../pages/productos.html">Comobos (4)</a></li>
+                            <li><a href="../pages/productos.html">Otros (3)</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -114,7 +121,10 @@
                     <form action="">
                         <input type="number" name="" id="" placeholder="Min"  min="0" max="100000">
                         <input type="number" name="" id="" placeholder="Max" min="0"  max="100000">
-                        <input type="submit" value="Filtrar" id="submit">
+                        <a href="../pages/productos.html">
+                             <input type="submit" value="Filtrar" id="submit">
+                        </a>
+                       
                     </form>
                 </div>
             </div>
@@ -124,42 +134,54 @@
                     <img src="../assets/img/taza-frozen.png" alt="taza-frozen">
                     <h4>$500</h4>
                     <p>Taza Jarro Mugg Frozen</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                         <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
                 
                 <div id="productoItem">
                     <img src="../assets/img/taza-ibipo.png" alt="taza-ibipo">
                     <h4>$700</h4>
                     <p>Taza Jarro Ibipo</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                        <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
                 
                 <div id="productoItem">
                     <img src="../assets/img/taza-lanzfeld.png" alt="taza-lanzfeld">
                     <h4>$650</h4>
                     <p>Taza Jarro Lanzfeld</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                        <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
                 
                 <div id="productoItem">
                     <img src="../assets/img/taza-papa.jfif" alt="taza-papa">
                     <h4>$450</h4>
                     <p>Taza Jarro Para Papá</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                        <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
                 
                 <div id="productoItem">
                     <img src="../assets/img/taza-especiate.jfif" alt="taza-especiate">
                     <h4>$320</h4>
                     <p>Taza Jarro Especiate</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                        <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
                 
                 <div id="productoItem">
                     <img src="../assets/img/taza-cafe.jfif" alt="taza-cafe">
                     <h4>$500</h4>
                     <p>Taza Jarro Cafe</p>
-                    <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    <a href="../pages/productos.html">
+                        <button><i class="bi bi-plus-lg">Agregar</i></button>
+                    </a>
                 </div>
             </div>
 
@@ -168,11 +190,11 @@
             <div class="paginacion">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                      <li class="page-item"><a class="page-link bg-primary text-white" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+                      <li class="page-item"><a class="page-link" href="../pages/productos.html">Anterior</a></li>
+                      <li class="page-item"><a class="page-link bg-primary text-white" href="../pages/productos.html">1</a></li>
+                      <li class="page-item"><a class="page-link" href="../pages/productos.html">2</a></li>
+                      <li class="page-item"><a class="page-link" href="../pages/productos.html">3</a></li>
+                      <li class="page-item"><a class="page-link" href="../pages/productos.html">Siguiente</a></li>
                     </ul>
                 </nav>
             </div>
