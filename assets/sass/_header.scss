@@ -6,7 +6,9 @@
     align-items: flex-start;
     justify-content: space-around;
     z-index: 3;  
-
+    position: sticky;
+    @include tamaño(100%,auto);
+    top: 0px;
     /*Barra superior -- barra de busqueda*/
     .barraNavegacion{
         @include flex-box(row,wrap,flex-start,flex-start,1rem);
@@ -26,15 +28,15 @@
 
             @keyframes titulo {
                 0%{
-                    text-shadow: none;
+                    text-shadow:none;
                 }
                 
                 50%{
-                    text-shadow: 5px 5px $orange , 2px 2px $gray ;
+                    text-shadow:5px 5px $orange ,2px 2px $gray;
                 }
                 
                 100%{
-                    text-shadow: 5px 5px $pink , 2px 2px $gray ;
+                    text-shadow:5px 5px $pink , 2px 2px $gray;
                 }
             }
 

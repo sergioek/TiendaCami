@@ -6,7 +6,7 @@
 
 .containerBox {
   width: 100%;
-  max-width: 2600px;
+  max-width: 2700px;
   display: grid;
   grid-template-areas: "header" "main" "footer";
   grid-template-columns: 1fr;
@@ -29,6 +29,10 @@
   align-items: flex-start;
   justify-content: space-around;
   z-index: 3;
+  position: sticky;
+  width: 100%;
+  height: auto;
+  top: 0px;
   /*Barra superior -- barra de busqueda*/
   /*Menu de navegacion*/
 }
@@ -474,8 +478,6 @@
   grid-template-rows: repeat(2, auto);
 }
 .footer .informacion {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(1, auto);
