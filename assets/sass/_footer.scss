@@ -15,7 +15,7 @@ $texto:(
         justify-items: center;
         align-items: flex-start;
 
-        #tituloInformacion{
+        .tituloInformacion{
             font-size:map-get($texto,font20);
             color: $dark-gray-two;
             @each $font in $mochy,$murecho,$raleway,$rubik,$secular {

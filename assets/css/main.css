@@ -97,7 +97,7 @@
   animation: titulo 3s linear 0s infinite;
 }
 .header .barraNavegacion .barraNavegacion__buscador {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 .header .barraNavegacion .barraNavegacion__buscador form input {
   text-align: start;
@@ -484,7 +484,7 @@
   justify-items: center;
   align-items: flex-start;
 }
-.footer .informacion #tituloInformacion {
+.footer .informacion .tituloInformacion {
   font-size: 2rem;
   color: #535353;
   font-family: "Mochiy Pop One", sans-serif;
@@ -718,12 +718,8 @@
     /*menu hamburgesa*/
   }
   .header .barraNavegacion {
-    flex-direction: column;
-    /*Imagen taza*/
+    flex-direction: row;
     /*div buscador*/
-  }
-  .header .barraNavegacion .barraNavegacion__titulo img {
-    display: contents;
   }
   .header .barraNavegacion .barraNavegacion__buscador {
     margin: 1rem;

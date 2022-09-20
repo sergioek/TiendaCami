@@ -120,11 +120,11 @@
             flex-direction: row;
             align-items: center;
               /*Imagen taza*/
-            .barraNavegacion__titulo{
-                img{
-                  display: contents;  
-                } 
-            }
+              .barraNavegacion__titulo{
+                    img{
+                        display: contents;
+                    } 
+                }
 
               /*div buscador*/
             .barraNavegacion__buscador{
@@ -215,19 +215,13 @@
     }
 }
 
-@media (min-width: 768px) and (max-width:900px){
+@media (min-width:768px) and (max-width:900px){
     /*Barra de navegacion*/
     .header{
         position: static;
         z-index: 0;
         & .barraNavegacion{
-            flex-direction: column;
-              /*Imagen taza*/
-            .barraNavegacion__titulo{
-                img{
-                  display: contents;  
-                } 
-            }
+            flex-direction: row;
               /*div buscador*/
             .barraNavegacion__buscador{
                 margin: 1rem;
