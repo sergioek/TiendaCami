@@ -28,11 +28,11 @@
   grid-template-rows: repeat(2, auto);
   align-items: flex-start;
   justify-content: space-around;
-  z-index: 3;
   position: sticky;
+  top: 0px;
+  z-index: 3;
   width: 100%;
   height: auto;
-  top: 0px;
   /*Barra superior -- barra de busqueda*/
   /*Menu de navegacion*/
 }
@@ -83,7 +83,7 @@
   gap: 0rem;
 }
 .header .barraNavegacion .barraNavegacion__titulo div h1 {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   color: #FFFFFF;
 }
 .header .barraNavegacion .barraNavegacion__titulo div a {
@@ -367,7 +367,7 @@
 }
 #mainLegales .legalesCondiciones p {
   text-align: justify;
-  line-height: 5rem;
+  line-height: 3rem;
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -476,6 +476,7 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, auto);
+  margin-top: 2rem;
 }
 .footer .informacion {
   display: grid;
@@ -485,6 +486,7 @@
   align-items: flex-start;
 }
 .footer .informacion .tituloInformacion {
+  padding-left: 2rem;
   font-size: 2rem;
   color: #535353;
   font-family: "Mochiy Pop One", sans-serif;
@@ -605,7 +607,10 @@
     width: 17.5rem;
   }
   .footer .informacion ul li, .footer .informacion ul a {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+  }
+  .footer .informacion .informacion__redes ul {
+    display: flex;
   }
   .footer .desarrollador {
     font-size: 0.9rem;
@@ -683,7 +688,7 @@
     width: 21rem;
   }
   .footer .informacion ul li, .footer .informacion ul a {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
   .footer .desarrollador {
     font-size: 0.9rem;

@@ -5,10 +5,10 @@
     @include grid(1,1fr,2,auto);
     align-items: flex-start;
     justify-content: space-around;
-    z-index: 3;  
     position: sticky;
-    @include tamaño(100%,auto);
     top: 0px;
+    z-index: 3;  
+    @include tamaño(100%,auto);
     /*Barra superior -- barra de busqueda*/
     .barraNavegacion{
         @include flex-box(row,wrap,flex-start,flex-start,1rem);
@@ -43,7 +43,7 @@
             div{
                 @include flex-box(column-reverse,wrap,center,center,0rem);
                 h1{
-                    font-size: 0.5rem;
+                    font-size: 0.8rem;
                     color: $white;
                 }
                 

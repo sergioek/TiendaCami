@@ -54,8 +54,15 @@
             }
             ul{
                 li,a{
-                font-size: 0.7rem;  
+                font-size: 0.9rem;  
                 }
+            }
+
+            & .informacion__redes{
+                ul{
+                    display: flex;
+                }
+                
             }
         }
 
@@ -167,7 +174,7 @@
             }
             ul{
                 li,a{
-                font-size: 0.7rem;  
+                font-size: 0.9rem;  
                 }
             }
         }

@@ -9,13 +9,13 @@ $texto:(
 .footer{
     grid-area: footer;
     @include grid(1,1fr,2,auto);
-
+    margin-top: 2rem;
    & .informacion{
         @include grid(3,1fr,1,auto);
         justify-items: center;
         align-items: flex-start;
-
         .tituloInformacion{
+            padding-left: 2rem;
             font-size:map-get($texto,font20);
             color: $dark-gray-two;
             @each $font in $mochy,$murecho,$raleway,$rubik,$secular {
