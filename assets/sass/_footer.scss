@@ -26,7 +26,7 @@ $texto:(
        & .informacion__redes{
             opacity: 1;
             i{
-                font-size:map-get($texto,font15);
+                font-size:map-get($texto,font20);
                 padding-left: 3rem; 
             }
             /*Map*/
@@ -68,10 +68,10 @@ $texto:(
         font-size:map-get($texto,font10);
         color:$white;
         @include grid(1,1fr,1,auto);
-
         & .desarrolladorInfo{
-            @include flex-box(row,wrap,center,flex-start,1rem);
+            @include flex-box(row,wrap,center,center,1rem);
             align-content: center;
+            margin-top: 1rem;
             img{
                 @include tamaño(4rem,auto);
             }

@@ -500,7 +500,7 @@
   /*Map*/
 }
 .footer .informacion .informacion__redes i {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding-left: 3rem;
 }
 .footer .informacion .informacion__redes #facebook {
@@ -548,9 +548,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   align-content: center;
+  margin-top: 1rem;
 }
 .footer .desarrollador .desarrolladorInfo img {
   width: 4rem;
@@ -607,7 +608,7 @@
     width: 17.5rem;
   }
   .footer .informacion ul li, .footer .informacion ul a {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   .footer .informacion .informacion__redes ul {
     display: flex;
