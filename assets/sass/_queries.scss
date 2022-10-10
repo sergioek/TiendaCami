@@ -105,18 +105,13 @@
     }
  
     #mainProductos{
-        .boxCompra{
-            grid-template-columns: 1fr;
-            .filtros{
-               align-items: center; 
-            }
-
-            .productos{
-               grid-template-columns: 1fr; 
-            }
+            grid-template-areas: "buscador buscador"
+                                "filtros filtros"
+                                "productos productos";
         }
     }
-}
+
+
 
 @media(min-width: 481px) and (max-width:767px)  {
      /*Barra de navegacion*/
@@ -197,16 +192,9 @@
     }
 
     #mainProductos{
-        .boxCompra{
-            grid-template-columns: 1fr;
-            .filtros{
-               align-items: center; 
-            }
-
-            .productos{
-               grid-template-columns: 1fr; 
-            }
-        }
+        grid-template-areas: "buscador buscador"
+                            "filtros filtros"
+                            "productos productos";
     }
     
 }
@@ -260,18 +248,6 @@
         }
     }
 
-    #mainProductos{
-        .boxCompra{
-            grid-template-columns: 1fr;
-            .filtros{
-               align-items: center; 
-            }
-
-            .productos{
-               grid-template-columns: 1fr; 
-            }
-        }
-    }   
 }
 
 @media(min-width:901px){
