@@ -66,7 +66,7 @@ const bienvenidaSuscripcion = () =>{
     }
    }
 
-  let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
    if(validEmail.test(emailIngresado)){
     suscripcionCliente(emailIngresado.toLowerCase());
