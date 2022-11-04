@@ -428,6 +428,10 @@
   flex-direction: column-reverse;
   margin: 1rem;
 }
+#mainProductos .productos .card .select {
+  width: 3rem;
+  height: 2.1rem;
+}
 
 /*Fin main productos------------------------------*/
 #mainLogin {

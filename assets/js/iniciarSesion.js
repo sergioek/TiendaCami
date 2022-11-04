@@ -63,66 +63,40 @@ class Usuario{
         arrayUsuarios.push(usuarioNuevo);
     }
 
-    iniciarSesion(){
-        instanciaUsuario.buscarUsuario('khairallahsergio4@gmail.com')
+    sesionUsuario(email){
+        const usuarioEmail = arrayUsuarios.find((usuario => usuario.email === email));
+
+        return usuarioEmail;
+
     }
+
  }
 
  //instanciando la clase
 const instanciaUsuario = new Usuario;
 
-
-//Funcion de bienvenida
-const usuarioRegistro = (funcion) =>{
-   funcion;
-   ingresoDatosRegistro();
-
-}
-
-//Ingreso de datos y validaciones
-const ingresoDatosRegistro = function(){
-    let nombre = prompt('Ingrese su nombre:');
-    let apellido = prompt('Ingrese su apellido:');
-    let dni = prompt('Ingrese su DNI Nº:');
-    let provincia = prompt('Ingrese su provincia:');
-    let domicilio = prompt('Ingrese su domicilio:');
+const iniciarSesion = () =>{
     let email = prompt('Ingrese su email:');
-    let contasena = prompt('Ingrese una contraseña:'); 
-
-    const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-
-    while(nombre==='' || apellido==='' || dni.length !== 8 || provincia === '' || domicilio === '' || validEmail.test(email)==false|| contasena === ''){
-        alert('¡Hubo errores en los datos ingresados!.')
-
-        let nombre = prompt('Ingrese nuevamente su nombre:');
-        let apellido = prompt('Ingrese nuevamente su apellido:');
-        let dni = prompt('Ingrese nuevamente su DNI Nº:');
-        let provincia = prompt('Ingrese nuevamente su provincia:');
-        let domicilio = prompt('Ingrese nuevamente su domicilio:');
+    let contrasena = prompt('Ingrese su contraseña:');
+    while(email === '' && contrasena === ''){
         let email = prompt('Ingrese nuevamente su email:');
-        let contasena = prompt('Ingrese nuevamente una contraseña:'); 
+        let contrasena = prompt('Ingrese nuevamente su contraseña:');
     }
 
-    let datosUsuario = [nombre,apellido,dni,provincia,domicilio,email,contasena];
-    validacionUsuario(datosUsuario)
     
-}
-//Validar que el usuario ya no exista
-const validacionUsuario = (datosUsuario)=>{
-    let controlEmail=instanciaUsuario.verificarUsuarioEmail(datosUsuario[5]);
-    let controlDni = instanciaUsuario.verificarUsuarioDni(parseInt(datosUsuario[2]));
-
-    if(controlEmail || controlDni){
-        alert('Error. Ya existe un usuario registrado con el email ' + datosUsuario[5] + 'o con el DNI N°' + datosUsuario[2]);
-
+    if(instanciaUsuario.verificarUsuarioEmail(email)){
+        let usuarioLogueado = instanciaUsuario.sesionUsuario(email);
+        
+        if(usuarioLogueado.email === email && usuarioLogueado.contrasena === contrasena){
+            alert(`Inicio sesión como ${usuarioLogueado.email}.`)
+        }else{
+            alert(`Contraseña incorrecta.`)
+    
+        }
     }else{
-        let nuevo = new Usuario(datosUsuario[0],datosUsuario[1],parseInt(datosUsuario[2]),datosUsuario[3],datosUsuario[4],datosUsuario[5],datosUsuario[6]);
-        nuevo.nuevoUsuario()
-        alert('Se registro un nuevo usuario');
+        alert('Usted no posee una cuenta en TiendaCami.')
     }
-    
+   
 }
-//Pasando una funcion a otra para iniciar la bienvenida
-usuarioRegistro(alert('¡Bienvenido, registre su cuenta para acceder a nuestro sistema de compras!'));
 
-// console.log(instanciaUsuario.iniciarSesion())
+iniciarSesion()

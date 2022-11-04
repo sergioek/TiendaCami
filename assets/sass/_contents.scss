@@ -275,7 +275,10 @@
             display: flex;
             flex-direction: column-reverse;
             margin: 1rem;
-            
+            .select{
+                width: 3rem;
+                height: 2.1rem;
+            }
         
         }  
     }
