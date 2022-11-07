@@ -1,3 +1,5 @@
+//El codigo que esta declarado a continuacion es una extension del codigo disponible en usuarios. Cuando se realice el tercer practico, sera unificado.
+//Creando un array de provincias
 const arrayProvincias = ['Buenos Aires','Ciudad Autónoma de Buenos Aires','Catamarca','Chaco','Chubut','Córdoba','Corrientes','Entre Ríos','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Misiones','Neuquén','Río Negro','Salta','San Juan','San Luis','Santa Cruz','Santa Fe','Santiago del Estero','Tierra del Fuego, Antártida e Islas del Atlántico Sur','Tucumán'];
 
 //Creando array de usuarios
@@ -62,41 +64,45 @@ class Usuario{
         }
         arrayUsuarios.push(usuarioNuevo);
     }
-
+    //Buscando un usuario, para poder iniciar sesion
     sesionUsuario(email){
         const usuarioEmail = arrayUsuarios.find((usuario => usuario.email === email));
 
         return usuarioEmail;
-
     }
 
  }
 
  //instanciando la clase
 const instanciaUsuario = new Usuario;
-
+//Funcion iniciar sesion
 const iniciarSesion = () =>{
+    //Pide datos de email y contraseña
     let email = prompt('Ingrese su email:');
     let contrasena = prompt('Ingrese su contraseña:');
+    //Si los campos estan vacios se los vuelve a solicitar 
     while(email === '' && contrasena === ''){
         let email = prompt('Ingrese nuevamente su email:');
         let contrasena = prompt('Ingrese nuevamente su contraseña:');
     }
 
-    
+    //Verificando que exista un email
     if(instanciaUsuario.verificarUsuarioEmail(email)){
         let usuarioLogueado = instanciaUsuario.sesionUsuario(email);
-        
+        //Verificamos que la contraseña pertenezacan al mismo objeto al cual esta asociado el email
         if(usuarioLogueado.email === email && usuarioLogueado.contrasena === contrasena){
+            //Inicia sesión
             alert(`Inicio sesión como ${usuarioLogueado.email}.`)
         }else{
+            //Alerta de contraseña incorrecta
             alert(`Contraseña incorrecta.`)
     
         }
     }else{
+        //Alerta no tiene cuenta
         alert('Usted no posee una cuenta en TiendaCami.')
     }
    
 }
-
+//LLamando funcion
 iniciarSesion()
