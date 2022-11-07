@@ -40,7 +40,7 @@ const arrayProductos = [
 },
 
 {   
-    codigo:'A005',
+    codigo:'B001',
     nombre:'Tazón azul de cerámica',
     marca:'Genérica',
     categoria:'Tazones',
@@ -89,21 +89,21 @@ class Producto{
         
         return arrayProductosCategoria;
     }
-    //Ordena los productos de manera por medio de precios de manera ascendente. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+    //Ordena los productos por precios de manera ascendente. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
     ordenarProductosPrecioAscendente(arrayProd){
         let ordenAscendenteProductos= arrayProd.sort((a,b )=> a.precio-b.precio);
         return ordenAscendenteProductos;
     }
-     //Ordena los productos de manera por medio de precios de manera descendente. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+     //Ordena los productos por precios de manera descendente. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
     ordenarProductosPrecioDescendente(arrayProd){
         let ordenDescendenteProductos= arrayProd.sort((a,b )=> b.precio-a.precio);
         return ordenDescendenteProductos;
     }
-     //Busca los productos de un rango de precio min y max. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+     //Busca los productos de un rango de precio min y max. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
     buscarProductosRangoPrecio(arrayProd,valorMinimo,valorMaximo){
         let rangoMinimo = arrayProd.filter((producto => producto.precio >= valorMinimo ));
         let rangoMaximo = arrayProd.filter((producto => producto.precio <= valorMaximo ));
-        
+        //Une dos arrays. 
         let productosRangPrecio= rangoMaximo.concat(rangoMaximo);
         
         return productosRangPrecio;
@@ -126,7 +126,7 @@ class Carrito{
             let producto= instanciaProducto.buscarProductoCodigo(codigo);
             //Verificamos si hay stock disponible para cubrir demanda
             if(producto.stock<cantidad){
-                return false;
+                return 1;
             }else{
                 //Creamos el objeto
                 let agrCarrito={
@@ -138,10 +138,10 @@ class Carrito{
                 }
                 //Agregamos un nuevo objeto al arrayCarrito
                 arrayCarrito.push(agrCarrito);
-                return true;
+                return 2;
             }
         }else{
-            return false;
+            return 0;
         }
         
     }
@@ -156,7 +156,7 @@ class Carrito{
             arrayCarrito.splice(indice,1)
         });
     }
-
+    //Suma el total de todos los productos del carrito
     sumarTotalCarrito(){
         const totalCarrito = arrayCarrito.reduce((acumulador,carrito) =>acumulador + carrito.total,0);
         return totalCarrito;
@@ -175,8 +175,73 @@ class Carrito{
 }
 //Instanciamos la clase carrito
 let instanciaCarrito = new Carrito;
-// console.log(instanciaCarrito.agregarCarrito('A001',2));
-// console.log(instanciaCarrito.agregarCarrito('A002',2));
 
-// console.log(arrayCarrito)
-// console.log(instanciaCarrito.sumarTotalCarrito())
+//Funcion con la validacion de los datos ingresados codigo y cantidad para efectuar la compra
+function validacionCompra(){
+    //Ingreso del codigo de producto
+    let codigo = prompt('Ingrese los codigos: A001 Taza frozzen $520 | A002 Taza ibipo $420 | A003 Taza especiate $500 | A004 Tazas rock x 3 unidades $1600 | B001 Tazón azul de cerámica $800');
+    //Comprobando que la variable no este vacia
+    while(codigo===''){
+        alert('El codigo no puede estar vacio:');
+        codigo = prompt('Reingrese los codigos: A001 Taza frozzen $520 | A002 Taza ibipo $420 | A003 Taza especiate $500 | A004 Tazas rock x 3 unidades $1600 | B001 Tazón azul de cerámica $800');
+    }
+    //ingreso de cantidad
+    let cantidad = prompt('Ingrese la cantidad que desea comprar:');
+    //Comprobando que la cantidad no este vacio y que no sea menor igual a 0
+    while(parseInt(cantidad) <=0 || cantidad===''){
+        alert('La cantidad no puede ser menor o igual a 0. Ingrese un valor nuevamente:');
+        cantidad = prompt('Ingrese la cantidad que desea comprar:');
+    }
+    //retorna un array con los valores, luego de haber realizado la verificacion corrrespondiente
+    return arrayCompra=[codigo,cantidad];
+
+}
+
+//Funcion comprar
+const comprar = () =>{
+    //Da la bienvenida al usuario
+    alert('Bienvenido al sistema de compras de TiendaCami. A continuación se mostrara los productos. Ingrese su codigo para comprar.');
+    //Llama a la funcion validacionCompra que solicitara al usuario los datos codigo y cantidad y efectuara las validaciones. 
+    let arrayCompra= validacionCompra();
+    //Comprobamos que lo que retorna arrayCompra es un array
+    if(Array.isArray(arrayCompra)){
+        //Llamamos a la funcion agregarCarrito
+        let agregarAlCarrito = instanciaCarrito.agregarCarrito(arrayCompra[0],arrayCompra[1]);
+        //Lo que nos retorne la funcion carrito, lo pasamos por un switch
+        switch (agregarAlCarrito) {
+           case 0:
+                alert('El producto no existe en la base de datos de productos.');
+                //Inicamos la funcion nuevamente
+                comprar();
+               break;
+           case 1:
+               alert('La cantidad solicitada no esta disponible en stock.')
+                //Inicamos la funcion nuevamente
+               comprar();
+               break;
+           case 2:
+            //En este momento la funcion habra agregado el producto al carrito
+               alert('Producto agregado al carrito:');
+               //Pregunta al usuario si desea continuar la compra
+               let agregarMas = prompt('¿Desea agergar mas productos al carrito?. Ingrese "SI" o "NO":');
+               if(agregarMas==='SI' || agregarMas === 'si'){
+                    //LLama nuevamente a la funcion
+                    comprar();
+               }else{
+                    //Muestra una alerta con la suma total de la compra
+                    alert('Su compra es $' + String(instanciaCarrito.sumarTotalCarrito()));
+                    //Llama a la funcion que descuenta de stcok de un producto la cantidad comprada por el usuario
+                    instanciaCarrito.comprarCarrito();
+                    //Muestra alerta
+                    alert('Muchas gracias :) lo esperamos nuevamente por TiendaCami.')
+               }
+
+               break;
+           default:
+               break;
+       }
+    }
+
+}
+//llama a la funcion comprar. 
+comprar()
