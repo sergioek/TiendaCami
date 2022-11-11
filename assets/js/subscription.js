@@ -1,7 +1,4 @@
 /*----------------SUSCRIPCION-----------------------*/ 
-//1-Declaraciones
-const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-
 //2-Query de elementos
 const emailSuscribirse= document.querySelector('#emailSuscribirse');
 const btnSuscribirse= document.querySelector('#btnSuscribirse');
@@ -64,4 +61,3 @@ const nuevaSuscripcion = (event) =>{
 
 //4-EventListeners
 btnSuscribirse.addEventListener('click',nuevaSuscripcion);
-

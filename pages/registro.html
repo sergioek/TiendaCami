@@ -113,52 +113,49 @@
 
                     <div class="mb-3">
                         <label for="" class="text-white">Nombres</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ingresá tu nombre">
+                        <input type="text" id="nombre" class="form-control" placeholder="Ingresá tu nombre">
                         <strong id="error-nombre"></strong>
                     </div>
                     <div class="mb-3">
                         <label for="" class="text-white">Apellidos</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ingresá tu apellido">
+                        <input type="text"  id="apellido" class="form-control" placeholder="Ingresá tu apellido">
                         <strong id="error-apellido"></strong>
                     </div>
                     <div class="mb-3">
                         <label for="" class="text-white">DNI Nº</label>
-                        <input type="number" name="" id="" class="form-control" placeholder="Ingresá tu DNI sin puntos ni espacios">
+                        <input type="number"  id="dni" class="form-control" placeholder="Ingresá tu DNI sin puntos ni espacios">
                         <strong id="error-dni"></strong>
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="text-white">Provincia</label>
-                        <select name="provincias" id="provincias" class="form-control">
-                         
+                        <select id="provincia" class="form-control">
+                            
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="text-white">Domicilio</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Ingresá tu domicilio">
+                        <input type="text"  id="domicilio" class="form-control" placeholder="Ingresá tu domicilio">
                         <strong id="error-domicilio"></strong>
                     </div>
 
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label text-white">Correo electrónico</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresá un correo electrónico">
-                      <strong id="error-correo"></strong>
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ingresá un correo electrónico">
+                      <strong id="error-email"></strong>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label text-white">Contraseña</label>
                         <div class="input-group">
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresá una contraseña de acceso">
+                          <input type="password" class="form-control" id="contrasena" placeholder="Ingresá una contraseña de acceso">
                           <span class="input-group-text bi bi-eye btn btn-warning" ></span> 
                         </div>
-                        <strong id="error-contraseña"></strong>
+                        <strong id="error-contrasena"></strong>
                     </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label text-white" for="exampleCheck1">Recordar contraseña</label>
-                    </div>
-                    <div class="row mt-2 boton">
-                        <button type="submit" class="btn btn-success bi bi-person-circle"> Registrarse</button>
+                    
+                    <div class="row mt-4 boton">
+                        <button type="submit" class="btn btn-success bi bi-person-circle" id="btnRegistrarse"> Registrarse</button>
 
                         <a href="../pages/login.html" class="bi bi-person-circle mt-2 text-white"> Ingresá a tu cuenta</a>  
                     </div>
@@ -266,6 +263,9 @@
     <!---Archivos del CDN bootstrap 5.1-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
+    <script src="../assets/js/library/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/newUsers.js"></script>
  
 </body>
 </html>
