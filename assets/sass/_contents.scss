@@ -306,7 +306,7 @@
 
 #mainRegistro{
     @include flex-box(column,nowrap,center,center,0rem);
-    background-image: url('../img/fondo-negro.jpg');
+    background-image: url('../img/cafe.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -318,6 +318,11 @@
         border-radius: 1rem;
         .boton{
             text-align: center;
+        }
+        strong{
+            color:rgb(240, 106, 16);
+            font-family: $raleway;
+            font-size: 0.8rem ;
         }
     }
 

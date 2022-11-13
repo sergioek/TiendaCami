@@ -1,108 +1,67 @@
-//El codigo que esta declarado a continuacion es una extension del codigo disponible en usuarios. Cuando se realice el tercer practico, sera unificado.
-//Creando un array de provincias
-const arrayProvincias = ['Buenos Aires','Ciudad Autónoma de Buenos Aires','Catamarca','Chaco','Chubut','Córdoba','Corrientes','Entre Ríos','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Misiones','Neuquén','Río Negro','Salta','San Juan','San Luis','Santa Cruz','Santa Fe','Santiago del Estero','Tierra del Fuego, Antártida e Islas del Atlántico Sur','Tucumán'];
+/*---------------------LOGIN------------------*/
+/*--------------1-Variables y constantes-----*/
 
-//Creando array de usuarios
-const arrayUsuarios = [
-    {
-        nombre: 'Sergio',
-        apellido: 'Khairallah',
-        dni: 11111111,
-        provincia:arrayProvincias[21],
-        domicilio:'Av. Jhon Kennedy',
-        email:'khairallahsergio4@gmail.com',
-        contrasena: '12345',
-    },
+/*-------------2-QuerySelectors-------------*/
+const emailInicioSesion = document.querySelector('#emailInicioSesion');
 
-    {
-        nombre: 'Camila',
-        apellido: 'Khairallah',
-        dni: 22222222,
-        provincia:arrayProvincias[5],
-        domicilio:'Av. Rivadavia ',
-        email:'camikhairallah@gmail.com',
-        contrasena: '12345',
-    },
-];
+const contrasenaInicioSesion = document.querySelector('#contrasenaInicioSesion');
 
-//Creando la clase Usuario y sus metodos
-class Usuario{
-    constructor(nombre, apellido,dni,provincia,domicilio,email,contrasena){
-        this.nombre=nombre
-        this.apellido=apellido
-        this.dni=dni
-        this.provincia=provincia
-        this.domicilio=domicilio
-        this.email=email
-        this.contrasena=contrasena
-    }
+const visibilidadContrasena = document.querySelector('.visibilidadContrasena');
 
-    verificarUsuarioEmail(email){
-        const usuario = arrayUsuarios.some((usuario => usuario.email === email));
-        return usuario;
-    }
+const recordarInicioSesion = document.querySelector('#recordarInicioSesion');
 
-    verificarUsuarioDni(dni){
-        const usuarioDni = arrayUsuarios.some((usuario => usuario.dni === dni));
-        return usuarioDni;
-    }
+const btnIngresar = document.querySelector('#btnIngresar');
 
-    buscarUsuario(email){
-        const usuario = arrayUsuarios.find((usuario => usuario.email === email));
-        return usuario;
-    }
+/* -----------3-Funciones-------------------*/
+const verificarUsuarioEmail = (email) => {
+    const usuario = arrayUsuarios.some((usuario => usuario.email === email));
+    return usuario;
+}
 
-    nuevoUsuario(){
-        const usuarioNuevo = {
-            nombre:this.nombre,
-            apellido:this.apellido,
-            dni: this.dni,
-            provincia:this.provincia,
-            domicilio:this.domicilio,
-            email:this.email,
-            contrasena:this.contrasena,
-        }
-        arrayUsuarios.push(usuarioNuevo);
-    }
-    //Buscando un usuario, para poder iniciar sesion
-    sesionUsuario(email){
-        const usuarioEmail = arrayUsuarios.find((usuario => usuario.email === email));
+const buscarUsuario = (email) => {
+    const usuario = arrayUsuarios.find((usuario => usuario.email === email));
+    return usuario;
+}
 
-        return usuarioEmail;
-    }
+function mostrarPassword(){
+    contrasenaInicioSesion.setAttribute('type','text');
 
- }
+}
 
- //instanciando la clase
-const instanciaUsuario = new Usuario;
-//Funcion iniciar sesion
-const iniciarSesion = () =>{
-    //Pide datos de email y contraseña
-    let email = prompt('Ingrese su email:');
-    let contrasena = prompt('Ingrese su contraseña:');
-    //Si los campos estan vacios se los vuelve a solicitar 
-    while(email === '' && contrasena === ''){
-        let email = prompt('Ingrese nuevamente su email:');
-        let contrasena = prompt('Ingrese nuevamente su contraseña:');
-    }
+function ocultarPassword(){
+    contrasenaInicioSesion.setAttribute('type','password');
+}
 
-    //Verificando que exista un email
-    if(instanciaUsuario.verificarUsuarioEmail(email)){
-        let usuarioLogueado = instanciaUsuario.sesionUsuario(email);
-        //Verificamos que la contraseña pertenezacan al mismo objeto al cual esta asociado el email
-        if(usuarioLogueado.email === email && usuarioLogueado.contrasena === contrasena){
-            //Inicia sesión
-            alert(`Inicio sesión como ${usuarioLogueado.email}.`)
+//Funcion anonima iniciar sesion
+const iniciarSesion = function (event){
+    event.preventDefault();
+
+    if(verificarUsuarioEmail(emailInicioSesion.value)){
+        let usuario = buscarUsuario(emailInicioSesion.value);
+       
+        if(usuario.contrasena === contrasenaInicioSesion.value){
+            const login = {
+                nombre:usuario.nombre,
+                apellido:usuario.apellido,
+                email:usuario.email,
+            }
+            sessionStorage.setItem('login',login);
+
+          let variable =sessionStorage.getItem('login')
+          
+
         }else{
-            //Alerta de contraseña incorrecta
-            alert(`Contraseña incorrecta.`)
-    
+            alertaError(`La contraseña ingresada no corresponde con el usuario con email ${emailInicioSesion.value}`);
         }
     }else{
-        //Alerta no tiene cuenta
-        alert('Usted no posee una cuenta en TiendaCami.')
+        alertaInformacion(`El email ingresado ${emailInicioSesion.value} no se encuentra registrado como usuario. Por favor, registresé en la seccion "Creá tu cuenta".`);
     }
-   
 }
-//LLamando funcion
-iniciarSesion()
+
+/* -----------4-EventListeners-------------------*/
+visibilidadContrasena.addEventListener('mousedown',mostrarPassword);
+
+visibilidadContrasena.addEventListener('mouseup',ocultarPassword);
+
+btnIngresar.addEventListener('click',iniciarSesion);
+/* -----------5-Ejecuciones y otros-------------------*/

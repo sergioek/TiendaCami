@@ -1,10 +1,10 @@
 /*----------------SUSCRIPCION-----------------------*/ 
-//2-Query de elementos
+/* -----------1 Query de elementos-------------------*/
 const emailSuscribirse= document.querySelector('#emailSuscribirse');
 const btnSuscribirse= document.querySelector('#btnSuscribirse');
 const textErrorSuscripcion= document.querySelector('#textErrorSuscripcion');
 
-//3-Funciones
+/* -----------2-Funciones-------------------*/
 const verificarSuscripcion = (email) =>{
     const suscripto = arraySuscriptos.some((suscripto => suscripto.email == email));
 
@@ -21,12 +21,7 @@ const nuevaSuscripcion = (event) =>{
         //Enviando el valor a verificar si existe una suscripcion
         if(verificarSuscripcion(emailIngresado)){
             //Mostrando alerta
-            Swal.fire({
-                title:'Información',
-                text:'El email ingresado ya esta suscripto a nuestras novedades. Muchas Gracias',
-                icon:'info',
-                confirmButtonText:'Aceptar',
-            })
+            alertaInformacion('El email ingresado ya esta suscripto a nuestras novedades. Muchas Gracias');
 
         }else{
             //Agregando una suscripcion al array
@@ -34,13 +29,7 @@ const nuevaSuscripcion = (event) =>{
             arraySuscriptos.push(nuevaSuscripcion = new Suscripcion(emailIngresado,true));
 
             //Mostrando alerta de exito
-            Swal.fire({
-                title:'¡Suscripción exitosa!',
-                text:'Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!.',
-                icon:'success',
-                confirmButtonText:'Aceptar',
-                confirmButtonColor: '#3085d6',
-            })
+            alertaExito('¡Suscripción exitosa!','Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!');
 
             //Vaciar input email
             emailSuscribirse.value='';
@@ -48,16 +37,9 @@ const nuevaSuscripcion = (event) =>{
 
     }else{
         //Al tener un formato de email incorrecto
-        Swal.fire({
-            title:'Error',
-            text:'El formato de email no es válido.',
-            icon:'error',
-            confirmButtonText:'Aceptar',
-            confirmButtonColor: '#DB2801',
-        })
+        alertaError('El formato de email no es válido.');
     }
     
 }
 
-//4-EventListeners
-btnSuscribirse.addEventListener('click',nuevaSuscripcion);
+/* -----------3-EventListerners-------------------*/btnSuscribirse.addEventListener('click',nuevaSuscripcion);
