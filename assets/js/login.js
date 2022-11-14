@@ -13,6 +13,13 @@ const recordarInicioSesion = document.querySelector('#recordarInicioSesion');
 const btnIngresar = document.querySelector('#btnIngresar');
 
 /* -----------3-Funciones-------------------*/
+function recuperarUsuarioGuardado(){
+    let usuarioRecuperado= JSON.parse(localStorage.getItem('usuarioGuardado'));
+    emailInicioSesion.value=usuarioRecuperado.email;
+    recordarInicioSesion.checked=true;
+}
+
+
 const verificarUsuarioEmail = (email) => {
     const usuario = arrayUsuarios.some((usuario => usuario.email === email));
     return usuario;
@@ -23,14 +30,12 @@ const buscarUsuario = (email) => {
     return usuario;
 }
 
-function mostrarPassword(event){
-    event.preventDefault();
+function mostrarPassword(){
     contrasenaInicioSesion.setAttribute('type','text');
 
 }
 
-function ocultarPassword(event){
-    event.preventDefault();
+function ocultarPassword(){
     contrasenaInicioSesion.setAttribute('type','password');
 }
 
@@ -47,10 +52,19 @@ const iniciarSesion = function (event){
                 apellido:usuario.apellido,
                 email:usuario.email,
             }
-            sessionStorage.setItem('login',login);
 
-          let variable =sessionStorage.getItem('login')
-          
+            sessionStorage.setItem('login',JSON.stringify(login));
+
+            if(recordarInicioSesion.checked){
+               const recordarUsuario ={
+                    email:usuario.email,
+               }
+
+               const guardar = JSON.stringify(recordarUsuario);
+               localStorage.setItem('usuarioGuardado',guardar);
+            }
+
+           window.location.href='./productos.html';
 
         }else{
             alertaError(`La contraseña ingresada no corresponde con el usuario con email ${emailInicioSesion.value}`);
@@ -63,7 +77,12 @@ const iniciarSesion = function (event){
 /* -----------4-EventListeners-------------------*/
 visibilidadContrasena.addEventListener('mousedown',mostrarPassword);
 
+visibilidadContrasena.addEventListener('touchstart',mostrarPassword);
+
 visibilidadContrasena.addEventListener('mouseup',ocultarPassword);
+
+visibilidadContrasena.addEventListener('touchend',ocultarPassword);
 
 btnIngresar.addEventListener('click',iniciarSesion);
 /* -----------5-Ejecuciones y otros-------------------*/
+recuperarUsuarioGuardado();

@@ -59,14 +59,12 @@ const buscarUsuario = (email) => {
 }
 
 //Muestra la contraseña en el formulario de registro
-function mostrarPassword(event){
-    event.preventDefault();
+function mostrarPassword(){
     contrasena.setAttribute('type','text');
 
 }
 
-function ocultarPassword(event){
-    event.preventDefault();
+function ocultarPassword(){
     contrasena.setAttribute('type','password');
 }
 //Habilitar el boton cuando se realizo la validacion
@@ -153,9 +151,18 @@ const nuevoUsuario = function (event) {
 /* -----------4-EventListeners-------------------*/
 formularioRegistro.addEventListener('change',validacionesNuevoUsuario);
 
+//Al presionar el boton en compu
 visibilidadContrasena.addEventListener('mousedown',mostrarPassword);
-console.log(visibilidadContrasena)
+
+//Al presionar el boton en mobile
+visibilidadContrasena.addEventListener('touchstart',mostrarPassword);
+
+//Al dejar de presionar el boton en compu
 visibilidadContrasena.addEventListener('mouseup',ocultarPassword);
+
+//Al  dejar de presionar el boton en mobile
+visibilidadContrasena.addEventListener('touchend',ocultarPassword);
+
 
 btnRegistrarse.addEventListener('click',nuevoUsuario);
 
