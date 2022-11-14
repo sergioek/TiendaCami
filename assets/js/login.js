@@ -23,12 +23,14 @@ const buscarUsuario = (email) => {
     return usuario;
 }
 
-function mostrarPassword(){
+function mostrarPassword(event){
+    event.preventDefault();
     contrasenaInicioSesion.setAttribute('type','text');
 
 }
 
-function ocultarPassword(){
+function ocultarPassword(event){
+    event.preventDefault();
     contrasenaInicioSesion.setAttribute('type','password');
 }
 

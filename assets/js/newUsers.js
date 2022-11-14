@@ -59,12 +59,14 @@ const buscarUsuario = (email) => {
 }
 
 //Muestra la contraseña en el formulario de registro
-function mostrarPassword(){
+function mostrarPassword(event){
+    event.preventDefault();
     contrasena.setAttribute('type','text');
 
 }
 
-function ocultarPassword(){
+function ocultarPassword(event){
+    event.preventDefault();
     contrasena.setAttribute('type','password');
 }
 //Habilitar el boton cuando se realizo la validacion
