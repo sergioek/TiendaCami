@@ -15,7 +15,10 @@ const btnIngresar = document.querySelector('#btnIngresar');
 /* -----------3-Funciones-------------------*/
 function recuperarUsuarioGuardado(){
     let usuarioRecuperado= JSON.parse(localStorage.getItem('usuarioGuardado'));
+
     emailInicioSesion.value=usuarioRecuperado.email;
+    contrasenaInicioSesion.value=usuarioRecuperado.contrasena;
+    
     recordarInicioSesion.checked=true;
 }
 
@@ -44,27 +47,30 @@ const iniciarSesion = function (event){
     event.preventDefault();
 
     if(verificarUsuarioEmail(emailInicioSesion.value)){
-        let usuario = buscarUsuario(emailInicioSesion.value);
+        //Aplicando la desestructuracion de objetos
+        const {nombre,apellido,email,contrasena} = buscarUsuario(emailInicioSesion.value);
        
-        if(usuario.contrasena === contrasenaInicioSesion.value){
+        if(contrasena === contrasenaInicioSesion.value){
             const login = {
-                nombre:usuario.nombre,
-                apellido:usuario.apellido,
-                email:usuario.email,
+                nombre:nombre,
+                apellido:apellido,
+                email:email,
             }
 
             sessionStorage.setItem('login',JSON.stringify(login));
 
             if(recordarInicioSesion.checked){
                const recordarUsuario ={
-                    email:usuario.email,
+                    email:email,
+                    contrasena:contrasena
                }
 
                const guardar = JSON.stringify(recordarUsuario);
                localStorage.setItem('usuarioGuardado',guardar);
             }
 
-           window.location.href='./productos.html';
+            window.location.href='./productos.html';
+
 
         }else{
             alertaError(`La contraseña ingresada no corresponde con el usuario con email ${emailInicioSesion.value}`);
