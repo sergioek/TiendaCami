@@ -52,35 +52,54 @@ const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
 
 const renderizarProductos = (arrayProductos)=>{
     arrayProductos.forEach(producto => {
-        const {nombre,marca,precio,imagen,stock,codigo,categoria} = producto
+        const {nombre,precio,imagen,stock,codigo} = producto
+
         const divCard = document.createElement('div');
         divCard.classList='card';
         divCard.style='width:18rem';
-        divCard.innerHTML=`<img src='../assets/img/productos/${imagen}' class='card-img-top' alt='${nombre}'>
-        <div class='card-body'>
-          <h5 class='card-title'>${'$' + precio}</h5>
-          <p class='card-text'>${nombre}.</p>
-          <button class='btn btn-outline-success bi bi-plus'>Agregar</button>
-          <input type='number'  class='form-control cantidad' value='0' min='1' max='${stock}'>
-        </div>`;
-        productos.append(divCard)
-       
 
-     
-       
+        const imagenProducto = document.createElement('img');
+        imagenProducto.setAttribute('src',`../assets/img/productos/${imagen}`);
+        imagenProducto.classList='card-img-top';
+        imagenProducto.setAttribute('alt',`${nombre}`);
 
-        // // <!-- <div class="card" style="width: 18rem;">
-        // <img src="../assets/img/productos/taza-frozen.png" class="card-img-top" alt="productos-bazar">
-        // <div class="card-body">
-        //   <h5 class="card-title">$520,00</h5>
-        //   <p class="card-text">Taza frozzen.</p>
-        //   <button class="btn btn-outline-success bi bi-plus">Agregar</button>
-        //   <select class="select" >
-        //     <option value="">1</option>
-          
-        //   </select>
-        // </div>
-        // // </div> -->
+        const divBody = document.createElement('div');
+        divBody.classList='card-body';
+
+        const h5= document.createElement('h5');
+        h5.classList='card-title';
+        h5.innerText=`${'$' + precio}`;
+
+        const p = document.createElement('p');
+        p.classList='card-text';
+        p.innerText=`${nombre}`;
+
+        const botonAgregar = document.createElement('button');
+        botonAgregar.setAttribute('data-id',`${codigo}`)
+        botonAgregar.classList='btn btn-outline-success bi bi-plus agregarProducto';
+        botonAgregar.innerText='Agregar';
+
+        const selectorCantidad = document.createElement('select');
+        selectorCantidad.classList='select'
+        
+        
+        for (let index = 0; index < stock; index++) {
+            
+            selectorCantidad.innerHTML+=`
+                <option value=''>${index+1}</option>
+            `; 
+        }
+
+        if(stock==0){
+            botonAgregar.setAttribute('disabled',true);
+            botonAgregar.classList='btn btn-danger  agregarProducto';
+            botonAgregar.innerText='¡Sin stock';
+            selectorCantidad.setAttribute('disabled',true);
+        }
+
+        divBody.append(h5,p,botonAgregar,selectorCantidad);
+        divCard.append(imagenProducto,divBody);
+        productos.append(divCard);
     });
 
 }

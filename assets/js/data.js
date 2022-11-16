@@ -47,20 +47,20 @@ class Producto{
 }
 
 //Instanciando y creando objetos 
-const producto1=new Producto('A001','Taza frozzen','Genérica','Tazas',520,3,'taza-frozen.png');
+const producto1=new Producto('A001','Taza frozzen','Genérica','Tazas',520,0,'taza-frozen.png');
 const producto2=new Producto('A002','Taza Ibipo','Genérica','Tazas',420,3,'taza-ibipo.png');
 const producto3=new Producto('A003','Taza especiate','Genérica','Tazas',500,3,'taza-especiate.jfif');
 const producto4=new Producto('A004','Tazas rock x 3 unidades','Genérica','Tazas',1600,3,'tazas-1024x819.jpg');
 const producto5=new Producto('B001','Tazón azul de cerámica','Genérica','Tazones',800,3,'tazon-blue.jpg');
 const producto6=new Producto('B002','Tazón sopero plumita','Plumita','Tazones',820.50,3,'tazones-plumita.jpg');
 const producto7=new Producto('C001','Chopp Quilmes','Quilmes','Chopps',920,5,'chopp-quilmes.jpeg');
-const producto8=new Producto('C002','Chopp Heineken','Heineken','Chopps',1020,4,'chopp-heineken.jpeg');
-const producto9=new Producto('D001','Vasos plásticos x 8u','Genérica','Vasos',2000,4,'vasos-set8.jpeg');
-const producto10=new Producto('D002','Vasos de vidrio','Genérica','Vasos',300,50,'vaso-generico-vidrio.jpeg');
-const producto11=new Producto('E001','Copas de vidrio x 6u','Genérica','Copas',600,50,'copas-set-vidrio.jpeg');
-const producto12=new Producto('E002','Copa para Champagne','Genérica','Copas',900,25,'copa-champagne.jpeg');
-const producto13=new Producto('F001','Combo infantil plástico Minecraf','Genérica','Combos',1500,4,'combo-infanil-minecraft.jpeg');
-const producto14=new Producto('G001','Termo tupperware','Tupperware','Otros',9500,7,'termo-tupperware.jpeg');
+const producto8=new Producto('C002','Chopp Heineken','Heineken','Chopps',1020,4,'chopp-heineken.jpg');
+const producto9=new Producto('D001','Vasos plásticos x 8u','Genérica','Vasos',2000,4,'vasos-set8.jpg');
+const producto10=new Producto('D002','Vasos de vidrio','Genérica','Vasos',300,50,'vaso-generico-vidrio.jpg');
+const producto11=new Producto('E001','Copas de vidrio x 6u','Genérica','Copas',600,50,'copas-set-vidrio.jpg');
+const producto12=new Producto('E002','Copa para Champagne','Genérica','Copas',900,25,'copa-champagne.jpg');
+const producto13=new Producto('F001','Combo infantil plástico Minecraf','Genérica','Combos',1500,4,'combo-infanil-minecraft.jpg');
+const producto14=new Producto('G001','Termo tupperware','Tupperware','Otros',9500,7,'termo-tupperware.jpg');
 
 const arrayProductos = [producto1,producto2,producto3,producto4,producto5,producto6,producto7,producto8,producto9,producto10,producto11,producto12,producto13,producto14];
 
