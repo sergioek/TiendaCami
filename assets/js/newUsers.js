@@ -85,12 +85,12 @@ const validacionesNuevoUsuario = () =>{
     let val1 = val2 = val3 = val4 = val5 = val6 = val7=true;
     if(nombre.value.length < 3 && !Number(nombre.value)){
         val1=false;
-        errorNombre.innerText='El campo nombre debe contener al menos tres caracteres alfanuméricos.';
+        errorNombre.innerText='El campo nombre debe contener al menos tres caracteres.';
     }
 
     if(apellido.value.length < 3 && !Number(apellido.value)){
         val2=false;
-        errorApellido.innerText='Apellido debe contener al menos 3 caracteres alfanuméricos.';
+        errorApellido.innerText='Apellido debe contener al menos 3 caracteres.';
 
     }
 
@@ -106,7 +106,7 @@ const validacionesNuevoUsuario = () =>{
 
     if(domicilio.value.length < 3 && !Number(domicilio.value)){
         val5=false;
-        errorDomicilio.innerText='Domicilio debe contener al menos 3 caracteres alfanuméricos,';
+        errorDomicilio.innerText='Domicilio debe contener al menos 3 caracteres.';
     }
 
     if(!validEmail.test(email.value)){

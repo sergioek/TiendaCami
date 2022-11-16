@@ -69,4 +69,4 @@ function cambiarIngresar(){
 const sesionIniciada = JSON.parse(sessionStorage.getItem('login')) && (creaCuenta.remove(), cambiarIngresar());
 
 //3 - EventListeners
-btnCerrarSesion?.addEventListener('click', salirSesion);
+const btnCerrar = JSON.parse(sessionStorage.getItem('login')) && btnCerrarSesion.addEventListener('click', salirSesion);
