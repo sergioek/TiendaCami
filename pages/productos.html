@@ -53,7 +53,7 @@
                 </div>
                 
                 <div class="barraNavegacion__buscador">
-                    <form action="">
+                    <form>
                         <i class="bi bi-search icono-input"></i>
                         <input type="search" name="" id="" placeholder="¿Qué estas buscando?">
                     </form>
@@ -108,83 +108,83 @@
         <main class="main" id="mainProductos">
 
             <section class="buscador container">
-                <form action="" class="form">
-                    <input type="search" name="" id="" placeholder="¿Qué producto estas buscando?" class="form-control">
-                    <button class="btn btn-primary">Buscar</button>
+                <form class="form">
+                    <input type="search" name="" id="inputBuscarProductos" placeholder="¿Qué producto estas buscando?" class="form-control">
+                    <button class="btn btn-primary" id="btnBuscarProductos">Buscar</button>
                 </form>
             </section>
 
             <aside class="filtros">
                 <div class="categorias">
                     <h4>Tipo de producto</h4>
-                    <form>
+                    <form id="formularioCategorias">
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input" checked>
+                            <input type="radio" value="Todos" name="categoria" class="form-check-input" checked>
                             <label for="">Todos</label>
                         </div>
 
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Tazas" name="categoria"  class="form-check-input">
                             <label for="">Tazas</label>
                         </div>
         
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Tazones" name="categoria"  class="form-check-input">
                             <label for="">Tazones</label>
                         </div>
         
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Chopps" name="categoria" class="form-check-input">
                             <label for="">Chopps</label>
                         </div>
         
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Vasos" name="categoria"  class="form-check-input">
                             <label for="">Vasos</label>
                         </div>
 
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Copas" name="categoria"  class="form-check-input">
                             <label for="">Copas</label>
                         </div>
         
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio" value="Combos" name="categoria" class="form-check-input">
                             <label for="">Combos</label>
                         </div>
         
                         <div class="item">
-                            <input type="radio" name="" id="" class="form-check-input">
+                            <input type="radio"  class="form-check-input" value="Otros" name="categoria" >
                             <label for="">Otros</label>
                         </div>
 
-                    </form>
+                    
                 </div>
 
                 <div class="precios mt-4"> 
                     <h4>Precio</h4>
-                    <form>
+                    
                         <div class="item">
                             <label for="">Ordenar por:</label>
-                            <select name="" id="" class="select">
-                                <option value="">Menor precio</option>
-                                <option value="">Mayor precio</option>
+                            <select name="orden" class="select" id="selectPrecio">
+                                <option value="menorPrecio">Menor precio</option>
+                                <option value="mayorPrecio">Mayor precio</option>
                             </select>
                         </div>
                         <div class="item">
                             <strong>Mínimo:</strong>
-                            <label for="">$</label>
-                            <input type="range" name="" id="" class="form-range" min="100" max="5000">
+                            <label id="textPrecioMinimo">$ 100</label>
+                            <input type="range" id="precioMinimo" class="form-range" min="100" max="20000" value="100">
                         </div>
         
                         <div class="item">
                             <strong>Máximo:</strong>
-                            <label for="">$</label>
-                            <input type="range" name="" id="" class="form-range" min="100" max="5000">
+                            <label id="textPrecioMaximo">$20000</label>
+                            <input type="range" id="precioMaximo" class="form-range" min="100" max="20000" value="20000">
                         </div>
 
                         <div>
-                            <button class="btn btn-success col-lg-4 mb-2">Filtrar</button>
+                            <button class="btn btn-success col-lg-4 mb-2" id="btnFiltrar">Filtrar</button>
                         </div>
                     </form>
                 </div>
@@ -192,8 +192,7 @@
             
 
             <section class="productos" id="productos">
-            
-                
+              
             </section>
 
         </main>

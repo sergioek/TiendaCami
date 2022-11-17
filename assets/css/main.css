@@ -419,13 +419,19 @@
   background-color: #E9E600;
   grid-area: productos;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: auto auto;
+  justify-items: start;
   border-radius: 1rem;
+}
+#mainProductos .productos .errorBusqueda {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
 #mainProductos .productos .card {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   margin: 1rem;
 }
 #mainProductos .productos .card .select {

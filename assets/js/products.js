@@ -5,6 +5,24 @@
 /*--------------2-QuerySelectors-----*/
 const productos = document.querySelector('#productos');
 
+const inputBuscarProductos = document.querySelector('#inputBuscarProductos');
+
+const btnBuscarProductos = document.querySelector('#btnBuscarProductos');
+
+const formularioCategorias = document.querySelector('#formularioCategorias');
+
+const checkCategoria= document.querySelectorAll('.form-check-input');
+
+const selectPrecio = document.querySelector('#selectPrecio');
+
+const textPrecioMinimo = document.querySelector('#textPrecioMinimo');
+const precioMinimo = document.querySelector('#precioMinimo');
+
+const textPrecioMaximo = document.querySelector('#textPrecioMaximo');
+const precioMaximo = document.querySelector('#precioMaximo');
+
+const btnFiltrar = document.querySelector('#btnFiltrar');
+
 /*--------------3-Funciones-----*/
 //Verifica que exista un producto en el array haciendo uso del campo codigo( campo unique). Luego retona true o false
 const existeProducto = (codigo) =>{
@@ -20,8 +38,14 @@ const buscarProductoCodigo = (codigo) =>{
 }
 //Buscamos los productos de acuerdo al nombre. Devuelve un array
 const buscarProductosNombre = (nombre) =>{
+   
+    let arrayProductosTags = ((arrayProductos.filter(producto =>producto.tags.includes(nombre))));
+   
     let arrayProductosNombre = ((arrayProductos.filter(producto =>producto.nombre.includes(nombre))));
-    return arrayProductosNombre;
+
+    const arrayProd= arrayProductosTags.concat(arrayProductosNombre);
+
+    return arrayProd;
 }
 //Busca los productos por categoria. Devuelve un array
 const buscarProductosCategoria = (categoria) =>{
@@ -51,60 +75,108 @@ const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
 }
 
 const renderizarProductos = (arrayProductos)=>{
-    arrayProductos.forEach(producto => {
-        const {nombre,precio,imagen,stock,codigo} = producto
+    productos.innerHTML='';
+    if(arrayProductos.length == 0){
+        alertaPersonalizable('Busqueda','No se encontraron resultados en la búsqueda','error','Ok','red')
+    }else{
+        arrayProductos.forEach(producto => {
+            const {nombre,precio,imagen,stock,codigo} = producto
+            const divCard = document.createElement('div');
+            divCard.classList.add('card');
+            divCard.style='width:18rem ; height:auto';
 
-        const divCard = document.createElement('div');
-        divCard.classList='card';
-        divCard.style='width:18rem';
+            const imagenProducto = document.createElement('img');
+            imagenProducto.setAttribute('src',`../assets/img/productos/${imagen}`);
+            imagenProducto.classList.add('card-img-top');
+            imagenProducto.setAttribute('alt',`${nombre}`);
 
-        const imagenProducto = document.createElement('img');
-        imagenProducto.setAttribute('src',`../assets/img/productos/${imagen}`);
-        imagenProducto.classList='card-img-top';
-        imagenProducto.setAttribute('alt',`${nombre}`);
+            const divBody = document.createElement('div');
+            divBody.classList.add('card-body');
 
-        const divBody = document.createElement('div');
-        divBody.classList='card-body';
+            const h5= document.createElement('h5');
+            h5.classList.add('card-title');
+            h5.innerText=`${'$' + precio}`;
 
-        const h5= document.createElement('h5');
-        h5.classList='card-title';
-        h5.innerText=`${'$' + precio}`;
+            const p = document.createElement('p');
+            p.classList.add('card-text');
+            p.innerText=`${nombre}`;
 
-        const p = document.createElement('p');
-        p.classList='card-text';
-        p.innerText=`${nombre}`;
+            const botonAgregar = document.createElement('button');
+            botonAgregar.setAttribute('data-id',`${codigo}`)
+            botonAgregar.classList='btn btn-outline-success bi bi-plus agregarProducto';
+            botonAgregar.innerText='Agregar';
 
-        const botonAgregar = document.createElement('button');
-        botonAgregar.setAttribute('data-id',`${codigo}`)
-        botonAgregar.classList='btn btn-outline-success bi bi-plus agregarProducto';
-        botonAgregar.innerText='Agregar';
-
-        const selectorCantidad = document.createElement('select');
-        selectorCantidad.classList='select'
+            const selectorCantidad = document.createElement('select');
+            selectorCantidad.classList='select m-2';
         
         
-        for (let index = 0; index < stock; index++) {
-            
-            selectorCantidad.innerHTML+=`
-                <option value=''>${index+1}</option>
-            `; 
-        }
+            for (let index = 0; index < stock; index++) {
+                let valor = index+1;
+                const option = document.createElement('option');
+                option.setAttribute('value',valor)
+                option.innerText=valor;
+                selectorCantidad.append(option);
+            }
 
-        if(stock==0){
-            botonAgregar.setAttribute('disabled',true);
-            botonAgregar.classList='btn btn-danger  agregarProducto';
-            botonAgregar.innerText='¡Sin stock';
-            selectorCantidad.setAttribute('disabled',true);
-        }
+            if(stock==0){
+                botonAgregar.setAttribute('disabled',true);
+                botonAgregar.classList='btn btn-danger  agregarProducto';
+                botonAgregar.innerText='¡Sin stock';
+                selectorCantidad.setAttribute('disabled',true);
+            }
 
-        divBody.append(h5,p,botonAgregar,selectorCantidad);
-        divCard.append(imagenProducto,divBody);
-        productos.append(divCard);
-    });
+            divBody.append(p,h5,botonAgregar,selectorCantidad);
+            divCard.append(imagenProducto,divBody);
+            productos.append(divCard);
+        });
+
+    }
 
 }
 
+const buscarProducto = (event) =>{
+    event.preventDefault();
+    //Llamando a la tostada de otherFunctions
+    tostadaBuscando();
+    renderizarProductos(buscarProductosNombre(inputBuscarProductos.value));
+}
+
+
+const filtrarProductos = (event) =>{
+    event.preventDefault();
+    let categoria;
+    checkCategoria.forEach(check => {
+        if(check.checked){
+            arrayPorCategoria = (check.value==='Todos') ? arrayProductos : buscarProductosCategoria(check.value);
+        }
+    });
+
+    let arrayPorOrdenPrecio= (selectPrecio.value==='menorPrecio') ? ordenarProductosPrecioAscendente(arrayPorCategoria) : ordenarProductosPrecioDescendente(arrayPorCategoria);
+    
+    let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
+
+    renderizarProductos(arrayFiltrado);
+}
+
+function textPrecioMin(){
+    textPrecioMinimo.innerText=`$ ${precioMinimo.value}`;
+}
+
+function textPrecioMax(){
+    textPrecioMaximo.innerText=`$ ${precioMaximo.value}`;
+}
+
+
 /*--------------4-EventListeners-----*/
+
+btnBuscarProductos.addEventListener('click',buscarProducto);
+
+precioMinimo.addEventListener('change',textPrecioMin);
+
+precioMaximo.addEventListener('change',textPrecioMax);
+
+btnFiltrar.addEventListener('click',filtrarProductos);
+
 
 /*--------------5-Ejecuciones-----*/
 renderizarProductos(arrayProductos);

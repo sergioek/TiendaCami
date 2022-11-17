@@ -42,6 +42,22 @@ function alertaPersonalizable(titulo,texto,icono,textoBoton,colorBoton){
         confirmButtonColor:colorBoton,
     })
 }
+//Tostada 
+function tostadaBuscando (){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 500,
+        timerProgressBar: true,
+      });
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Buscando Productos...'
+      });
+}
+
 
 /*--------------------USUARIO LOGUEADO------------------*/
 //1-Query Selectors
