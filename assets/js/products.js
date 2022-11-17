@@ -67,10 +67,9 @@ const ordenarProductosPrecioDescendente = (arrayProd) =>{
  //Busca los productos de un rango de precio min y max. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
 const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
     let rangoMinimo = arrayProd.filter((producto => producto.precio >= valorMinimo ));
-    let rangoMaximo = arrayProd.filter((producto => producto.precio <= valorMaximo ));
+    let rangoMaximo = rangoMinimo.filter((producto => producto.precio <= valorMaximo ));
     
-    let productosRangPrecio= rangoMaximo.concat(rangoMaximo);
-    
+    let productosRangPrecio = rangoMaximo;
     return productosRangPrecio;
 }
 
@@ -154,7 +153,7 @@ const filtrarProductos = (event) =>{
     let arrayPorOrdenPrecio= (selectPrecio.value==='menorPrecio') ? ordenarProductosPrecioAscendente(arrayPorCategoria) : ordenarProductosPrecioDescendente(arrayPorCategoria);
     
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
-
+    
     renderizarProductos(arrayFiltrado);
 }
 
