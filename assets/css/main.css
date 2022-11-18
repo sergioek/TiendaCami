@@ -139,6 +139,9 @@
 .header .menu nav ul li a:hover, .header .menu nav ul a a:hover {
   color: #FA48D5;
 }
+.header .menu nav ul li #btnCarrito, .header .menu nav ul a #btnCarrito {
+  font-size: 1.5rem;
+}
 
 /*Termina Barra de navegacion*/
 /*Main all pages*/

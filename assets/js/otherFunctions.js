@@ -82,7 +82,9 @@ function tostadaProductoAgregado(nombre,cantidad,total){
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
-        onClick: function(){} // Callback after click
+        onClick: function(){
+            mostrarCarrito()
+        } // Callback after click
       }).showToast();
 }
 
@@ -98,7 +100,7 @@ function salirSesion(e){
     sessionStorage.removeItem('login');
     window.location.reload();
 }
-
+//Cambiar la barra de nav al loguearse
 function cambiarIngresar(){
     ingresa.removeChild(linkIngresar)
     const cerrarSesion = document.createElement('a');

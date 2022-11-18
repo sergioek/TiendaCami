@@ -1,5 +1,4 @@
 /*--------------PRODUCTOS--------------------*/
-
 /*--------------1-Variables y constantes-----*/
 
 /*--------------2-QuerySelectors-----*/
@@ -78,7 +77,7 @@ const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
     let productosRangPrecio = rangoMaximo;
     return productosRangPrecio;
 }
-
+//Renderiza el HTML de productos
 const renderizarProductos = (arrayProductos)=>{
     productos.innerHTML='';
    
@@ -119,6 +118,7 @@ const renderizarProductos = (arrayProductos)=>{
             selectorCantidad.classList='select m-2';
             selectorCantidad.setAttribute('id',`${codigo}`)
         
+            //Creamos opciones en el selector de cantidad
             for (let index = 0; index < stock; index++) {
                 let valor = index+1;
                 const option = document.createElement('option');
@@ -127,68 +127,75 @@ const renderizarProductos = (arrayProductos)=>{
                 selectorCantidad.append(option);
             }
 
+            //Si el stock es 0, desabilitamos el boton agregar al carrito
             if(stock==0){
                 botonAgregar.setAttribute('disabled',true);
                 botonAgregar.classList='btn btn-danger  agregarProducto';
                 botonAgregar.innerText='¡Sin stock';
                 selectorCantidad.setAttribute('disabled',true);
             }
-
+            //Insertamos todos los elementos HTML uno en otros
             divBody.append(p,h5,botonAgregar,selectorCantidad);
             divCard.append(imagenProducto,divBody);
             productos.append(divCard);
 
-        });
-        
+        }); 
 
     }
-
 }
 
+//Funcion buscar productos por nombre
 const buscarProducto = (event) =>{
     event.preventDefault();
     //Llamando a la tostada de otherFunctions
     tostadaBuscando();
     renderizarProductos(buscarProductosNombre(inputBuscarProductos.value));
+
+     //Para evitar not defined, addEventListener nuevamente al renderizar
+     botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+  
+    botonAgregarProducto.forEach(botonAgrProd => {
+        botonAgrProd.addEventListener('click',agregarCarrito)
+    });
 }
 
-
+//Filtrar productos
 const filtrarProductos = (event) =>{
-    
     event.preventDefault();
     tostadaBuscando();
-
+    //Filtrar por categoria 
     let categoria;
     checkCategoria.forEach(check => {
         if(check.checked){
             arrayPorCategoria = (check.value==='Todos') ? arrayProductos : buscarProductosCategoria(check.value);
         }
     });
-
+    //Por orden de precio 
     let arrayPorOrdenPrecio= (selectPrecio.value==='menorPrecio') ? ordenarProductosPrecioAscendente(arrayPorCategoria) : ordenarProductosPrecioDescendente(arrayPorCategoria);
-    
+
+    //Por rango de precio
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
     
     renderizarProductos(arrayFiltrado);
-
+    
+    //Para evitar not defined, addEventListener nuevamente al renderizar
      botonAgregarProducto = document.querySelectorAll('.agregarProducto');
-
+  
     botonAgregarProducto.forEach(botonAgrProd => {
         botonAgrProd.addEventListener('click',agregarCarrito)
     });
     
 }
-
+//Modifica el text del filtro por rango minimo de precio
 function textPrecioMin(){
     textPrecioMinimo.innerText=`$ ${precioMinimo.value}`;
 }
-
+//Modifica el text del filtro por rango maximo de precio
 function textPrecioMax(){
     textPrecioMaximo.innerText=`$ ${precioMaximo.value}`;
 }
 
 /*--------------4-EventListeners-----*/
-
 btnBuscarProductos.addEventListener('click',buscarProducto);
 
 precioMinimo.addEventListener('change',textPrecioMin);
@@ -197,225 +204,7 @@ precioMaximo.addEventListener('change',textPrecioMax);
 
 btnFiltrar.addEventListener('click',filtrarProductos);
 
-
-
 /*--------------5-Ejecuciones-----*/
 renderizarProductos(arrayProductos);
-
-
-
-/*-----------------CARRITO-----------------------*/
-/*--------------1-Variables y constantes-----*/
-//Array Carrito
-const arrayCarrito= JSON.parse(localStorage.getItem('carrito')) || [];
-
-/*--------------2-QuerySelectors-----*/
-let botonAgregarProducto = document.querySelectorAll('.agregarProducto');
-
-const btnCarrito = document.querySelector('#btnCarrito');
-
-/*--------------3-Funciones-----*/
-function contadorACero(){
-    btnCarrito.innerText= `+ 0`;
-}
-
-function actualizarContadorCarrito(){
-    btnCarrito.innerText= `+ ${arrayCarrito.length}`;
-}
-
-const existeProductoCarrito = (codigo)=>{
-    let existeProducto = ((arrayCarrito.some(producto => producto.codigo === codigo)));
-    
-    return existeProducto;
-}
-
-const buscarProductoCarrito = (codigo)=>{
-    let producto = ((arrayCarrito.find(producto => producto.codigo === codigo)));
-    
-    return producto;
-}
-
-const eliminarProductoCarrito = (indice)=>{
-   arrayCarrito.splice(indice,1);
-}
-
-const vaciarCarrito = ()=>{
-    localStorage.removeItem('carrito');
-    alertaExito('Su carrito fue eliminado con exito');
-    contadorACero();
-}
-
-//Suma el total de todos los productos del carrito
-const sumarTotalCarrito = ()=>{
-    const totalCarrito = arrayCarrito.reduce((acumulador,carrito) =>acumulador + carrito.total,0);
-
-    return totalCarrito;
-}
-
-const agregarCarrito = (event) =>{
-    if(!sessionStorage.getItem('login')){
-        window.location.href='login.html';
-    }
-  
-    let id= event.target.getAttribute('data-id');
-    const productoElegido = buscarProductoCodigo(id);
-
-    let selectorCant = document.querySelector(`#${id}`);
-    let cantidad = selectorCant.value;
-
-    if(cantidad > productoElegido.stock){
-        alertaError('La cantidad elegida supera al stock disponible.');
-    }else{
-
-        if(existeProductoCarrito(productoElegido.codigo)){
-            let product =buscarProductoCarrito(productoElegido.codigo);
-
-           let indice= arrayCarrito[product.indexOf];
-
-            eliminarProductoCarrito(indice);
-
-        }
-
-        const producto={
-            ...productoElegido,
-            cantidad,
-            total:cantidad*productoElegido.precio
-        };
-        
-        arrayCarrito.push(producto);
-
-        actualizarContadorCarrito();
-
-        localStorage.setItem('carrito',JSON.stringify(arrayCarrito));
-
-        //Alerta de tostify
-        tostadaProductoAgregado(producto.nombre,producto.cantidad,producto.total);
-
-    }
-    
-
-}
-
-
-const eliminarProducto = (event)=>{
-    let codigo = event.target.getAttribute('data-id');
-   
-    let product =buscarProductoCarrito(codigo);
-
-    let indice= arrayCarrito[product.indexOf];
-
-    eliminarProductoCarrito(indice);
-    actualizarContadorCarrito()
-    alertaExito('Se elimino un producto del carrito');
-}
-
-const finalizarCompra = ()=>{
-    if(arrayCarrito.length === 0){
-        alertaInformacion('No hay productos en el carrito para efectuar la compra')
-    }else{
-        localStorage.removeItem('carrito');
-        let usuario = JSON.parse(sessionStorage.getItem('login'));
-        contadorACero();
-        alertaPersonalizable('Compra Finalizada',`Muchas gracias por su compra ${usuario.nombre} ${usuario.apellido}. El producto esta en proceso de envío a su domicilio.`,'success','Cerrar','#ECD813'); 
-    } 
-    
-}
-
-
-const mostrarCarrito = () =>{
-    let total = sumarTotalCarrito();
-// RIGHT SIDEBAR
- Swal.fire({
-    title: 'Carrito de compras',
-    html:`
-    <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Codigo</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Total</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody id="tbody">
-   
-    </tbody>
-
-    
-  </table>
-
-  <h3 class="mt-3">Total Compra $${total}</h3>
-  <button class="btn btn-primary mt-3" id='btnFinalizarCompra'>Finalizar Compra</button>
-
-  <button class="btn btn-danger mt-3" id='btnVaciarCarrito'>Vaciar carrito</button>
-    `,
-    position: 'top-end',
-    showClass: {
-      popup: `
-        animate__animated
-        animate__fadeInRight
-        animate__faster
-      `
-    },
-    hideClass: {
-      popup: `
-        animate__animated
-        animate__fadeOutRight
-        animate__faster
-      `
-    },
-    grow: 'column',
-    width: 1000,
-    showConfirmButton: false,
-    showCloseButton: true
-    
-  })
-
-  let tbody = document.querySelector('#tbody');
-
-  arrayCarrito.forEach(producto => {
-     tbody.innerHTML+=`
-     <tr>
-        <td>${producto.codigo}</td>
-        <td>${producto.nombre}</td>
-        <td>${producto.cantidad}</td>
-        <td>$${producto.precio}</td>
-        <td>$${producto.total}</td>
-        <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
-     </tr>
-     `
-  });
-
- 
-  const btnFinalizarCompra=document.querySelector('#btnFinalizarCompra');
-
-  btnFinalizarCompra.addEventListener('click',finalizarCompra); 
-
-  const btnVaciarCarrito = document.querySelector('#btnVaciarCarrito');
-
-  btnVaciarCarrito.addEventListener('click',vaciarCarrito); 
-
-  const btnEliminarProdCarrito = document.querySelectorAll('.btnEliminarProdCarrito');
-
-  
-  btnEliminarProdCarrito.forEach(producto => {
-    producto.addEventListener('click',eliminarProducto);
-  });
-
-}
-
-
-/*--------------4-EventListeners-----*/
-btnCarrito.addEventListener('click',mostrarCarrito)
-
-botonAgregarProducto.forEach(botonAgrProd => {
-    botonAgrProd.addEventListener('click',agregarCarrito)
-});
-
-
-/*--------------5-Ejecuciones-----*/
-actualizarContadorCarrito();
 
 
