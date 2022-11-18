@@ -17,6 +17,7 @@ Estas tecnologías se utilizaron para la elaboración de este proyecto:
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html): Version 3
 * [SASS](https://sass-lang.com/): Version 1.54.9
 * [BOOTSTRAP](https://getbootstrap.com/): Version 5.2
+* [JAVASCRIPT](https://developer.mozilla.org/es/docs/Web/JavaScript): ECMAScript 6
 
 ## GitHub Pages
 ***
