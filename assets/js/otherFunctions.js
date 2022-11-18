@@ -10,6 +10,8 @@ function alertaInformacion(texto){
         text:texto,
         icon:'info',
         confirmButtonText:'Aceptar',
+        color:'#FCFCFC',
+        background:'#252525'
     })
 }
 //Alerta de errror 
@@ -20,6 +22,8 @@ function alertaError(texto){
         icon:'error',
         confirmButtonText:'Aceptar',
         confirmButtonColor: '#DB2801',
+        color:'#FCFCFC',
+        background:'#252525'
     })
 }
 //Alerta exito
@@ -30,6 +34,8 @@ function alertaExito(titulo,texto){
         icon:'success',
         confirmButtonText:'Aceptar',
         confirmButtonColor:'#3085d6',
+        color:'#FCFCFC',
+        background:'#252525'
     })
 }
 //Funcion de alertas personalizables
@@ -40,6 +46,9 @@ function alertaPersonalizable(titulo,texto,icono,textoBoton,colorBoton){
         icon:icono,
         confirmButtonText:textoBoton,
         confirmButtonColor:colorBoton,
+        color:'#FCFCFC',
+        background:'#252525'
+        
     })
 }
 //Tostada 
@@ -48,16 +57,34 @@ function tostadaBuscando (){
         toast: true,
         position: 'center',
         showConfirmButton: false,
-        timer: 500,
+        timer: 1000,
         timerProgressBar: true,
       });
       
       Toast.fire({
         icon: 'success',
-        title: 'Buscando Productos...'
+        title: 'Buscando Productos...',
+        color:'#FCFCFC',
+        background:'#252525'
       });
 }
 
+// Tostada producto agregado Tostify.js
+function tostadaProductoAgregado(nombre,cantidad,total){
+    Toastify({
+        text: `Producto agregado al carrito ${nombre} x ${cantidad} $ ${total}`,
+        duration: 2000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+}
 
 /*--------------------USUARIO LOGUEADO------------------*/
 //1-Query Selectors

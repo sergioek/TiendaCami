@@ -23,6 +23,7 @@ const precioMaximo = document.querySelector('#precioMaximo');
 
 const btnFiltrar = document.querySelector('#btnFiltrar');
 
+
 /*--------------3-Funciones-----*/
 //Verifica que exista un producto en el array haciendo uso del campo codigo( campo unique). Luego retona true o false
 const existeProducto = (codigo) =>{
@@ -35,6 +36,11 @@ const buscarProductoCodigo = (codigo) =>{
     let productoCodigo = ((arrayProductos.find(producto => producto.codigo === codigo)));
     
     return productoCodigo;
+}
+
+//Devuelve todos los productos 
+const todosLosProductos = () =>{
+    return arrayProductos;
 }
 //Buscamos los productos de acuerdo al nombre. Devuelve un array
 const buscarProductosNombre = (nombre) =>{
@@ -75,8 +81,10 @@ const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
 
 const renderizarProductos = (arrayProductos)=>{
     productos.innerHTML='';
+   
     if(arrayProductos.length == 0){
-        alertaPersonalizable('Busqueda','No se encontraron resultados en la búsqueda','error','Ok','red')
+        renderizarProductos(todosLosProductos());
+        alertaPersonalizable('Búsqueda','No se encontraron resultados en la búsqueda.','error','Ok','red')
     }else{
         arrayProductos.forEach(producto => {
             const {nombre,precio,imagen,stock,codigo} = producto
@@ -102,12 +110,14 @@ const renderizarProductos = (arrayProductos)=>{
 
             const botonAgregar = document.createElement('button');
             botonAgregar.setAttribute('data-id',`${codigo}`)
-            botonAgregar.classList='btn btn-outline-success bi bi-plus agregarProducto';
-            botonAgregar.innerText='Agregar';
 
+            botonAgregar.classList='agregarProducto btn btn-outline-success bi bi-plus';
+
+            botonAgregar.innerText='Agregar';
+          
             const selectorCantidad = document.createElement('select');
             selectorCantidad.classList='select m-2';
-        
+            selectorCantidad.setAttribute('id',`${codigo}`)
         
             for (let index = 0; index < stock; index++) {
                 let valor = index+1;
@@ -127,7 +137,9 @@ const renderizarProductos = (arrayProductos)=>{
             divBody.append(p,h5,botonAgregar,selectorCantidad);
             divCard.append(imagenProducto,divBody);
             productos.append(divCard);
+
         });
+        
 
     }
 
@@ -142,7 +154,10 @@ const buscarProducto = (event) =>{
 
 
 const filtrarProductos = (event) =>{
+    
     event.preventDefault();
+    tostadaBuscando();
+
     let categoria;
     checkCategoria.forEach(check => {
         if(check.checked){
@@ -155,6 +170,13 @@ const filtrarProductos = (event) =>{
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
     
     renderizarProductos(arrayFiltrado);
+
+     botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+
+    botonAgregarProducto.forEach(botonAgrProd => {
+        botonAgrProd.addEventListener('click',agregarCarrito)
+    });
+    
 }
 
 function textPrecioMin(){
@@ -164,7 +186,6 @@ function textPrecioMin(){
 function textPrecioMax(){
     textPrecioMaximo.innerText=`$ ${precioMaximo.value}`;
 }
-
 
 /*--------------4-EventListeners-----*/
 
@@ -177,6 +198,224 @@ precioMaximo.addEventListener('change',textPrecioMax);
 btnFiltrar.addEventListener('click',filtrarProductos);
 
 
+
 /*--------------5-Ejecuciones-----*/
 renderizarProductos(arrayProductos);
+
+
+
+/*-----------------CARRITO-----------------------*/
+/*--------------1-Variables y constantes-----*/
+//Array Carrito
+const arrayCarrito= JSON.parse(localStorage.getItem('carrito')) || [];
+
+/*--------------2-QuerySelectors-----*/
+let botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+
+const btnCarrito = document.querySelector('#btnCarrito');
+
+/*--------------3-Funciones-----*/
+function contadorACero(){
+    btnCarrito.innerText= `+ 0`;
+}
+
+function actualizarContadorCarrito(){
+    btnCarrito.innerText= `+ ${arrayCarrito.length}`;
+}
+
+const existeProductoCarrito = (codigo)=>{
+    let existeProducto = ((arrayCarrito.some(producto => producto.codigo === codigo)));
+    
+    return existeProducto;
+}
+
+const buscarProductoCarrito = (codigo)=>{
+    let producto = ((arrayCarrito.find(producto => producto.codigo === codigo)));
+    
+    return producto;
+}
+
+const eliminarProductoCarrito = (indice)=>{
+   arrayCarrito.splice(indice,1);
+}
+
+const vaciarCarrito = ()=>{
+    localStorage.removeItem('carrito');
+    alertaExito('Su carrito fue eliminado con exito');
+    contadorACero();
+}
+
+//Suma el total de todos los productos del carrito
+const sumarTotalCarrito = ()=>{
+    const totalCarrito = arrayCarrito.reduce((acumulador,carrito) =>acumulador + carrito.total,0);
+
+    return totalCarrito;
+}
+
+const agregarCarrito = (event) =>{
+    if(!sessionStorage.getItem('login')){
+        window.location.href='login.html';
+    }
+  
+    let id= event.target.getAttribute('data-id');
+    const productoElegido = buscarProductoCodigo(id);
+
+    let selectorCant = document.querySelector(`#${id}`);
+    let cantidad = selectorCant.value;
+
+    if(cantidad > productoElegido.stock){
+        alertaError('La cantidad elegida supera al stock disponible.');
+    }else{
+
+        if(existeProductoCarrito(productoElegido.codigo)){
+            let product =buscarProductoCarrito(productoElegido.codigo);
+
+           let indice= arrayCarrito[product.indexOf];
+
+            eliminarProductoCarrito(indice);
+
+        }
+
+        const producto={
+            ...productoElegido,
+            cantidad,
+            total:cantidad*productoElegido.precio
+        };
+        
+        arrayCarrito.push(producto);
+
+        actualizarContadorCarrito();
+
+        localStorage.setItem('carrito',JSON.stringify(arrayCarrito));
+
+        //Alerta de tostify
+        tostadaProductoAgregado(producto.nombre,producto.cantidad,producto.total);
+
+    }
+    
+
+}
+
+
+const eliminarProducto = (event)=>{
+    let codigo = event.target.getAttribute('data-id');
+   
+    let product =buscarProductoCarrito(codigo);
+
+    let indice= arrayCarrito[product.indexOf];
+
+    eliminarProductoCarrito(indice);
+    actualizarContadorCarrito()
+    alertaExito('Se elimino un producto del carrito');
+}
+
+const finalizarCompra = ()=>{
+    if(arrayCarrito.length === 0){
+        alertaInformacion('No hay productos en el carrito para efectuar la compra')
+    }else{
+        localStorage.removeItem('carrito');
+        let usuario = JSON.parse(sessionStorage.getItem('login'));
+        contadorACero();
+        alertaPersonalizable('Compra Finalizada',`Muchas gracias por su compra ${usuario.nombre} ${usuario.apellido}. El producto esta en proceso de envío a su domicilio.`,'success','Cerrar','#ECD813'); 
+    } 
+    
+}
+
+
+const mostrarCarrito = () =>{
+    let total = sumarTotalCarrito();
+// RIGHT SIDEBAR
+ Swal.fire({
+    title: 'Carrito de compras',
+    html:`
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+   
+    </tbody>
+
+    
+  </table>
+
+  <h3 class="mt-3">Total Compra $${total}</h3>
+  <button class="btn btn-primary mt-3" id='btnFinalizarCompra'>Finalizar Compra</button>
+
+  <button class="btn btn-danger mt-3" id='btnVaciarCarrito'>Vaciar carrito</button>
+    `,
+    position: 'top-end',
+    showClass: {
+      popup: `
+        animate__animated
+        animate__fadeInRight
+        animate__faster
+      `
+    },
+    hideClass: {
+      popup: `
+        animate__animated
+        animate__fadeOutRight
+        animate__faster
+      `
+    },
+    grow: 'column',
+    width: 600,
+    showConfirmButton: false,
+    showCloseButton: true
+    
+  })
+
+  let tbody = document.querySelector('#tbody');
+
+  arrayCarrito.forEach(producto => {
+     tbody.innerHTML+=`
+     <tr>
+        <td>${producto.codigo}</td>
+        <td>${producto.nombre}</td>
+        <td>${producto.cantidad}</td>
+        <td>$${producto.precio}</td>
+        <td>$${producto.total}</td>
+        <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
+     </tr>
+     `
+  });
+
+ 
+  const btnFinalizarCompra=document.querySelector('#btnFinalizarCompra');
+
+  btnFinalizarCompra.addEventListener('click',finalizarCompra); 
+
+  const btnVaciarCarrito = document.querySelector('#btnVaciarCarrito');
+
+  btnVaciarCarrito.addEventListener('click',vaciarCarrito); 
+
+  const btnEliminarProdCarrito = document.querySelectorAll('.btnEliminarProdCarrito');
+
+  
+  btnEliminarProdCarrito.forEach(producto => {
+    producto.addEventListener('click',eliminarProducto);
+  });
+
+}
+
+
+/*--------------4-EventListeners-----*/
+btnCarrito.addEventListener('click',mostrarCarrito)
+
+botonAgregarProducto.forEach(botonAgrProd => {
+    botonAgrProd.addEventListener('click',agregarCarrito)
+});
+
+
+/*--------------5-Ejecuciones-----*/
+actualizarContadorCarrito();
+
 
