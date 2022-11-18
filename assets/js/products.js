@@ -367,7 +367,7 @@ const mostrarCarrito = () =>{
       `
     },
     grow: 'column',
-    width: 600,
+    width: 1000,
     showConfirmButton: false,
     showCloseButton: true
     
