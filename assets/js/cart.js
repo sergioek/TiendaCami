@@ -1,7 +1,7 @@
 /*-----------------CARRITO-----------------------*/
 /*--------------1-Variables y constantes-----*/
 //Array Carrito que se guarda en el localstrorage
-const arrayCarrito= JSON.parse(localStorage.getItem('carrito')) || [];
+let arrayCarrito= JSON.parse(localStorage.getItem('carrito')) || [];
 
 /*--------------2-QuerySelectors-----*/
 //Boton agregar producto
@@ -34,16 +34,14 @@ const buscarProductoCarrito = (codigo)=>{
 const eliminarProductoCarrito = (indice)=>{
    arrayCarrito.splice(indice,1);
 }
+
 //Vacia el carrito del localstrorage
 const vaciarCarrito = ()=>{
-    localStorage.removeItem('carrito');
-    
-    arrayCarrito.forEach((indice) => {
-      arrayCarrito.splice(indice,1)
-    });
-
-    alertaExito('Su carrito fue eliminado con exito');
-    contadorACero();
+  localStorage.removeItem('carrito');
+  arrayCarrito= [];
+  alertaExito('Su carrito fue eliminado con exito');
+  contadorACero();
+ 
 }
 
 //Suma el total de todos los productos del carrito
@@ -72,8 +70,7 @@ const agregarCarrito = (event) =>{
         if(existeProductoCarrito(productoElegido.codigo)){
             let product =buscarProductoCarrito(productoElegido.codigo);
 
-           let indice= arrayCarrito[product.indexOf];
-
+           let indice= arrayCarrito.indexOf(product);
             eliminarProductoCarrito(indice);
 
         }
@@ -127,28 +124,34 @@ const mostrarCarrito = () =>{
  Swal.fire({
     title: 'Carrito de compras',
     html:`
-    <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Codigo</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Total</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody id="tbody">
+    <div class='table-responsive'>
+      <table class="table table-sm tablaCarrito">
+        <thead>
+          <tr>
+            <th scope="col">Cod.</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cant.</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody id="tbody">
    
-    </tbody>
+        </tbody>
 
     
-  </table>
+      </table>
+    </div>
 
   <h3 class="mt-3">Total Compra $${total}</h3>
-  <button class="btn btn-primary mt-3" id='btnFinalizarCompra'>Finalizar Compra</button>
 
-  <button class="btn btn-danger mt-3" id='btnVaciarCarrito'>Vaciar carrito</button>
+  <div class ='col'>
+    <button class="btn btn-primary mt-3 col-auto" id='btnFinalizarCompra'>Finalizar Compra</button>
+
+    <button class="btn btn-danger mt-3 col-auto" id='btnVaciarCarrito'>Vaciar carrito</button>
+  </div>
+  
     `,
     position: 'top-end',
     showClass: {
@@ -173,14 +176,13 @@ const mostrarCarrito = () =>{
   })
 
   let tbody = document.querySelector('#tbody');
-
+  tbody.innerHTML='';
   arrayCarrito.forEach(producto => {
      tbody.innerHTML+=`
      <tr>
         <td>${producto.codigo}</td>
         <td>${producto.nombre}</td>
         <td>${producto.cantidad}</td>
-        <td>$${producto.precio}</td>
         <td>$${producto.total}</td>
         <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
      </tr>
@@ -204,6 +206,8 @@ const mostrarCarrito = () =>{
   });
 
 }
+
+
 
 
 /*--------------4-EventListeners-----*/

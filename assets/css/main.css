@@ -442,6 +442,13 @@
   height: 2.1rem;
 }
 
+.tablaCarrito thead tr th {
+  font-size: 1rem;
+}
+.tablaCarrito tbody tr td {
+  font-size: 1rem;
+}
+
 /*Fin main productos------------------------------*/
 #mainLogin {
   display: flex;

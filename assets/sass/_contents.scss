@@ -287,8 +287,26 @@
         
         }  
     }
+
+   
 }
 
+.tablaCarrito{
+    thead{
+        tr{
+            th{
+                font-size: 1rem;
+            }
+        } 
+    }
+    tbody{
+        tr{
+            td{
+                font-size: 1rem;
+            }
+        }
+    }
+}
 /*Fin main productos------------------------------*/
 
 #mainLogin{
