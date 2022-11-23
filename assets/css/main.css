@@ -97,7 +97,7 @@
   animation: titulo 3s linear 0s infinite;
 }
 .header .barraNavegacion .barraNavegacion__buscador {
-  margin-top: 2rem;
+  margin-top: 4rem;
   display: none;
 }
 .header .barraNavegacion .barraNavegacion__buscador form input {
@@ -139,8 +139,16 @@
 .header .menu nav ul li a:hover, .header .menu nav ul a a:hover {
   color: #FA48D5;
 }
-.header .menu nav ul li #btnCarrito, .header .menu nav ul a #btnCarrito {
-  font-size: 1.5rem;
+.header .menu nav ul li .carrito, .header .menu nav ul a .carrito {
+  font-size: 1.2rem;
+  background-color: #FFFFFF;
+  color: #eb02bc;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Termina Barra de navegacion*/
@@ -441,12 +449,33 @@
   width: 3rem;
   height: 2.1rem;
 }
+#mainProductos .carritoFlotante {
+  position: fixed;
+  top: 400px;
+  right: 10px;
+  background-color: #eb02bc;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}
 
+.tablaCarrito {
+  text-align: start;
+}
 .tablaCarrito thead tr th {
   font-size: 1rem;
 }
 .tablaCarrito tbody tr td {
   font-size: 1rem;
+}
+.tablaCarrito tbody tr .textNombre {
+  font-size: 0.8rem;
 }
 
 /*Fin main productos------------------------------*/
@@ -625,6 +654,13 @@
   }
   .header .menu nav ul li, .header .menu nav ul a {
     font-size: 0.9rem;
+  }
+  .header .menu nav ul li #btnCarrito, .header .menu nav ul a #btnCarrito {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
   .footer {
     /*Footer informacion*/

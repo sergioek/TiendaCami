@@ -288,10 +288,26 @@
         }  
     }
 
+    .carritoFlotante{
+       position: fixed;
+       top:400px;
+       right: 10px;
+       background-color: $pink-dark;
+       font-size: 1.2rem;
+       font-weight: bold;
+       width: 5rem;
+       height: 5rem;
+       border-radius: 2.5rem;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       color: $white;
+    }
    
 }
 
 .tablaCarrito{
+    text-align: start;
     thead{
         tr{
             th{
@@ -300,9 +316,15 @@
         } 
     }
     tbody{
+      
         tr{
+            
             td{
                 font-size: 1rem;
+            }
+
+            .textNombre{
+                font-size: 0.8rem
             }
         }
     }

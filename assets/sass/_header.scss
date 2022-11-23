@@ -57,13 +57,14 @@
                         animation: titulo 3s linear 0s infinite;
                     }  
                 }
+                
             }
-            
-
         }
 
+    
         & .barraNavegacion__buscador{
-            margin-top: 2rem;
+            margin-top: 4rem;
+            
             form input{
                 text-align: start;
                 @extend .bordes;
@@ -109,9 +110,18 @@
                         color: $pink;
                     }
 
-                    #btnCarrito{
-                        font-size: 1.5rem;
+                    .carrito{
+                        font-size: 1.2rem;
+                        background-color: $white;
+                        color: $pink-dark;
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 2.5rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
+
                 }
             }
         }

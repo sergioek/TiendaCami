@@ -8,15 +8,18 @@ let arrayCarrito= JSON.parse(localStorage.getItem('carrito')) || [];
 let botonAgregarProducto = document.querySelectorAll('.agregarProducto');
 //Boton carrito de la barra de navegacion
 const btnCarrito = document.querySelector('#btnCarrito');
+const btnCarritoFlotante = document.querySelector('#btnCarritoFlotante');
 
 /*--------------3-Funciones-----*/
 //Pone el contador que se ve en la barra de navegacion en 0
 function contadorACero(){
     btnCarrito.innerText= `+ 0`;
+    btnCarritoFlotante.innerText= `+ 0`;
 }
 //Incrementa el contador de la barra de nav. cuando se agrega un producto
 function actualizarContadorCarrito(){
     btnCarrito.innerText= `+ ${arrayCarrito.length}`;
+    btnCarritoFlotante.innerText= `+ ${arrayCarrito.length}`;
 }
 //Comprueba si un producto fue agregado previamente al carrito
 const existeProductoCarrito = (codigo)=>{
@@ -129,7 +132,6 @@ const mostrarCarrito = () =>{
       <table class="table table-sm tablaCarrito">
         <thead>
           <tr>
-            <th scope="col">Cod.</th>
             <th scope="col">Nombre</th>
             <th scope="col">Cant.</th>
             <th scope="col">Total</th>
@@ -181,8 +183,7 @@ const mostrarCarrito = () =>{
   arrayCarrito.forEach(producto => {
      tbody.innerHTML+=`
      <tr>
-        <td>${producto.codigo}</td>
-        <td>${producto.nombre}</td>
+        <td class='textNombre'>${producto.nombre}</td>
         <td>${producto.cantidad}</td>
         <td>$${producto.total}</td>
         <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
@@ -214,6 +215,8 @@ const mostrarCarrito = () =>{
 /*--------------4-EventListeners-----*/
 //Btn mostrar carrito
 btnCarrito.addEventListener('click',mostrarCarrito)
+btnCarritoFlotante.addEventListener('click',mostrarCarrito)
+
 //Boton agr producto
 botonAgregarProducto.forEach(botonAgrProd => {
     botonAgrProd.addEventListener('click',agregarCarrito)
