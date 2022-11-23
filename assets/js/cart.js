@@ -33,6 +33,7 @@ const buscarProductoCarrito = (codigo)=>{
 //Elimina un producto del carrito por indice del array
 const eliminarProductoCarrito = (indice)=>{
    arrayCarrito.splice(indice,1);
+   localStorage.setItem('carrito',JSON.stringify(arrayCarrito));
 }
 
 //Vacia el carrito del localstrorage
@@ -98,9 +99,9 @@ const eliminarProducto = (event)=>{
    
     let product =buscarProductoCarrito(codigo);
 
-    let indice= arrayCarrito[product.indexOf];
-
+    let indice= arrayCarrito.indexOf(product);
     eliminarProductoCarrito(indice);
+
     actualizarContadorCarrito()
     alertaExito('Se elimino un producto del carrito');
 }
