@@ -108,7 +108,7 @@ const eliminarProducto = (event)=>{
 //Finalizar compra
 const finalizarCompra = ()=>{
     if(arrayCarrito.length === 0){
-        alertaInformacion('No hay productos en el carrito para efectuar la compra')
+        alertaInformacion('No hay productos en el carrito para efectuar la compra');
     }else{
         localStorage.removeItem('carrito');
         let usuario = JSON.parse(sessionStorage.getItem('login'));

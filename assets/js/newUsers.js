@@ -129,11 +129,7 @@ const nuevoUsuario = function (event) {
 
     let dniIngresado = Number(dni.value);
 
-    if(verificarUsuarioEmail(email.value) || verificarUsuarioDni(dniIngresado)){
-
-     alertaInformacion('El email o DNI ingresados ya estan registrados como usuarios. Por favor, verifique los datos.');
-        
-    }else{
+    if(!verificarUsuarioEmail(email.value) || !verificarUsuarioDni(dniIngresado)){
         arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,domicilio.value,email.value,contrasena.value));
         console.log(arrayUsuarios);
 
@@ -145,6 +141,8 @@ const nuevoUsuario = function (event) {
         domicilio.value='';
         email.value='';
         contrasena.value='';
+    }else{
+        alertaInformacion('El email o DNI ingresados ya estan registrados como usuarios. Por favor, verifique los datos.');
     }
 }
 

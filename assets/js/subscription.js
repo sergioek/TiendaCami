@@ -19,20 +19,19 @@ const nuevaSuscripcion = (event) =>{
     //Validando que tenga el formato de email
     if(validEmail.test(emailIngresado)){
         //Enviando el valor a verificar si existe una suscripcion
-        if(verificarSuscripcion(emailIngresado)){
+        if(!verificarSuscripcion(emailIngresado)){
+             //Agregando una suscripcion al array
+             let nuevaSuscripcion;
+             arraySuscriptos.push(nuevaSuscripcion = new Suscripcion(emailIngresado,true));
+ 
+             //Mostrando alerta de exito
+             alertaExito('¡Suscripción exitosa!','Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!');
+ 
+             //Vaciar input email
+             emailSuscribirse.value='';
+        }else{
             //Mostrando alerta
             alertaInformacion('El email ingresado ya esta suscripto a nuestras novedades. Muchas Gracias');
-
-        }else{
-            //Agregando una suscripcion al array
-            let nuevaSuscripcion;
-            arraySuscriptos.push(nuevaSuscripcion = new Suscripcion(emailIngresado,true));
-
-            //Mostrando alerta de exito
-            alertaExito('¡Suscripción exitosa!','Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!');
-
-            //Vaciar input email
-            emailSuscribirse.value='';
         }
 
     }else{
