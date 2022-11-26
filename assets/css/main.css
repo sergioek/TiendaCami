@@ -477,6 +477,11 @@
 .tablaCarrito tbody tr .textNombre {
   font-size: 0.8rem;
 }
+.tablaCarrito tbody tr .inputCantidad {
+  width: 50px;
+  text-align: center;
+  border: 2px solid black;
+}
 
 /*Fin main productos------------------------------*/
 #mainLogin {

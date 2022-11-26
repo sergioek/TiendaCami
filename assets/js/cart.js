@@ -57,9 +57,7 @@ const sumarTotalCarrito = ()=>{
 //Agrega un producto al carrito
 const agregarCarrito = (event) =>{
     //El usuario debe iniciar sesion para comprar
-    if(!sessionStorage.getItem('login')){
-        window.location.href='login.html';
-    }
+    comprobarLogin()
     //Buscamos el poducto
     let id= event.target.getAttribute('data-id');
     const productoElegido = buscarProductoCodigo(id);
@@ -108,8 +106,33 @@ const eliminarProducto = (event)=>{
     actualizarContadorCarrito()
     alertaExito('Se elimino un producto del carrito');
 }
-//Finalizar compra
-const finalizarCompra = ()=>{
+
+//Modificar Cantidad de productos del carrito
+
+const modificarCantidadProducto = (event)=>{
+  let input= event.target;
+  let codigo = input.getAttribute('data-id');
+  let cantidad = input.value;
+  let product= buscarProductoCarrito(codigo);
+  let indice= arrayCarrito.indexOf(product);
+  eliminarProductoCarrito(indice);
+  //Creando un objeto nuevo 
+  const producto={
+    ...product,
+    cantidad,
+    total:cantidad*product.precio
+  };
+  //Enviando al array
+  arrayCarrito.push(producto);
+
+  actualizarContadorCarrito();
+  mostrarCarrito()
+  //Guardando prod en el carrito
+  localStorage.setItem('carrito',JSON.stringify(arrayCarrito));
+}
+
+//Comprar carrito
+const comprarCarrito = ()=>{
     if(arrayCarrito.length === 0){
         alertaInformacion('No hay productos en el carrito para efectuar la compra');
     }else{
@@ -123,6 +146,10 @@ const finalizarCompra = ()=>{
 
 //Muestra el carrito como sidebar
 const mostrarCarrito = () =>{
+    //Mostrar carrito si esta logueado
+    comprobarLogin()
+
+    //Sumar el total del carrito
     let total = sumarTotalCarrito();
 // RIGHT SIDEBAR
  Swal.fire({
@@ -150,7 +177,7 @@ const mostrarCarrito = () =>{
   <h3 class="mt-3">Total Compra $${total}</h3>
 
   <div class ='col'>
-    <button class="btn btn-primary mt-3 col-auto" id='btnFinalizarCompra'>Finalizar Compra</button>
+    <button class="btn btn-primary mt-3 col-auto" id='btnComprarCarrito'>Comprar carrito</button>
 
     <button class="btn btn-danger mt-3 col-auto" id='btnVaciarCarrito'>Vaciar carrito</button>
   </div>
@@ -184,7 +211,9 @@ const mostrarCarrito = () =>{
      tbody.innerHTML+=`
      <tr>
         <td class='textNombre'>${producto.nombre}</td>
-        <td>${producto.cantidad}</td>
+        <td>
+          <input type='number' value='${producto.cantidad}' class='inputCantidad' max='${producto.stock}' min='1' data-id='${producto.codigo}'value='${producto.cantidad}'>
+        </td>
         <td>$${producto.total}</td>
         <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
      </tr>
@@ -192,9 +221,9 @@ const mostrarCarrito = () =>{
   });
 
  
-  const btnFinalizarCompra=document.querySelector('#btnFinalizarCompra');
+  const btnComprarCarrito=document.querySelector('#btnComprarCarrito');
 
-  btnFinalizarCompra.addEventListener('click',finalizarCompra); 
+  btnComprarCarrito.addEventListener('click',comprarCarrito); 
 
   const btnVaciarCarrito = document.querySelector('#btnVaciarCarrito');
 
@@ -202,6 +231,11 @@ const mostrarCarrito = () =>{
 
   const btnEliminarProdCarrito = document.querySelectorAll('.btnEliminarProdCarrito');
 
+  const inputCantidad= document.querySelectorAll('.inputCantidad');
+
+  inputCantidad.forEach(producto => {
+    producto.addEventListener('change',modificarCantidadProducto);
+  });
   
   btnEliminarProdCarrito.forEach(producto => {
     producto.addEventListener('click',eliminarProducto);

@@ -111,6 +111,13 @@ function cambiarIngresar(){
     const btnCerrarSesion = document.querySelector('#btnCerrarSesion');
     ingresa.append(cerrarSesion);
 }
+
+const comprobarLogin = ()=>{
+    if(!sessionStorage.getItem('login')){
+        window.location.href='login.html';
+    }
+}
+
 const sesionIniciada = JSON.parse(sessionStorage.getItem('login')) && (creaCuenta.remove(), cambiarIngresar());
 
 //3 - EventListeners
