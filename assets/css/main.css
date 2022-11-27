@@ -483,6 +483,11 @@
   border: 2px solid black;
 }
 
+.datosPago {
+  color: #FFFFFF;
+  font-family: "Raleway", sans-serif;
+}
+
 /*Fin main productos------------------------------*/
 #mainLogin {
   display: flex;

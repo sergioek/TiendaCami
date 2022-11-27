@@ -48,13 +48,15 @@ const iniciarSesion = function (event){
 
     if(verificarUsuarioEmail(emailInicioSesion.value)){
         //Aplicando la desestructuracion de objetos
-        const {nombre,apellido,email,contrasena} = buscarUsuario(emailInicioSesion.value);
+        const {nombre,apellido,email,contrasena,domicilio,dni} = buscarUsuario(emailInicioSesion.value);
        
         if(contrasena === contrasenaInicioSesion.value){
             const login = {
                 nombre:nombre,
                 apellido:apellido,
                 email:email,
+                domicilio:domicilio,
+                dni:dni,
             }
 
             sessionStorage.setItem('login',JSON.stringify(login));

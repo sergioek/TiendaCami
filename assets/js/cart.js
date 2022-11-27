@@ -43,7 +43,7 @@ const eliminarProductoCarrito = (indice)=>{
 const vaciarCarrito = ()=>{
   localStorage.removeItem('carrito');
   arrayCarrito= [];
-  alertaExito('Su carrito fue eliminado con exito');
+  alertaExito('Se elimino el carrito');
   contadorACero();
  
 }
@@ -108,7 +108,6 @@ const eliminarProducto = (event)=>{
 }
 
 //Modificar Cantidad de productos del carrito
-
 const modificarCantidadProducto = (event)=>{
   let input= event.target;
   let codigo = input.getAttribute('data-id');
@@ -132,17 +131,138 @@ const modificarCantidadProducto = (event)=>{
 }
 
 //Comprar carrito
-const comprarCarrito = ()=>{
-    if(arrayCarrito.length === 0){
-        alertaInformacion('No hay productos en el carrito para efectuar la compra');
-    }else{
-        localStorage.removeItem('carrito');
-        let usuario = JSON.parse(sessionStorage.getItem('login'));
-        contadorACero();
-        alertaPersonalizable('Compra Finalizada',`Muchas gracias por su compra ${usuario.nombre} ${usuario.apellido}. El producto esta en proceso de envío a su domicilio.`,'success','Cerrar','#ECD813'); 
-    } 
-    
+const compraFinalizada = ()=>{
+  localStorage.removeItem('carrito');
+  let usuario = JSON.parse(sessionStorage.getItem('login'));
+  contadorACero();
+  alertaPersonalizable('Compra Finalizada',`Muchas gracias por su compra ${usuario.nombre} ${usuario.apellido}. El producto esta en proceso de envío a su domicilio.Verifique en su correo electrónico su factura y código de seguimiento de OCA.`,'success','Cerrar','#ECD813'); 
 }
+
+const elegirPago = ()=>{
+  // RIGHT SIDEBAR
+  //Datos de usuario logueado de othersFunction
+  let usuario = datosUsuarioLogueado();
+ Swal.fire({
+  title: 'DATOS DE PAGO',
+  color:'#e9890b',
+  background:'#8e9494',
+  html:`
+  <div class="datosPago">
+    <div>
+      <h5>Total compra $${Math.round(sumarTotalCarrito().toFixed(2))}</h5>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" value="${usuario.nombre}">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" value="${usuario.apellido}">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="dni" class="col-sm-2 col-form-label">DNI</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="dni" placeholder="Ingrese DNI" value="${usuario.dni}">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Ingrese su email" value="${usuario.email}">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="pago" class="col-sm-2 col-form-label">Método de pago</label>
+      <div class="col-sm-10">
+        <select class="form-select metodoPago">
+          <option value="Tarjeta Naranja">Tarjeta Naranja</option>
+          <option value="Tarjeta Visa">Tarjeta Visa</option>
+          <option value="Tarjeta MasterCard">Tarjeta MasterCard</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="container mb-3 row cuotas">
+      <label for="cuotas" class="col-sm-2 col-form-label">Cuotas</label>
+      <div class="col-sm-10">
+        <select class="form-select">
+          <option>1 Cuota de $${Math.round(sumarTotalCarrito().toFixed(2))}</option>
+          <option>3 Cuotas de $${Math.round(sumarTotalCarrito()/3).toFixed(2)}</option>
+          <option>6 Cuotas de $${Math.round(sumarTotalCarrito()/6).toFixed(2)}</option>
+          <option>12 Cuotas de $${Math.round(sumarTotalCarrito()/12).toFixed(2)}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="tarjeta" class="col-sm-2 col-form-label">Nº Tarjeta</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="tarjeta" placeholder="Ingrese el número de la tarjeta">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="codigoTarjeta" class="col-sm-2 col-form-label">Código Tarjeta</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="codigoTarjeta" placeholder="Ingrese el código de la tarjeta">
+      </div>
+    </div>
+
+    <div class="container mb-3 row">
+      <label for="vencimiento" class="col-sm-2 col-form-label">Fecha de vencimiento</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="vencimiento">
+      </div>
+    </div>
+
+    <button class="btn btn-success" id="btnFinalizarCompra">Finalizar compra</button>
+  </div>
+  `,
+  position: 'center',
+  showClass: {
+    popup: `
+      animate__animated
+      animate__fadeInRight
+      animate__faster
+    `
+  },
+  hideClass: {
+    popup: `
+      animate__animated
+      animate__fadeOutRight
+      animate__faster
+    `
+  },
+  grow: 'row',
+  width: 1000,
+  showConfirmButton: false,
+  showCloseButton: true,
+  
+})
+
+  const btnFinalizarCompra = document.querySelector('#btnFinalizarCompra');
+
+  btnFinalizarCompra.addEventListener('click',compraFinalizada);
+
+}
+
+const estadoCarrito = ()=>{
+  if(arrayCarrito.length === 0){
+    alertaInformacion('No hay productos en el carrito para efectuar la compra');
+  }else{
+    elegirPago();
+  } 
+}
+
 
 //Muestra el carrito como sidebar
 const mostrarCarrito = () =>{
@@ -174,7 +294,7 @@ const mostrarCarrito = () =>{
       </table>
     </div>
 
-  <h3 class="mt-3">Total Compra $${total}</h3>
+  <h3 class="mt-3">Total Compra $${Math.round(total).toFixed(2)}</h3>
 
   <div class ='col'>
     <button class="btn btn-primary mt-3 col-auto" id='btnComprarCarrito'>Comprar carrito</button>
@@ -223,7 +343,7 @@ const mostrarCarrito = () =>{
  
   const btnComprarCarrito=document.querySelector('#btnComprarCarrito');
 
-  btnComprarCarrito.addEventListener('click',comprarCarrito); 
+  btnComprarCarrito.addEventListener('click',estadoCarrito); 
 
   const btnVaciarCarrito = document.querySelector('#btnVaciarCarrito');
 

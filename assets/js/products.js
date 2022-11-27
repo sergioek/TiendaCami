@@ -149,8 +149,11 @@ const buscarProducto = (event) =>{
     event.preventDefault();
     //Llamando a la tostada de otherFunctions
     tostadaBuscando();
-    renderizarProductos(buscarProductosNombre(inputBuscarProductos.value));
-
+    //Efecto de retardo
+    setTimeout(() => {
+       renderizarProductos(buscarProductosNombre(inputBuscarProductos.value)); 
+    }, 1000);
+    
      //Para evitar not defined, addEventListener nuevamente al renderizar
      botonAgregarProducto = document.querySelectorAll('.agregarProducto');
   
@@ -163,6 +166,7 @@ const buscarProducto = (event) =>{
 const filtrarProductos = (event) =>{
     event.preventDefault();
     tostadaBuscando();
+
     //Filtrar por categoria 
     let categoria;
     checkCategoria.forEach(check => {
@@ -175,8 +179,9 @@ const filtrarProductos = (event) =>{
 
     //Por rango de precio
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
-    
-    renderizarProductos(arrayFiltrado);
+    setTimeout(() => {
+      renderizarProductos(arrayFiltrado);   
+    }, 1000);
     
     //Para evitar not defined, addEventListener nuevamente al renderizar
      botonAgregarProducto = document.querySelectorAll('.agregarProducto');

@@ -118,6 +118,11 @@ const comprobarLogin = ()=>{
     }
 }
 
+const datosUsuarioLogueado = ()=>{
+    const usuario = JSON.parse(sessionStorage.getItem('login'));
+    return usuario;
+}
+
 const sesionIniciada = JSON.parse(sessionStorage.getItem('login')) && (creaCuenta.remove(), cambiarIngresar());
 
 //3 - EventListeners
