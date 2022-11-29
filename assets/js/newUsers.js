@@ -1,10 +1,8 @@
 /*--------------REGISTRO DE USUARIOS--------------------*/
-
 /*--------------1-Variables y constantes-----*/
-//Array de provincias Argentinas
-const arrayProvincias = ['Buenos Aires','Ciudad Autónoma de Buenos Aires','Catamarca','Chaco','Chubut','Córdoba','Corrientes','Entre Ríos','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Misiones','Neuquén','Río Negro','Salta','San Juan','San Luis','Santa Cruz','Santa Fe','Santiago del Estero','Tierra del Fuego, Antártida e Islas del Atlántico Sur','Tucumán'];
-
-
+//Array de provincias Argentinas y localidades
+let arrayProvincias = [];
+let arrayLocalidades = [];
 /*-------------2-QuerySelectors-------------*/
 //Formulario
 const formularioRegistro = document.querySelector('.formularioRegistro');
@@ -13,6 +11,7 @@ const nombre = document.querySelector('#nombre');
 const apellido = document.querySelector('#apellido');
 const dni = document.querySelector('#dni');
 const provincias = document.querySelector('#provincia');
+const localidades = document.querySelector('#localidad');
 const domicilio = document.querySelector('#domicilio');
 const email = document.querySelector('#email');
 const contrasena = document.querySelector('#contrasena');
@@ -25,20 +24,45 @@ const errorNombre = document.querySelector('#errorNombre');
 const errorApellido = document.querySelector('#errorApellido');
 const errorDni = document.querySelector('#errorDni');
 const errorProvincia = document.querySelector('#errorProvincia');
+const errorLocalidad = document.querySelector('#errorLocalidad');
 const errorDomicilio = document.querySelector('#errorDomicilio');
 const errorEmail = document.querySelector('#errorEmail');
 const errorContrasena = document.querySelector('#errorContrasena');
 
 
 /* -----------3-Funciones-------------------*/
+//Consumiendo api de provincias argentinas
 const renderizarProvincias = function(){
-    arrayProvincias.forEach(provincia => {
-        const opcionProvincia = document.createElement('option');
-        opcionProvincia.setAttribute('value',provincia);
-        opcionProvincia.innerText=provincia;
-        provincias.append(opcionProvincia);
-    });
+    fetch('https://apis.datos.gob.ar/georef/api/provincias')
+        .then(response=>response.json())
+        .then((data)=>{
+            arrayProvincias = data.provincias;
+            arrayProvincias.forEach(provincia => {
+                const opcionProvincia = document.createElement('option');
+                opcionProvincia.setAttribute('value',provincia.nombre);
+                opcionProvincia.innerText=provincia.nombre;
+                provincias.append(opcionProvincia);
+            });
+            
+        })
 }
+
+const renderizarLocalidades = function(){
+    let provincia = provincias.value.toLowerCase() || 'misiones';
+     fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provincia}&campos=id,nombre&max=300`)
+         .then(response=>response.json())
+         .then((data)=>{
+             arrayLocalidades = data.localidades;
+             localidades.innerHTML='';
+             arrayLocalidades.forEach(localidad => {
+                 const opcionLocalidad = document.createElement('option');
+                 opcionLocalidad.setAttribute('value',localidad.nombre);
+                 opcionLocalidad.innerText=localidad.nombre;
+                 localidades.append(opcionLocalidad);
+             });
+         })
+ }
+ 
 
 //Verificar si el usuario existe, por medio del campo unico email 
 const verificarUsuarioEmail = (email) => {
@@ -82,7 +106,7 @@ const validacionesNuevoUsuario = () =>{
     errorEmail.innerText='';
     errorContrasena.innerText='';
 
-    let val1 = val2 = val3 = val4 = val5 = val6 = val7=true;
+    let val1 = val2 = val3 = val4 = val5 = val6 = val7= val8=true;
     if(nombre.value.length < 3 && !Number(nombre.value)){
         val1=false;
         errorNombre.innerText='El campo nombre debe contener al menos tres caracteres.';
@@ -104,23 +128,28 @@ const validacionesNuevoUsuario = () =>{
         errorProvincia.innerText='Provincia no debe estar vacío.';
     }
 
-    if(domicilio.value.length < 3 && !Number(domicilio.value)){
+    if(localidades.value === ''){
         val5=false;
+        errorLocalidad.innerText='Localidad no debe estar vacío.';
+    }
+
+    if(domicilio.value.length < 3 && !Number(domicilio.value)){
+        val6=false;
         errorDomicilio.innerText='Domicilio debe contener al menos 3 caracteres.';
     }
 
     if(!validEmail.test(email.value)){
-        val6=false;
+        val7=false;
         errorEmail.innerText='Email debe tener formato de correo electrónico.';
 
     }
 
     if(contrasena.value.length != 6 && !Number(contrasena.value)){
-        val7=false;
+        val8=false;
         errorContrasena.innerText='Contraseña debe tener una longitud de 6 caracteres alfanuméricos.,';
     }
     
-    return habilitarBtnRegistrarse(val1,val2,val3,val4,val5,val6,val7);
+    return habilitarBtnRegistrarse(val1,val2,val3,val4,val5,val6,val7,val8);
 }
 
 //Funcion crear usuario
@@ -130,10 +159,9 @@ const nuevoUsuario = function (event) {
     let dniIngresado = Number(dni.value);
 
     if(!verificarUsuarioEmail(email.value) || !verificarUsuarioDni(dniIngresado)){
-        arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,domicilio.value,email.value,contrasena.value));
-        console.log(arrayUsuarios);
+        arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,localidades.value,domicilio.value,email.value,contrasena.value));
 
-        alertaExito('Nuevo usuario',`Se registró un nuevo usuario con el emial ${email.value}`);
+        alertaExito('Nuevo usuario',`Se registró un nuevo usuario con el email ${email.value}`);
 
         nombre.value='';
         apellido.value='';
@@ -161,10 +189,13 @@ visibilidadContrasena.addEventListener('mouseup',ocultarPassword);
 //Al  dejar de presionar el boton en mobile
 visibilidadContrasena.addEventListener('touchend',ocultarPassword);
 
+//Al elegir provincia, mostrar sus localidades
+provincias.addEventListener('change',renderizarLocalidades);
 
 btnRegistrarse.addEventListener('click',nuevoUsuario);
 
 /* -----------5-Ejecuciones y otros-------------------*/
 renderizarProvincias();
+renderizarLocalidades();
 btnRegistrarse.setAttribute('disabled',true)
 

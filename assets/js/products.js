@@ -24,6 +24,7 @@ const btnFiltrar = document.querySelector('#btnFiltrar');
 
 
 /*--------------3-Funciones-----*/
+
 //Verifica que exista un producto en el array haciendo uso del campo codigo( campo unique). Luego retona true o false
 const existeProducto = (codigo) =>{
     let existeProducto = ((arrayProductos.some(producto => producto.codigo === codigo)));
@@ -39,7 +40,8 @@ const buscarProductoCodigo = (codigo) =>{
 
 //Devuelve todos los productos 
 const todosLosProductos = () =>{
-    return arrayProductos;
+  
+    
 }
 //Buscamos los productos de acuerdo al nombre. Devuelve un array
 const buscarProductosNombre = (nombre) =>{
@@ -210,6 +212,11 @@ precioMaximo.addEventListener('change',textPrecioMax);
 btnFiltrar.addEventListener('click',filtrarProductos);
 
 /*--------------5-Ejecuciones-----*/
-renderizarProductos(arrayProductos);
 
+fetch('/assets/js/DB/productos.json')
+.then(response=>response.json())
+.then((data)=>{
+    arrayProductos=data;
+    renderizarProductos(arrayProductos)
+})
 

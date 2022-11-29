@@ -1,3 +1,4 @@
+// ES6 Modules or TypeScript
 /*-----------Declaraciones generales del sistema-------*/
 const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 

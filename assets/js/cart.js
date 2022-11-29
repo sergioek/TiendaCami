@@ -56,7 +56,7 @@ const sumarTotalCarrito = ()=>{
 }
 //Agrega un producto al carrito
 const agregarCarrito = (event) =>{
-    //El usuario debe iniciar sesion para comprar
+    //El usuario debe iniciar sesion para comprar (ver otherFunctions)
     comprobarLogin()
     //Buscamos el poducto
     let id= event.target.getAttribute('data-id');
@@ -152,80 +152,82 @@ const elegirPago = ()=>{
       <h5>Total compra $${Math.round(sumarTotalCarrito().toFixed(2))}</h5>
     </div>
 
-    <div class="container mb-3 row">
-      <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" value="${usuario.nombre}">
+    <form id='formularioFinalizarCompra'>
+      <div class="container mb-3 row">
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required value="${usuario.nombre}">
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" value="${usuario.apellido}">
+      <div class="container mb-3 row">
+        <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" required value="${usuario.apellido}">
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="dni" class="col-sm-2 col-form-label">DNI</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" id="dni" placeholder="Ingrese DNI" value="${usuario.dni}">
+      <div class="container mb-3 row">
+        <label for="dni" class="col-sm-2 col-form-label">DNI</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="dni" placeholder="Ingrese DNI" required value="${usuario.dni}">
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su email" value="${usuario.email}">
+      <div class="container mb-3 row">
+        <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required value="${usuario.email}">
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="pago" class="col-sm-2 col-form-label">Método de pago</label>
-      <div class="col-sm-10">
-        <select class="form-select metodoPago">
-          <option value="Tarjeta Naranja">Tarjeta Naranja</option>
-          <option value="Tarjeta Visa">Tarjeta Visa</option>
-          <option value="Tarjeta MasterCard">Tarjeta MasterCard</option>
-        </select>
+      <div class="container mb-3 row">
+        <label for="pago" class="col-sm-2 col-form-label">Método de pago</label>
+        <div class="col-sm-10">
+          <select class="form-select metodoPago">
+            <option value="Tarjeta Naranja">Tarjeta Naranja</option>
+            <option value="Tarjeta Visa">Tarjeta Visa</option>
+            <option value="Tarjeta MasterCard">Tarjeta MasterCard</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row cuotas">
-      <label for="cuotas" class="col-sm-2 col-form-label">Cuotas</label>
-      <div class="col-sm-10">
-        <select class="form-select">
-          <option>1 Cuota de $${Math.round(sumarTotalCarrito().toFixed(2))}</option>
-          <option>3 Cuotas de $${Math.round(sumarTotalCarrito()/3).toFixed(2)}</option>
-          <option>6 Cuotas de $${Math.round(sumarTotalCarrito()/6).toFixed(2)}</option>
-          <option>12 Cuotas de $${Math.round(sumarTotalCarrito()/12).toFixed(2)}</option>
-        </select>
+      <div class="container mb-3 row cuotas">
+        <label for="cuotas" class="col-sm-2 col-form-label">Cuotas</label>
+        <div class="col-sm-10">
+          <select class="form-select">
+            <option>1 Cuota de $${Math.round(sumarTotalCarrito().toFixed(2))}</option>
+            <option>3 Cuotas de $${Math.round(sumarTotalCarrito()/3).toFixed(2)}</option>
+            <option>6 Cuotas de $${Math.round(sumarTotalCarrito()/6).toFixed(2)}</option>
+            <option>12 Cuotas de $${Math.round(sumarTotalCarrito()/12).toFixed(2)}</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="tarjeta" class="col-sm-2 col-form-label">Nº Tarjeta</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" id="tarjeta" placeholder="Ingrese el número de la tarjeta">
+      <div class="container mb-3 row">
+        <label for="tarjeta" class="col-sm-2 col-form-label">Nº Tarjeta</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="tarjeta" placeholder="Ingrese el número de la tarjeta" required>
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="codigoTarjeta" class="col-sm-2 col-form-label">Código Tarjeta</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" id="codigoTarjeta" placeholder="Ingrese el código de la tarjeta">
+      <div class="container mb-3 row">
+        <label for="codigoTarjeta" class="col-sm-2 col-form-label">Código Tarjeta</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="codigoTarjeta" placeholder="Ingrese el código de la tarjeta" required>
+        </div>
       </div>
-    </div>
 
-    <div class="container mb-3 row">
-      <label for="vencimiento" class="col-sm-2 col-form-label">Fecha de vencimiento</label>
-      <div class="col-sm-10">
-        <input type="date" class="form-control" id="vencimiento">
+      <div class="container mb-3 row">
+        <label for="vencimiento" class="col-sm-2 col-form-label">Fecha de vencimiento</label>
+        <div class="col-sm-10">
+          <input type="month" class="form-control" id="vencimiento" required>
+        </div>
       </div>
-    </div>
 
-    <button class="btn btn-success" id="btnFinalizarCompra">Finalizar compra</button>
-  </div>
+      <button class="btn btn-success" id="btnFinalizarCompra">Finalizar compra</button>
+    </div>
+  </form>
   `,
   position: 'center',
   showClass: {
@@ -249,9 +251,9 @@ const elegirPago = ()=>{
   
 })
 
-  const btnFinalizarCompra = document.querySelector('#btnFinalizarCompra');
+  const formularioFinalizarCompra = document.querySelector('#formularioFinalizarCompra');
 
-  btnFinalizarCompra.addEventListener('click',compraFinalizada);
+  formularioFinalizarCompra.addEventListener('submit',compraFinalizada);
 
 }
 

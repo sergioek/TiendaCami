@@ -1,0 +1,142 @@
+[
+    {
+        "codigo": "A001",
+        "nombre": "Taza frozzen",
+        "marca": "Genérica",
+        "categoria": "Tazas",
+        "tags": "taza , frozeen , tazas",
+        "precio": 520,
+        "stock": 0,
+        "imagen": "taza-frozen.png"
+    },
+    {
+        "codigo": "A002",
+        "nombre": "Taza Ibipo",
+        "marca": "Genérica",
+        "categoria": "Tazas",
+        "tags": "taza , ibipo , tazas",
+        "precio": 420,
+        "stock": 3,
+        "imagen": "taza-ibipo.png"
+    },
+    {
+        "codigo": "A003",
+        "nombre": "Taza especiate",
+        "marca": "Genérica",
+        "categoria": "Tazas",
+        "tags": "taza , especiate , tazas",
+        "precio": 500,
+        "stock": 3,
+        "imagen": "taza-especiate.jfif"
+    },
+    {
+        "codigo": "A004",
+        "nombre": "Tazas rock x 3 unidades",
+        "marca": "Genérica",
+        "categoria": "Tazas",
+        "tags": "taza , rock , tazas",
+        "precio": 1600,
+        "stock": 3,
+        "imagen": "tazas-1024x819.jpg"
+    },
+    {
+        "codigo": "B001",
+        "nombre": "Tazón azul de cerámica",
+        "marca": "Genérica",
+        "categoria": "Tazones",
+        "tags": "tazon , azul , ceramica , tazones",
+        "precio": 800,
+        "stock": 3,
+        "imagen": "tazon-blue.jpg"
+    },
+    {
+        "codigo": "B002",
+        "nombre": "Tazón sopero plumita",
+        "marca": "Plumita",
+        "categoria": "Tazones",
+        "tags": "tazon , sopa, plumita , tazones",
+        "precio": 820.5,
+        "stock": 3,
+        "imagen": "tazones-plumita.jpg"
+    },
+    {
+        "codigo": "C001",
+        "nombre": "Chopp Quilmes",
+        "marca": "Quilmes",
+        "categoria": "Chopps",
+        "tags": "chopps , cerveza , chopps , quilmes",
+        "precio": 920,
+        "stock": 5,
+        "imagen": "chopp-quilmes.jpeg"
+    },
+    {
+        "codigo": "C002",
+        "nombre": "Chopp Heineken",
+        "marca": "Heineken",
+        "categoria": "Chopps",
+        "tags": "chopps , cerveza , chopps , heineken",
+        "precio": 1020,
+        "stock": 4,
+        "imagen": "chopp-heineken.jpg"
+    },
+    {
+        "codigo": "D001",
+        "nombre": "Vasos plásticos x 8u",
+        "marca": "Genérica",
+        "categoria": "Vasos",
+        "tags": "vasos , vaso , plastico , set",
+        "precio": 2000,
+        "stock": 4,
+        "imagen": "vasos-set8.jpg"
+    },
+    {
+        "codigo": "D002",
+        "nombre": "Vasos de vidrio",
+        "marca": "Genérica",
+        "categoria": "Vasos",
+        "tags": "vasos , vaso , vidrio",
+        "precio": 300,
+        "stock": 50,
+        "imagen": "vaso-generico-vidrio.jpg"
+    },
+    {
+        "codigo": "E001",
+        "nombre": "Copas de vidrio x 6u",
+        "marca": "Genérica",
+        "categoria": "Copas",
+        "tags": "copa , copas , vidrio , set",
+        "precio": 600,
+        "stock": 50,
+        "imagen": "copas-set-vidrio.jpg"
+    },
+    {
+        "codigo": "E002",
+        "nombre": "Copa para Champagne",
+        "marca": "Genérica",
+        "categoria": "Copas",
+        "tags": "copa , copas , vidrio , champagne",
+        "precio": 900,
+        "stock": 25,
+        "imagen": "copa-champagne.jpg"
+    },
+    {
+        "codigo": "F001",
+        "nombre": "Combo infantil plástico Minecraf",
+        "marca": "Genérica",
+        "categoria": "Combos",
+        "tags": "combo , combos , plastico , infantil , minecraft",
+        "precio": 1500,
+        "stock": 4,
+        "imagen": "combo-infanil-minecraft.jpg"
+    },
+    {
+        "codigo": "G001",
+        "nombre": "Termo tupperware",
+        "marca": "Tupperware",
+        "categoria": "Otros",
+        "tags": "termo , mate , agua , tupperware",
+        "precio": 9500,
+        "stock": 7,
+        "imagen": "termo-tupperware.jpg"
+    }
+]
