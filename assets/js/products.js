@@ -211,7 +211,7 @@ precioMaximo.addEventListener('change',textPrecioMax);
 btnFiltrar.addEventListener('click',filtrarProductos);
 
 /*--------------5-Ejecuciones-----*/
-fetch('../assets/js/DB/productos.json')
+fetch('../assets/DB/productos.json')
 .then(response=>response.json())
 .then((data)=>{
     arrayProductos=data;
