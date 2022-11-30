@@ -7,12 +7,6 @@ class Suscripcion{
     }
 }
 
-//Instanciando la suscripcion
-const suscripcion1=new Suscripcion('khairallahsergio4@gmail.com',true);
-const suscripcion2=new Suscripcion('camikhairallah@gmail.com',true);
-//Agregando los objetos al array
-const arraySuscriptos = [suscripcion1,suscripcion2];
-
 /*------------REGISTRO DE USUARIOS----------------------*/
 
 //Creando la clase Usuario y sus metodos
@@ -28,11 +22,10 @@ class Usuario{
         this.contrasena=contrasena
     }
 }
-//Creando un usuario
-const usuario1= new Usuario('Sergio Ezequiel','Khairallah',11111111,'Santiago del Estero','FERNÁNDEZ','Av. Jesús Fernández Nº256','khairallahsergio4@gmail.com','12345');
 
-//Agregando un usuario al arrayUsuarios
-const arrayUsuarios = [usuario1];
+//arrayUsuarios
+let arrayUsuarios = [];
+
 
 /*------------PRODUCTOS----------------------*/
 class Producto{
@@ -48,7 +41,6 @@ class Producto{
     }
 }
 
-let arrayProductos = [];
 
 
 

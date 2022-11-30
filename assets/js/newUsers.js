@@ -3,6 +3,7 @@
 //Array de provincias Argentinas y localidades
 let arrayProvincias = [];
 let arrayLocalidades = [];
+
 /*-------------2-QuerySelectors-------------*/
 //Formulario
 const formularioRegistro = document.querySelector('.formularioRegistro');
@@ -66,6 +67,7 @@ const renderizarLocalidades = function(){
 
 //Verificar si el usuario existe, por medio del campo unico email 
 const verificarUsuarioEmail = (email) => {
+   
     const usuario = arrayUsuarios.some((usuario => usuario.email === email));
     return usuario;
 }
@@ -155,13 +157,16 @@ const validacionesNuevoUsuario = () =>{
 //Funcion crear usuario
 const nuevoUsuario = function (event) {
     event.preventDefault();
-
+    let emailIngresado = email.value;
     let dniIngresado = Number(dni.value);
-
-    if(!verificarUsuarioEmail(email.value) || !verificarUsuarioDni(dniIngresado)){
+    console.log(emailIngresado)
+    if(!verificarUsuarioEmail(emailIngresado) || !verificarUsuarioDni(dniIngresado)){
         arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,localidades.value,domicilio.value,email.value,contrasena.value));
 
         alertaExito('Nuevo usuario',`Se registró un nuevo usuario con el email ${email.value}`);
+
+        //Guardando datos en localStorage
+        localStorage.setItem('usuarios',JSON.stringify(arrayUsuarios));
 
         nombre.value='';
         apellido.value='';
@@ -199,3 +204,20 @@ renderizarProvincias();
 renderizarLocalidades();
 btnRegistrarse.setAttribute('disabled',true)
 
+
+//Traer los datos del JSON
+fetch('/assets/js/DB/usuarios.json')
+    .then(response=>response.json())
+    .then((data)=>{
+        //Si no estan guardados en el localstorage
+        if(!localStorage.getItem('usuarios')){
+            //Guardar los datos del JSON en local
+            localStorage.setItem('usuarios',JSON.stringify(data))
+            //Asignar esos datos a arrayUsuarios
+            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+        }else{
+            //Si ya existe en local, recuperar esos datos
+            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+            
+        }
+    });

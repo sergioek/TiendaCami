@@ -270,7 +270,6 @@ const estadoCarrito = ()=>{
 const mostrarCarrito = () =>{
     //Mostrar carrito si esta logueado
     comprobarLogin()
-
     //Sumar el total del carrito
     let total = sumarTotalCarrito();
 // RIGHT SIDEBAR
@@ -365,17 +364,15 @@ const mostrarCarrito = () =>{
 
 }
 
-
-
-
 /*--------------4-EventListeners-----*/
 //Btn mostrar carrito
 btnCarrito.addEventListener('click',mostrarCarrito)
 btnCarritoFlotante.addEventListener('click',mostrarCarrito)
 
 //Boton agr producto
+
 botonAgregarProducto.forEach(botonAgrProd => {
-    botonAgrProd.addEventListener('click',agregarCarrito)
+  botonAgrProd.addEventListener('click',agregarCarrito)
 });
 
 /*--------------5-Ejecuciones-----*/

@@ -1,16 +1,20 @@
 /*----------------SUSCRIPCION-----------------------*/ 
-/* -----------1 Query de elementos-------------------*/
+/* -----------1-Variables y constantes-------------------*/
+//Arrya Suscriptos
+let arraySuscriptos= [];
+/* -----------2 Query de elementos-------------------*/
 const emailSuscribirse= document.querySelector('#emailSuscribirse');
 const btnSuscribirse= document.querySelector('#btnSuscribirse');
 const textErrorSuscripcion= document.querySelector('#textErrorSuscripcion');
 
-/* -----------2-Funciones-------------------*/
+/* -----------3-Funciones-------------------*/
+
 const verificarSuscripcion = (email) =>{
     const suscripto = arraySuscriptos.some((suscripto => suscripto.email == email));
 
     return suscripto;
 }
-
+//Nueva suscripcion
 const nuevaSuscripcion = (event) =>{
     //Prevenir el submit
     event.preventDefault()
@@ -23,22 +27,41 @@ const nuevaSuscripcion = (event) =>{
              //Agregando una suscripcion al array
              let nuevaSuscripcion;
              arraySuscriptos.push(nuevaSuscripcion = new Suscripcion(emailIngresado,true));
- 
+             //Guardando los datos de suscriptos en el localStorage
+             localStorage.setItem('suscriptos',JSON.stringify(arraySuscriptos));
              //Mostrando alerta de exito
-             alertaExito('¡Suscripción exitosa!','Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!');
- 
+             alertaExito('¡Suscripción exitosa! ','Pronto recibirá novedades de nuestros productos por su email. ¡Muchas Gracias!');
+            
              //Vaciar input email
              emailSuscribirse.value='';
         }else{
             //Mostrando alerta
-            alertaInformacion('El email ingresado ya esta suscripto a nuestras novedades. Muchas Gracias');
+            alertaInformacion('Nos alegra saber que el email ingresado ya esta suscripto a nuestras novedades 😉. Si deseas generar una nueva suscripción, ingresa un correo diferente.');
         }
 
     }else{
         //Al tener un formato de email incorrecto
         alertaError('El formato de email no es válido.');
     }
-    
 }
+/* -----------4-EventListerners-------------------*/btnSuscribirse.addEventListener('click',nuevaSuscripcion);
 
-/* -----------3-EventListerners-------------------*/btnSuscribirse.addEventListener('click',nuevaSuscripcion);
+
+/* -----------5-Ejecuciones-------------------*/
+//Traer los datos del JSON
+fetch('assets/js/DB/suscriptos.json')
+    .then(response=>response.json())
+    .then((data)=>{
+        //Si no estan guardados en el localstorage
+        if(!localStorage.getItem('suscriptos')){
+            //Guardar los datos del JSON en local
+            localStorage.setItem('suscriptos',JSON.stringify(data))
+            //Asignar esos datos a arraySuscriptos
+            arraySuscriptos = JSON.parse(localStorage.getItem('suscriptos'))
+        }else{
+            //Si ya existe en local, recuperar esos datos
+            arraySuscriptos = JSON.parse(localStorage.getItem('suscriptos'))
+        }
+    });
+
+

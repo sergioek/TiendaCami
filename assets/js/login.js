@@ -93,4 +93,19 @@ visibilidadContrasena.addEventListener('touchend',ocultarPassword);
 
 btnIngresar.addEventListener('click',iniciarSesion);
 /* -----------5-Ejecuciones y otros-------------------*/
+fetch('/assets/js/DB/usuarios.json')
+    .then(response=>response.json())
+    .then((data)=>{
+        //Si no estan guardados en el localstorage
+        if(!localStorage.getItem('usuarios')){
+            //Guardar los datos del JSON en local
+            localStorage.setItem('usuarios',JSON.stringify(data))
+            //Asignar esos datos a arrayUsuarios
+            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+        }else{
+            //Si ya existe en local, recuperar esos datos
+            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+        }
+    })
+
 recuperarUsuarioGuardado();

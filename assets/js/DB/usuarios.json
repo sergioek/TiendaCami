@@ -1,0 +1,12 @@
+[
+    {
+        "nombre": "Sergio Ezequiel",
+        "apellido": "Khairallah",
+        "dni": 11111111,
+        "provincia": "Santiago del Estero",
+        "localidad": "FERNÁNDEZ",
+        "domicilio": "Av. Jesús Fernández Nº256",
+        "email": "khairallahsergio4@gmail.com",
+        "contrasena": "12345"
+    }
+]

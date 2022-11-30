@@ -1,6 +1,7 @@
 /*--------------PRODUCTOS--------------------*/
 /*--------------1-Variables y constantes-----*/
-
+//Array Productos
+let arrayProductos = [];
 /*--------------2-QuerySelectors-----*/
 const productos = document.querySelector('#productos');
 
@@ -40,8 +41,7 @@ const buscarProductoCodigo = (codigo) =>{
 
 //Devuelve todos los productos 
 const todosLosProductos = () =>{
-  
-    
+    return arrayProductos;
 }
 //Buscamos los productos de acuerdo al nombre. Devuelve un array
 const buscarProductosNombre = (nombre) =>{
@@ -66,12 +66,12 @@ const ordenarProductosPrecioAscendente = (arrayProd) =>{
     let ordenAscendenteProductos= arrayProd.sort((a,b )=> a.precio-b.precio);
     return ordenAscendenteProductos;
 }
- //Ordena los productos de manera por medio de precios de manera descendente. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+ //Ordena los productos de manera por medio de precios de manera descendente. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
 const ordenarProductosPrecioDescendente = (arrayProd) =>{
     let ordenDescendenteProductos= arrayProd.sort((a,b )=> b.precio-a.precio);
     return ordenDescendenteProductos;
 }
- //Busca los productos de un rango de precio min y max. Recibe como parametro u array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+ //Busca los productos de un rango de precio min y max. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
 const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
     let rangoMinimo = arrayProd.filter((producto => producto.precio >= valorMinimo ));
     let rangoMaximo = rangoMinimo.filter((producto => producto.precio <= valorMaximo ));
@@ -82,7 +82,6 @@ const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
 //Renderiza el HTML de productos
 const renderizarProductos = (arrayProductos)=>{
     productos.innerHTML='';
-   
     if(arrayProductos.length == 0){
         renderizarProductos(todosLosProductos());
         alertaPersonalizable('Búsqueda','No se encontraron resultados en la búsqueda.','error','Ok','red')
@@ -212,11 +211,15 @@ precioMaximo.addEventListener('change',textPrecioMax);
 btnFiltrar.addEventListener('click',filtrarProductos);
 
 /*--------------5-Ejecuciones-----*/
-
 fetch('/assets/js/DB/productos.json')
 .then(response=>response.json())
 .then((data)=>{
     arrayProductos=data;
     renderizarProductos(arrayProductos)
+    //Para evitar que no se agrege la funcion de agregar carrito a los productos que se muestran al entrar a productos..
+    let botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+    botonAgregarProducto.forEach(botonAgrProd => {
+        botonAgrProd.addEventListener('click',agregarCarrito)
+      });
 })
 
