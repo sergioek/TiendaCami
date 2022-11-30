@@ -23,8 +23,7 @@ class Usuario{
     }
 }
 
-//arrayUsuarios
-let arrayUsuarios = [];
+
 
 
 /*------------PRODUCTOS----------------------*/

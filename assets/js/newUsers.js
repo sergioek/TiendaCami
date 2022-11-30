@@ -3,7 +3,8 @@
 //Array de provincias Argentinas y localidades
 let arrayProvincias = [];
 let arrayLocalidades = [];
-
+//arrayUsuarios
+let arrayUsuarios = [];
 /*-------------2-QuerySelectors-------------*/
 //Formulario
 const formularioRegistro = document.querySelector('.formularioRegistro');
