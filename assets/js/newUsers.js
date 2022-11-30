@@ -3,8 +3,7 @@
 //Array de provincias Argentinas y localidades
 let arrayProvincias = [];
 let arrayLocalidades = [];
-//arrayUsuarios
-let arrayUsuarios = [];
+
 /*-------------2-QuerySelectors-------------*/
 //Formulario
 const formularioRegistro = document.querySelector('.formularioRegistro');
@@ -67,22 +66,9 @@ const renderizarLocalidades = function(){
  
 
 //Verificar si el usuario existe, por medio del campo unico email 
-const verificarUsuarioEmail = (email) => {
-   
+const verificarUsuarioEmail = (email,arrayUsuarios) => {
     const usuario = arrayUsuarios.some((usuario => usuario.email === email));
     return usuario;
-}
-//Cerificar si el usuario existe por medio del campo identificador DNI
-const verificarUsuarioDni = (dni) => {
-    const usuarioDni = arrayUsuarios.some((usuario => usuario.dni === dni));
-    return usuarioDni;
-}
-
-//Buscar un usuario por email
-const buscarUsuario = (email) => {
-    const usuario = arrayUsuarios.find((usuario => usuario.email === email));
-    return usuario;
-
 }
 
 //Muestra la contraseña en el formulario de registro
@@ -147,7 +133,7 @@ const validacionesNuevoUsuario = () =>{
 
     }
 
-    if(contrasena.value.length != 6 && !Number(contrasena.value)){
+    if(contrasena.value.length != 8 && !Number(contrasena.value)){
         val8=false;
         errorContrasena.innerText='Contraseña debe tener una longitud de 6 caracteres alfanuméricos.,';
     }
@@ -161,7 +147,7 @@ const nuevoUsuario = function (event) {
     let emailIngresado = email.value;
     let dniIngresado = Number(dni.value);
     console.log(emailIngresado)
-    if(!verificarUsuarioEmail(emailIngresado) || !verificarUsuarioDni(dniIngresado)){
+    if(!verificarUsuarioEmail(emailIngresado,arrayUsuarios)){
         arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,localidades.value,domicilio.value,email.value,contrasena.value));
 
         alertaExito('Nuevo usuario',`Se registró un nuevo usuario con el email ${email.value}`);
@@ -207,7 +193,7 @@ btnRegistrarse.setAttribute('disabled',true)
 
 
 //Traer los datos del JSON
-fetch('/assets/js/DB/usuarios.json')
+fetch('../assets/DB/usuarios.json')
     .then(response=>response.json())
     .then((data)=>{
         //Si no estan guardados en el localstorage
@@ -219,6 +205,7 @@ fetch('/assets/js/DB/usuarios.json')
         }else{
             //Si ya existe en local, recuperar esos datos
             arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
-            
         }
     });
+
+   

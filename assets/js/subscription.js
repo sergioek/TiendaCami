@@ -49,7 +49,7 @@ const nuevaSuscripcion = (event) =>{
 
 /* -----------5-Ejecuciones-------------------*/
 //Traer los datos del JSON
-fetch('assets/js/DB/suscriptos.json')
+fetch('assets/DB/suscriptos.json')
     .then(response=>response.json())
     .then((data)=>{
         //Si no estan guardados en el localstorage

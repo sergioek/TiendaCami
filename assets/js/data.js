@@ -22,7 +22,8 @@ class Usuario{
         this.contrasena=contrasena
     }
 }
-
+//arrayUsuarios
+let arrayUsuarios = [];
 
 
 

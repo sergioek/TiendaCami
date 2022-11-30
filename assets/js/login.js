@@ -15,11 +15,12 @@ const btnIngresar = document.querySelector('#btnIngresar');
 /* -----------3-Funciones-------------------*/
 function recuperarUsuarioGuardado(){
     let usuarioRecuperado= JSON.parse(localStorage.getItem('usuarioGuardado'));
-
-    emailInicioSesion.value=usuarioRecuperado.email;
-    contrasenaInicioSesion.value=usuarioRecuperado.contrasena;
+    if(usuarioRecuperado != null){
+        emailInicioSesion.value=usuarioRecuperado.email;
+        contrasenaInicioSesion.value=usuarioRecuperado.contrasena;
+        recordarInicioSesion.checked=true;
+    }
     
-    recordarInicioSesion.checked=true;
 }
 
 
@@ -93,7 +94,8 @@ visibilidadContrasena.addEventListener('touchend',ocultarPassword);
 
 btnIngresar.addEventListener('click',iniciarSesion);
 /* -----------5-Ejecuciones y otros-------------------*/
-fetch('/assets/js/DB/usuarios.json')
+//Traer los datos del JSON
+fetch('../assets/DB/usuarios.json')
     .then(response=>response.json())
     .then((data)=>{
         //Si no estan guardados en el localstorage
@@ -106,6 +108,8 @@ fetch('/assets/js/DB/usuarios.json')
             //Si ya existe en local, recuperar esos datos
             arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
         }
-    })
+    });
 
+//Recuperar usuario guardado
 recuperarUsuarioGuardado();
+
