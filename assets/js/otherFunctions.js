@@ -2,7 +2,6 @@
 /*-----------Declaraciones generales del sistema-------*/
 const validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-
 /*-----------ALERTAS ----------------------*/
 //Funcion general de alertas informativas
 function alertaInformacion(texto){
@@ -52,7 +51,7 @@ function alertaPersonalizable(titulo,texto,icono,textoBoton,colorBoton){
         
     })
 }
-//Tostada 
+//Tostada de buscando producto
 function tostadaBuscando (){
     const Toast = Swal.mixin({
         toast: true,
@@ -112,19 +111,37 @@ function cambiarIngresar(){
     const btnCerrarSesion = document.querySelector('#btnCerrarSesion');
     ingresa.append(cerrarSesion);
 }
-
+//Si el usuario no inicio sesion, envia a la pagina de login
 const comprobarLogin = ()=>{
     if(!sessionStorage.getItem('login')){
         window.location.href='login.html';
     }
 }
-
+//Si el usuario esta logueado, devuelve sus datos
 const datosUsuarioLogueado = ()=>{
     const usuario = JSON.parse(sessionStorage.getItem('login'));
     return usuario;
 }
-
+//Si el usuario inicio sesion, remueve el item ingresar y crear cuenta de la barra de navegacion
 const sesionIniciada = JSON.parse(sessionStorage.getItem('login')) && (creaCuenta.remove(), cambiarIngresar());
 
 //3 - EventListeners
 const btnCerrar = JSON.parse(sessionStorage.getItem('login')) && btnCerrarSesion.addEventListener('click', salirSesion);
+
+
+/*--------------------CARRITO-----------------*/
+//mOSTAR CANT DE PRODUCTOS EN CARRITO EN PAGINAS INDEX, LEGALES,COMO COMPRAR,CONTACTO,CREA CUENTA E INGRESAR (NO EN PRODUCTOS)
+//Create element evita un error cuando se accede a productos y no se encuentra el id en esa pag. 
+const botonCarrito = document.querySelector
+('#botonCarrito') || document.createElement('divEvitaError');
+let cantidadCarrito = JSON.parse(localStorage.getItem('carrito'))
+function contadorCarrito(){
+    if(cantidadCarrito !== null){
+        botonCarrito.innerText= `+ ${cantidadCarrito.length}`;
+    }else{
+        botonCarrito.innerText= `+ 0`;
+    }
+    
+}
+//llamando a la funcion
+contadorCarrito()

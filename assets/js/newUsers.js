@@ -47,7 +47,7 @@ const renderizarProvincias = function(){
             
         })
 }
-
+//Trae las localidades de la provincia seleccionada por el usuario
 const renderizarLocalidades = function(){
     let provincia = provincias.value.toLowerCase() || 'misiones';
      fetch(`https://apis.datos.gob.ar/georef/api/localidades?provincia=${provincia}&campos=id,nombre&max=300`)
@@ -76,7 +76,7 @@ function mostrarPassword(){
     contrasena.setAttribute('type','text');
 
 }
-
+//Oculta el password del campo contraseña
 function ocultarPassword(){
     contrasena.setAttribute('type','password');
 }
@@ -98,7 +98,7 @@ const validacionesNuevoUsuario = () =>{
     let val1 = val2 = val3 = val4 = val5 = val6 = val7= val8=true;
     if(nombre.value.length < 3 && !Number(nombre.value)){
         val1=false;
-        errorNombre.innerText='El campo nombre debe contener al menos tres caracteres.';
+        errorNombre.innerText='El campo nombre debe contener al menos 3 caracteres.';
     }
 
     if(apellido.value.length < 3 && !Number(apellido.value)){
@@ -129,13 +129,13 @@ const validacionesNuevoUsuario = () =>{
 
     if(!validEmail.test(email.value)){
         val7=false;
-        errorEmail.innerText='Email debe tener formato de correo electrónico.';
+        errorEmail.innerText='Debe tener formato de correo electrónico.';
 
     }
 
     if(contrasena.value.length != 8 && !Number(contrasena.value)){
         val8=false;
-        errorContrasena.innerText='Contraseña debe tener una longitud de 6 caracteres alfanuméricos.,';
+        errorContrasena.innerText='Contraseña debe tener una longitud de 8 caracteres alfanuméricos.,';
     }
     
     return habilitarBtnRegistrarse(val1,val2,val3,val4,val5,val6,val7,val8);
@@ -162,7 +162,7 @@ const nuevoUsuario = function (event) {
         email.value='';
         contrasena.value='';
     }else{
-        alertaInformacion('El email o DNI ingresados ya estan registrados como usuarios. Por favor, verifique los datos.');
+        alertaInformacion('El email ingresado ya esta registrado. Por favor, verifique los datos.');
     }
 }
 

@@ -36,7 +36,7 @@ const nuevaSuscripcion = (event) =>{
              emailSuscribirse.value='';
         }else{
             //Mostrando alerta
-            alertaInformacion('Nos alegra saber que el email ingresado ya esta suscripto a nuestras novedades 😉. Si deseas generar una nueva suscripción, ingresa un correo diferente.');
+            alertaInformacion('Nos alegra saber que el email ingresado ya esta suscripto a nuestras novedades 😉. Si deseas generar una nueva suscripción, ingrese un correo diferente.');
         }
 
     }else{

@@ -256,6 +256,12 @@
         }
     }
 
+    #mainProductos{
+        .carritoFlotante{
+            display:none !important;
+        }
+    }
+
 }
 
 @media(min-width:901px){
@@ -263,6 +269,12 @@
     .header{
        & .menu{
             display: contents;
+        }
+    }
+
+    #mainProductos{
+        .carritoFlotante{
+            display:none !important;
         }
     }
 }

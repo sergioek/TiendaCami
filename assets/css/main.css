@@ -140,12 +140,12 @@
   color: #FA48D5;
 }
 .header .menu nav ul li .carrito, .header .menu nav ul a .carrito {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   background-color: #FFFFFF;
   color: #eb02bc;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 2.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -809,11 +809,17 @@
   .header .menu nav ul li, .header .menu nav ul a {
     font-size: 0.7rem;
   }
+  #mainProductos .carritoFlotante {
+    display: none !important;
+  }
 }
 @media (min-width: 901px) {
   /*Menu de navegacion*/
   .header .menu {
     display: contents;
+  }
+  #mainProductos .carritoFlotante {
+    display: none !important;
   }
 }
 /*-----------------------------*/

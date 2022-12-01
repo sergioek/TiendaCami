@@ -26,7 +26,7 @@ const btnFiltrar = document.querySelector('#btnFiltrar');
 
 /*--------------3-Funciones-----*/
 
-//Verifica que exista un producto en el array haciendo uso del campo codigo( campo unique). Luego retona true o false
+//Verifica que exista un producto en el array haciendo uso del campo codigo. Luego retona true o false
 const existeProducto = (codigo) =>{
     let existeProducto = ((arrayProductos.some(producto => producto.codigo === codigo)));
 
@@ -151,7 +151,7 @@ const buscarProducto = (event) =>{
     //Llamando a la tostada de otherFunctions
     tostadaBuscando();
     //Efecto de retardo
-    
+    //renderizar
     renderizarProductos(buscarProductosNombre(inputBuscarProductos.value)); 
   
     
@@ -180,7 +180,7 @@ const filtrarProductos = (event) =>{
 
     //Por rango de precio
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
-  
+    //Renderizar pasando un array 
     renderizarProductos(arrayFiltrado);   
    
     

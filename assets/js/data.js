@@ -8,7 +8,6 @@ class Suscripcion{
 }
 
 /*------------REGISTRO DE USUARIOS----------------------*/
-
 //Creando la clase Usuario y sus metodos
 class Usuario{
     constructor(nombre, apellido,dni,provincia,localidad,domicilio,email,contrasena){

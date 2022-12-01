@@ -135,6 +135,7 @@ const compraFinalizada = ()=>{
   localStorage.removeItem('carrito');
   let usuario = JSON.parse(sessionStorage.getItem('login'));
   contadorACero();
+  vaciarCarrito();
   alertaPersonalizable('Compra Finalizada',`Muchas gracias por su compra ${usuario.nombre} ${usuario.apellido}. El producto esta en proceso de envío a su domicilio.Verifique en su correo electrónico su factura y código de seguimiento de OCA.`,'success','Cerrar','#ECD813'); 
 }
 
@@ -156,29 +157,36 @@ const elegirPago = ()=>{
       <div class="container mb-3 row">
         <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required value="${usuario.nombre}">
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required value="${usuario.nombre}" disabled>
         </div>
       </div>
 
       <div class="container mb-3 row">
         <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" required value="${usuario.apellido}">
+          <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido" required value="${usuario.apellido}" disabled>
         </div>
       </div>
 
       <div class="container mb-3 row">
         <label for="dni" class="col-sm-2 col-form-label">DNI</label>
         <div class="col-sm-10">
-          <input type="number" class="form-control" id="dni" placeholder="Ingrese DNI" required value="${usuario.dni}">
+          <input type="number" class="form-control" id="dni" placeholder="Ingrese DNI" required value="${usuario.dni}" disabled>
         </div>
       </div>
 
       <div class="container mb-3 row">
         <label for="email" class="col-sm-2 col-form-label">Correo electrónico</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required value="${usuario.email}">
+          <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required value="${usuario.email}" disabled>
         </div>
+      </div>
+
+      <div class="container mb-3 row">
+      <label for="domicilio" class="col-sm-2 col-form-label">Domicilio</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="domicilio" placeholder="Ingrese su domicilio" required value="${usuario.domicilio}" disabled>
+      </div>
       </div>
 
       <div class="container mb-3 row">
@@ -333,10 +341,10 @@ const mostrarCarrito = () =>{
      <tr>
         <td class='textNombre'>${producto.nombre}</td>
         <td>
-          <input type='number' value='${producto.cantidad}' class='inputCantidad' max='${producto.stock}' min='1' data-id='${producto.codigo}'value='${producto.cantidad}'>
+          <input type='number' value='${producto.cantidad}' class='inputCantidad form-control' max='${producto.stock}' min='1' data-id='${producto.codigo}'value='${producto.cantidad}'>
         </td>
         <td>$${producto.total}</td>
-        <td class='btn bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
+        <td class='btn bg-danger text-white bi bi-trash btnEliminarProdCarrito' data-id='${producto.codigo}'></td>
      </tr>
      `
   });

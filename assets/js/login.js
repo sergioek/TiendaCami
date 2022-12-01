@@ -23,22 +23,22 @@ function recuperarUsuarioGuardado(){
     
 }
 
-
+//Verifica si existe un email registrado
 const verificarUsuarioEmail = (email) => {
     const usuario = arrayUsuarios.some((usuario => usuario.email === email));
     return usuario;
 }
-
+//Busca un usuario por medio del email
 const buscarUsuario = (email) => {
     const usuario = arrayUsuarios.find((usuario => usuario.email === email));
     return usuario;
 }
-
+//Funcion mostrar password
 function mostrarPassword(){
     contrasenaInicioSesion.setAttribute('type','text');
 
 }
-
+//Funcion ocultar password
 function ocultarPassword(){
     contrasenaInicioSesion.setAttribute('type','password');
 }
@@ -79,7 +79,7 @@ const iniciarSesion = function (event){
             alertaError(`La contraseña ingresada no corresponde con el usuario con email ${emailInicioSesion.value}`);
         }
     }else{
-        alertaInformacion(`El email ingresado ${emailInicioSesion.value} no se encuentra registrado como usuario. Por favor, registresé en la seccion "Creá tu cuenta".`);
+        alertaInformacion(`El email ingresado ${emailInicioSesion.value} no se encuentra registrado como usuario. Por favor, registrese en la seccion "Creá tu cuenta".`);
     }
 }
 
