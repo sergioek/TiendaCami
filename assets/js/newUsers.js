@@ -81,8 +81,8 @@ function ocultarPassword(){
     contrasena.setAttribute('type','password');
 }
 //Habilitar el boton cuando se realizo la validacion
-const habilitarBtnRegistrarse = (val1,val2,val3,val4,val5,val6,val7) =>{
-    (val1 && val2 && val3 && val4 && val5 && val6 && val7) ? btnRegistrarse.removeAttribute('disabled'): btnRegistrarse.setAttribute('disabled',true)
+const habilitarBtnRegistrarse = (val1,val2,val3,val4,val5,val6,val7,val8) =>{
+    (val1 && val2 && val3 && val4 && val5 && val6 && val7 && val8) ? btnRegistrarse.removeAttribute('disabled'): btnRegistrarse.setAttribute('disabled',true)
     
 }
 
@@ -133,7 +133,7 @@ const validacionesNuevoUsuario = () =>{
 
     }
     
-    if(contrasena.value.length != 8 || !isNaN(contrasena.value)){
+    if(contrasena.value.length !== 8 || !isNaN(contrasena.value)){
         val8=false;
         errorContrasena.innerText='Contraseña debe tener una longitud de 8 caracteres alfanuméricos.,';
     }
