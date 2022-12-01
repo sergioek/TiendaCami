@@ -146,7 +146,6 @@ const nuevoUsuario = function (event) {
     event.preventDefault();
     let emailIngresado = email.value;
     let dniIngresado = Number(dni.value);
-    console.log(emailIngresado)
     if(!verificarUsuarioEmail(emailIngresado,arrayUsuarios)){
         arrayUsuarios.push(new Usuario(nombre.value,apellido.value,dniIngresado,provincias.value,localidades.value,domicilio.value,email.value,contrasena.value));
 

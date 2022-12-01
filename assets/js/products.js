@@ -29,7 +29,7 @@ const btnFiltrar = document.querySelector('#btnFiltrar');
 //Verifica que exista un producto en el array haciendo uso del campo codigo. Luego retona true o false
 const existeProducto = (codigo) =>{
     let existeProducto = ((arrayProductos.some(producto => producto.codigo === codigo)));
-
+    
     return existeProducto;
 }
 //Busca el producto por el campo codigo y devuelve  el objeto, Si no existe sera un objeto vacio. 
@@ -45,13 +45,13 @@ const todosLosProductos = () =>{
 }
 //Buscamos los productos de acuerdo al nombre. Devuelve un array
 const buscarProductosNombre = (nombre) =>{
-   
+    
     let arrayProductosTags = ((arrayProductos.filter(producto =>producto.tags.includes(nombre))));
-   
+    
     let arrayProductosNombre = ((arrayProductos.filter(producto =>producto.nombre.includes(nombre))));
-
+    
     const arrayProd= arrayProductosTags.concat(arrayProductosNombre);
-
+    
     return arrayProd;
 }
 //Busca los productos por categoria. Devuelve un array
@@ -66,12 +66,12 @@ const ordenarProductosPrecioAscendente = (arrayProd) =>{
     let ordenAscendenteProductos= arrayProd.sort((a,b )=> a.precio-b.precio);
     return ordenAscendenteProductos;
 }
- //Ordena los productos de manera por medio de precios de manera descendente. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+//Ordena los productos de manera por medio de precios de manera descendente. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
 const ordenarProductosPrecioDescendente = (arrayProd) =>{
     let ordenDescendenteProductos= arrayProd.sort((a,b )=> b.precio-a.precio);
     return ordenDescendenteProductos;
 }
- //Busca los productos de un rango de precio min y max. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
+//Busca los productos de un rango de precio min y max. Recibe como parametro un array, ya que tambien hay que tener en cuenta si el usuario filtro por categoría. 
 const buscarProductosRangoPrecio = (arrayProd,valorMinimo,valorMaximo)=>{
     let rangoMinimo = arrayProd.filter((producto => producto.precio >= valorMinimo ));
     let rangoMaximo = rangoMinimo.filter((producto => producto.precio <= valorMaximo ));
@@ -91,34 +91,34 @@ const renderizarProductos = (arrayProductos)=>{
             const divCard = document.createElement('div');
             divCard.classList.add('card');
             divCard.style='width:18rem ; height:auto';
-
+            
             const imagenProducto = document.createElement('img');
             imagenProducto.setAttribute('src',`../assets/img/productos/${imagen}`);
             imagenProducto.classList.add('card-img-top');
             imagenProducto.setAttribute('alt',`${nombre}`);
-
+            
             const divBody = document.createElement('div');
             divBody.classList.add('card-body');
-
+            
             const h5= document.createElement('h5');
             h5.classList.add('card-title');
             h5.innerText=`${'$' + precio}`;
-
+            
             const p = document.createElement('p');
             p.classList.add('card-text');
             p.innerText=`${nombre}`;
-
+            
             const botonAgregar = document.createElement('button');
             botonAgregar.setAttribute('data-id',`${codigo}`)
-
+            
             botonAgregar.classList='agregarProducto btn btn-outline-success bi bi-plus';
-
+            
             botonAgregar.innerText='Agregar';
-          
+            
             const selectorCantidad = document.createElement('select');
             selectorCantidad.classList='select m-2';
             selectorCantidad.setAttribute('id',`${codigo}`)
-        
+            
             //Creamos opciones en el selector de cantidad
             for (let index = 0; index < stock; index++) {
                 let valor = index+1;
@@ -127,7 +127,7 @@ const renderizarProductos = (arrayProductos)=>{
                 option.innerText=valor;
                 selectorCantidad.append(option);
             }
-
+            
             //Si el stock es 0, desabilitamos el boton agregar al carrito
             if(stock==0){
                 botonAgregar.setAttribute('disabled',true);
@@ -139,9 +139,9 @@ const renderizarProductos = (arrayProductos)=>{
             divBody.append(p,h5,botonAgregar,selectorCantidad);
             divCard.append(imagenProducto,divBody);
             productos.append(divCard);
-
+            
         }); 
-
+        
     }
 }
 
@@ -153,11 +153,11 @@ const buscarProducto = (event) =>{
     //Efecto de retardo
     //renderizar
     renderizarProductos(buscarProductosNombre(inputBuscarProductos.value)); 
-  
     
-     //Para evitar not defined, addEventListener nuevamente al renderizar
-     botonAgregarProducto = document.querySelectorAll('.agregarProducto');
-  
+    
+    //Para evitar not defined, addEventListener nuevamente al renderizar
+    botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+    
     botonAgregarProducto.forEach(botonAgrProd => {
         botonAgrProd.addEventListener('click',agregarCarrito)
     });
@@ -167,7 +167,7 @@ const buscarProducto = (event) =>{
 const filtrarProductos = (event) =>{
     event.preventDefault();
     tostadaBuscando();
-
+    
     //Filtrar por categoria 
     let categoria;
     checkCategoria.forEach(check => {
@@ -177,16 +177,16 @@ const filtrarProductos = (event) =>{
     });
     //Por orden de precio 
     let arrayPorOrdenPrecio= (selectPrecio.value==='menorPrecio') ? ordenarProductosPrecioAscendente(arrayPorCategoria) : ordenarProductosPrecioDescendente(arrayPorCategoria);
-
+    
     //Por rango de precio
     let arrayFiltrado = buscarProductosRangoPrecio(arrayPorOrdenPrecio,precioMinimo.value,precioMaximo.value);
     //Renderizar pasando un array 
     renderizarProductos(arrayFiltrado);   
-   
+    
     
     //Para evitar not defined, addEventListener nuevamente al renderizar
-     botonAgregarProducto = document.querySelectorAll('.agregarProducto');
-  
+    botonAgregarProducto = document.querySelectorAll('.agregarProducto');
+    
     botonAgregarProducto.forEach(botonAgrProd => {
         botonAgrProd.addEventListener('click',agregarCarrito)
     });
@@ -220,6 +220,6 @@ fetch('../assets/DB/productos.json')
     let botonAgregarProducto = document.querySelectorAll('.agregarProducto');
     botonAgregarProducto.forEach(botonAgrProd => {
         botonAgrProd.addEventListener('click',agregarCarrito)
-      });
+    });
 })
 

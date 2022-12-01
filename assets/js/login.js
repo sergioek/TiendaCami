@@ -1,7 +1,5 @@
 /*---------------------LOGIN------------------*/
-/*--------------1-Variables y constantes-----*/
-
-/*-------------2-QuerySelectors-------------*/
+/*-------------1-QuerySelectors-------------*/
 const emailInicioSesion = document.querySelector('#emailInicioSesion');
 
 const contrasenaInicioSesion = document.querySelector('#contrasenaInicioSesion');
@@ -12,7 +10,7 @@ const recordarInicioSesion = document.querySelector('#recordarInicioSesion');
 
 const btnIngresar = document.querySelector('#btnIngresar');
 
-/* -----------3-Funciones-------------------*/
+/* -----------2-Funciones-------------------*/
 function recuperarUsuarioGuardado(){
     let usuarioRecuperado= JSON.parse(localStorage.getItem('usuarioGuardado'));
     if(usuarioRecuperado != null){
@@ -36,7 +34,7 @@ const buscarUsuario = (email) => {
 //Funcion mostrar password
 function mostrarPassword(){
     contrasenaInicioSesion.setAttribute('type','text');
-
+    
 }
 //Funcion ocultar password
 function ocultarPassword(){
@@ -46,11 +44,11 @@ function ocultarPassword(){
 //Funcion anonima iniciar sesion
 const iniciarSesion = function (event){
     event.preventDefault();
-
+    
     if(verificarUsuarioEmail(emailInicioSesion.value)){
         //Aplicando la desestructuracion de objetos
         const {nombre,apellido,email,contrasena,domicilio,dni} = buscarUsuario(emailInicioSesion.value);
-       
+        
         if(contrasena === contrasenaInicioSesion.value){
             const login = {
                 nombre:nombre,
@@ -59,22 +57,22 @@ const iniciarSesion = function (event){
                 domicilio:domicilio,
                 dni:dni,
             }
-
+            
             sessionStorage.setItem('login',JSON.stringify(login));
-
+            
             if(recordarInicioSesion.checked){
-               const recordarUsuario ={
+                const recordarUsuario ={
                     email:email,
                     contrasena:contrasena
-               }
-
-               const guardar = JSON.stringify(recordarUsuario);
-               localStorage.setItem('usuarioGuardado',guardar);
+                }
+                
+                const guardar = JSON.stringify(recordarUsuario);
+                localStorage.setItem('usuarioGuardado',guardar);
             }
-
+            
             window.location.href='./productos.html';
-
-
+            
+            
         }else{
             alertaError(`La contraseña ingresada no corresponde con el usuario con email ${emailInicioSesion.value}`);
         }
@@ -83,7 +81,7 @@ const iniciarSesion = function (event){
     }
 }
 
-/* -----------4-EventListeners-------------------*/
+/* -----------3-EventListeners-------------------*/
 visibilidadContrasena.addEventListener('mousedown',mostrarPassword);
 
 visibilidadContrasena.addEventListener('touchstart',mostrarPassword);
@@ -93,22 +91,22 @@ visibilidadContrasena.addEventListener('mouseup',ocultarPassword);
 visibilidadContrasena.addEventListener('touchend',ocultarPassword);
 
 btnIngresar.addEventListener('click',iniciarSesion);
-/* -----------5-Ejecuciones y otros-------------------*/
+/* -----------4-Ejecuciones y otros-------------------*/
 //Traer los datos del JSON
 fetch('../assets/DB/usuarios.json')
-    .then(response=>response.json())
-    .then((data)=>{
-        //Si no estan guardados en el localstorage
-        if(!localStorage.getItem('usuarios')){
-            //Guardar los datos del JSON en local
-            localStorage.setItem('usuarios',JSON.stringify(data))
-            //Asignar esos datos a arrayUsuarios
-            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
-        }else{
-            //Si ya existe en local, recuperar esos datos
-            arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
-        }
-    });
+.then(response=>response.json())
+.then((data)=>{
+    //Si no estan guardados en el localstorage
+    if(!localStorage.getItem('usuarios')){
+        //Guardar los datos del JSON en local
+        localStorage.setItem('usuarios',JSON.stringify(data))
+        //Asignar esos datos a arrayUsuarios
+        arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+    }else{
+        //Si ya existe en local, recuperar esos datos
+        arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+    }
+});
 
 //Recuperar usuario guardado
 recuperarUsuarioGuardado();

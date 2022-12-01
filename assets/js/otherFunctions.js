@@ -59,14 +59,14 @@ function tostadaBuscando (){
         showConfirmButton: false,
         timer: 1000,
         timerProgressBar: true,
-      });
-      
-      Toast.fire({
+    });
+    
+    Toast.fire({
         icon: 'success',
         title: 'Buscando Productos...',
         color:'#FCFCFC',
         background:'#252525'
-      });
+    });
 }
 
 // Tostada producto agregado Tostify.js
@@ -80,12 +80,12 @@ function tostadaProductoAgregado(nombre,cantidad,total){
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
         onClick: function(){
             mostrarCarrito()
         } // Callback after click
-      }).showToast();
+    }).showToast();
 }
 
 /*--------------------USUARIO LOGUEADO------------------*/
