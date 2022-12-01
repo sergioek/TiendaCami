@@ -96,18 +96,18 @@ const validacionesNuevoUsuario = () =>{
     errorContrasena.innerText='';
 
     let val1 = val2 = val3 = val4 = val5 = val6 = val7= val8=true;
-    if(nombre.value.length < 3 && !Number(nombre.value)){
+    if(nombre.value.length < 3 || !isNaN(nombre.value)){
         val1=false;
-        errorNombre.innerText='El campo nombre debe contener al menos 3 caracteres.';
+        errorNombre.innerText='El campo nombre debe contener al menos 3 caracteres de texto.';
     }
 
-    if(apellido.value.length < 3 && !Number(apellido.value)){
+    if(apellido.value.length < 3 || !isNaN(apellido.value)){
         val2=false;
-        errorApellido.innerText='Apellido debe contener al menos 3 caracteres.';
+        errorApellido.innerText='Apellido debe contener al menos 3 caracteres de texto.';
 
     }
 
-    if(Number(dni.value) && dni.value.toString().length != 8 ){
+    if(!isNaN(dni.value) && dni.value.toString().length != 8 ){
         val3=false;
         errorDni.innerText='DNI debe ser numérico de 8 digítos.';
     }
@@ -121,8 +121,8 @@ const validacionesNuevoUsuario = () =>{
         val5=false;
         errorLocalidad.innerText='Localidad no debe estar vacío.';
     }
-
-    if(domicilio.value.length < 3 && !Number(domicilio.value)){
+    
+    if(domicilio.value.length < 3){
         val6=false;
         errorDomicilio.innerText='Domicilio debe contener al menos 3 caracteres.';
     }
@@ -132,8 +132,8 @@ const validacionesNuevoUsuario = () =>{
         errorEmail.innerText='Debe tener formato de correo electrónico.';
 
     }
-
-    if(contrasena.value.length != 8 && !Number(contrasena.value)){
+    
+    if(contrasena.value.length != 8 || !isNaN(contrasena.value)){
         val8=false;
         errorContrasena.innerText='Contraseña debe tener una longitud de 8 caracteres alfanuméricos.,';
     }
